@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vyvital.fitz.BuilderActivity">
+
+
+    <vyvital.fitz.data.EmptyRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv"
+        />
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:id="@+id/empty_shelter_image"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/ic_fitness_center_orange_24px"/>
+
+        <TextView
+            android:id="@+id/empty_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/empty_shelter_image"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/qanelasbold"
+            android:paddingTop="10dp"
+            android:textColor="@color/colorAccent"
+            android:text="It's a bit lonely here...."
+            android:textAppearance="?android:textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/empty_subtitle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/empty_title_text"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/qanelas"
+            android:paddingTop="2dp"
+            android:text="Get started by adding a workout"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorAccent"/>
+    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="455dp"
+        android:layout_marginEnd="304dp"
+        android:elevation="6dp"
+        android:onClick="popUp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/ic_add_black_24px" />
+
+</android.support.constraint.ConstraintLayout>

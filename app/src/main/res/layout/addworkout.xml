@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="340dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="6dp"
+    android:layout_gravity="center"
+    android:background="@drawable/corner_bg"
+    android:elevation="4dp">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_workout_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:textColorHint="@color/colorAccent"
+        android:theme="@style/MyStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/field_workout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/workout_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/type_spinner"
+        android:layout_width="225dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/qanelas"
+        android:gravity="center"
+        android:hint="@string/workout_type"
+        android:textSize="14sp"
+        app:met_primaryColor="@color/colorAccent"
+        app:met_underlineColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_workout_name"
+        app:met_floatingLabel="normal"
+        />
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/lvl_spinner"
+        android:layout_width="225dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/qanelas"
+        android:gravity="center"
+        android:hint="@string/workout_training_level"
+        app:met_primaryColor="@color/colorAccent"
+        app:met_underlineColor="@color/colorAccent"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_spinner"
+        app:met_floatingLabel="normal" />
+
+    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+        android:id="@+id/day_spinner"
+        android:layout_width="225dp"
+        android:layout_height="52dp"
+        android:fontFamily="@font/qanelas"
+        android:gravity="center"
+        android:hint="@string/weekly_days"
+        app:met_primaryColor="@color/colorAccent"
+        app:met_underlineColor="@color/colorAccent"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvl_spinner"
+        app:met_floatingLabel="normal" />
+
+    <Button
+        android:id="@+id/done_adding"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/done"
+        android:textColor="@color/colorAccent"
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancel_adding"
+        app:layout_constraintTop_toBottomOf="@+id/day_spinner" />
+
+    <Button
+        android:id="@+id/cancel_adding"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/cancel"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/done_adding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/day_spinner" />
+
+</android.support.constraint.ConstraintLayout>

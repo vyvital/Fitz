@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">fitz</string>
+    <string name="sign_out">Sign Out</string>
+
+    <string name="loading">Loading…</string>
+    <string name="signed_in">Signed In</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="google_title_text">Google Sign In</string>
+    <string name="auth_failed">Authentication Failed</string>
+    <string name="action_settings">Setting</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Email and Password</string>
+    <string name="reg">Don\'t have an account? <b>Sign Up</b></string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Login</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="nutrition"><![CDATA[Nutrition & Macros]]></string>
+    <string name="progress">Progress</string>
+    <string name="setting">Setting</string>
+    <string name="about">About</string>
+    <string name="program_builder">Program Manager</string>
+    <string name="home">Home</string>
+    <string name="sarahha_eren">Sarrah Eren</string>
+    <string name="sarraheren_gmail_com">SarrahEren@gmail.com</string>
+    <string name="welcome">Welcome Back</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="workout_training_level">Workout Training Level</string>
+    <string name="workout_name">Workout Name</string>
+    <string name="workout_type">Workout Type</string>
+    <string name="weekly_days">Weekly Days</string>
+</resources>
