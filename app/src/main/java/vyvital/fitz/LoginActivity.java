@@ -26,8 +26,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -45,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // [START declare_auth]
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
+    private DatabaseReference mRef;
     // [END declare_auth]
 
     @Override
@@ -71,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        mRef = FirebaseDatabase.getInstance().getReference();
         // [END initialize_auth]
     }
     public void showProgressDialog() {
@@ -152,13 +157,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            DatabaseReference mChildDatabase = mDatabaseRef.child("Users").push();
+                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").push();
 
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG2, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            mChildDatabase.child("userEmail").setValue(user.getEmail());
-                            mChildDatabase.child("userID").setValue(user.getUid());
+                            final FirebaseUser user = mAuth.getCurrentUser();
+                            final String id = user.getUid();
+                            mRef.child("Users").orderByChild("userID").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists())
+                                        Log.e(TAG,"User exists" );
+                                    else {
+                                        mChildDatabase.child("userEmail").setValue(user.getEmail());
+                                        mChildDatabase.child("userID").setValue(user.getUid());
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                }
+                            });
+
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
