@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vyvital.fitz.R;
+import vyvital.fitz.data.models.Workout;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder> {
 
@@ -36,9 +37,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, int position) {
-        holder.nameOfWorkout.setText(workouts.get(position).nameOfWorkout);
-        holder.typeOfWorkout.setText(workouts.get(position).typeOfWorkout);
-        holder.days.setText(workouts.get(position).numDays+"");
+        holder.nameOfWorkout.setText(workouts.get(position).name);
+        holder.typeOfWorkout.setText(workouts.get(position).type);
+        holder.days.setText(workouts.get(position).days +"");
         holder.level.setText(workouts.get(position).level);
         holder.personPhoto.setImageResource(workouts.get(position).photoId);
     }

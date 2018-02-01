@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import vyvital.fitz.data.EmptyRecyclerView;
 import vyvital.fitz.data.RVAdapter;
-import vyvital.fitz.data.Workout;
+import vyvital.fitz.data.models.Workout;
 
 
 public class BuilderActivity extends BaseActivity implements View.OnClickListener{
@@ -62,7 +62,8 @@ public class BuilderActivity extends BaseActivity implements View.OnClickListene
         workouts = new ArrayList<>();
         rv.setLayoutManager(llm);
         rv.setEmptyView(emptyView);
-        loadWorkout();
+//        loadWorkout();
+        initializeData();
         RVAdapter adapter = new RVAdapter(workouts);
         rv.setAdapter(adapter);
         workoutDialog = new Dialog(this);
