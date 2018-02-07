@@ -162,8 +162,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG2, "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
-                            final String id = user.getUid();
-                            mRef.child("Users").orderByChild("userID").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                            final String em = user.getEmail();
+                            mRef.child("Users").orderByChild("userEmail").equalTo(em).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists())

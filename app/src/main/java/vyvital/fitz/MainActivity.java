@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         findViewById(R.id.polygonWorkout).setOnClickListener(this);
         findViewById(R.id.polygonFood).setOnClickListener(this);
         findViewById(R.id.polygonProgress).setOnClickListener(this);
+        findViewById(R.id.button2).setOnClickListener(this);
     }
 
 
@@ -37,7 +38,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             Toast.makeText(this, "Progress Button Pressed", Toast.LENGTH_LONG).show();
         } else if (i == R.id.start) {
             Toast.makeText(this, "Start Button Pressed", Toast.LENGTH_LONG).show();
-    }}
+        } else if (i == R.id.button2){
+            Intent intent = new Intent(MainActivity.this,MuscleActivity.class);
+            startActivity(intent);
+        }
+    }
 
 
 //    public void vit(View view) {

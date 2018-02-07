@@ -37,4 +37,14 @@
     <string name="workout_name">Workout Name</string>
     <string name="workout_type">Workout Type</string>
     <string name="weekly_days">Weekly Days</string>
+
+    <string name="chest_trans">chest</string>
+    <string name="back_trans">back</string>
+    <string name="legs_trans">legs</string>
+    <string name="triceps_trans">triceps</string>
+    <string name="biceps_trans">biceps</string>
+    <string name="shoulder_trans">shoulder</string>
+    <string name="abs_trans">abs</string>
+    <string name="cardio_trans">cardio</string>
+    <string name="crossfit_trans">crossfit</string>
 </resources>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_simple_one"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vyvital.fitz.MuscleActivity">
+
+
+    <ImageButton
+        android:id="@+id/abs"
+        android:layout_width="120dp"
+        android:layout_height="176dp"
+        android:layout_x="24dp"
+        android:layout_y="272dp"
+        android:background="@drawable/abs"
+        android:transitionName="@string/abs_trans"
+        tools:ignore="UnusedAttribute" />
+
+
+    <ImageButton
+        android:id="@+id/legs"
+        android:layout_width="115dp"
+        android:layout_height="223dp"
+        android:layout_x="22dp"
+        android:layout_y="48dp"
+        android:background="@drawable/legs"
+        android:transitionName="@string/legs_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/chest"
+        android:layout_width="306dp"
+        android:layout_height="121dp"
+        android:layout_x="30dp"
+        android:layout_y="25dp"
+        android:background="@drawable/chest"
+        android:transitionName="@string/chest_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/tricep"
+        android:layout_width="203dp"
+        android:layout_height="120dp"
+        android:layout_x="132dp"
+        android:layout_y="105dp"
+        android:background="@drawable/tricep"
+        android:transitionName="@string/triceps_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/bicep"
+        android:layout_width="128dp"
+        android:layout_height="141dp"
+        android:layout_x="39dp"
+        android:layout_y="174dp"
+        android:background="@drawable/bicep"
+        android:transitionName="@string/biceps_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/shoulder"
+        android:layout_width="170dp"
+        android:layout_height="133dp"
+        android:layout_x="162dp"
+        android:layout_y="185dp"
+        android:background="@drawable/shoulder"
+        android:transitionName="@string/shoulder_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="208dp"
+        android:layout_height="114dp"
+        android:layout_x="22dp"
+        android:layout_y="389dp"
+        android:background="@drawable/back"
+        android:transitionName="@string/back_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/cardio"
+        android:layout_width="147dp"
+        android:layout_height="157dp"
+        android:layout_x="185dp"
+        android:layout_y="344dp"
+        android:background="@drawable/cardio"
+        android:transitionName="@string/cardio_trans"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/crossfit"
+        android:layout_width="202dp"
+        android:layout_height="125dp"
+        android:layout_x="130dp"
+        android:layout_y="295dp"
+        android:background="@drawable/crossfit"
+        android:transitionName="@string/crossfit_trans"
+        tools:ignore="UnusedAttribute" />
+
+
+</AbsoluteLayout>
