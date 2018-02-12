@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your TDEE Is"
+        android:textSize="32sp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/qanelasbold"
+        android:textColor="@color/colorAccent"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/tdee2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="234234"
+        android:textSize="32sp"/>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/qanelas"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="Please Select Your Goal"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+        android:id="@+id/goal_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="6dp"
+        android:textSize="14sp"
+        app:toggleWidth="117dp"
+        app:textToggleCenter="Maintenance"
+        app:textToggleLeft="Fat Loss"
+        app:textToggleRight="Mass Gain"
+        app:cornerRadius="8dp"
+        app:inactiveBgColor="@color/lightGrey"
+        app:inactiveTextColor="@color/white"
+        app:activeBgColor="@color/colorAccent"
+        app:separatorColor="@color/white"
+        />
+
+
+    <TextView
+        android:id="@+id/activity_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorAccent"
+        android:layout_gravity="center"
+        android:text="To reach your goal, you will need to consume"
+        android:fontFamily="@font/qanelas"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tdee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="234234"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center"
+            android:text="  Calories"
+            android:fontFamily="@font/qanelas"
+            />
+    </LinearLayout>
+  <LinearLayout
+      android:layout_gravity="center"
+      android:layout_marginTop="8dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layout_marginStart="25dp"
+          >
+          <TextView
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text="Calories from Protein "
+              android:fontFamily="@font/qanelas"
+              />
+          <TextView
+              android:id="@+id/cal_protein"
+              android:textSize="16sp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="234234"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text=" ~ "
+              />
+          <TextView
+              android:id="@+id/gram_protein"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:layout_gravity="center"
+              android:text="345"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text=" grams "
+              />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layout_marginStart="25dp">
+          <TextView
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text="Calories from fat "
+              android:fontFamily="@font/qanelas"
+              />
+          <TextView
+              android:id="@+id/cal_fat"
+              android:textSize="16sp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="234234"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text=" ~ "
+              />
+          <TextView
+              android:id="@+id/gram_fat"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:layout_gravity="center"
+              android:text="345"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text=" grams "
+              />
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layout_marginStart="25dp">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:textSize="16sp"
+              android:text="Calories from Carbs "
+              android:fontFamily="@font/qanelas"
+              />
+          <TextView
+              android:id="@+id/cal_carb"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:textSize="16sp"
+              android:text="234234"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text=" ~ "
+              />
+          <TextView
+              android:id="@+id/gram_carb"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:layout_gravity="center"
+              android:text="345"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="16sp"
+              android:textColor="@color/colorAccent"
+              android:layout_gravity="center"
+              android:text=" grams "
+              />
+      </LinearLayout>
+      <com.github.mikephil.charting.charts.PieChart
+          android:padding="22dp"
+          android:id="@+id/chart"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          />
+  </LinearLayout>
+
+</LinearLayout>

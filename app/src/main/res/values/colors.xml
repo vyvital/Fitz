@@ -3,11 +3,15 @@
     <color name="colorPrimary">#F69E8A</color>
     <color name="colorPrimaryDark">#c16f5d</color>
     <color name="colorAccent">#F69E8A</color>
+    <color name="bluez">#29B6F6</color>
+    <color name="greenz">#9CCC65</color>
+    <color name="red">#ef5350</color>
     <color name="white">#ffffff</color>
     <color name="colorGrey">#3b3e47</color>
     <color name="transparent">#00000000</color>
     <color name="tinted">#50c16f5d</color>
     <color name="mainLight">#f8bbad</color>
+    <color name="lightGrey">#4E5159</color>
 
 
 </resources>

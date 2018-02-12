@@ -1,9 +1,10 @@
 package vyvital.fitz;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MuscleActivity extends AppCompatActivity {
+import vyvital.fitz.fragments.FragAMuscle;
+
+public class MuscleActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -11,7 +12,7 @@ public class MuscleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_muscle);
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.content, FragmentA.newInstance())
+                .add(R.id.content, FragAMuscle.newInstance())
                 .commit();
     }
 }

@@ -1,16 +1,18 @@
 package vyvital.fitz.data.models;
 
 
-// Done.
+import java.util.List;
+
+
 public class Muscle {
-    public String name;
-    public Exercise exercise;
+    private String name;
+    private List<Exercise> exercises;
 
     public Muscle() {
     }
 
-    public Muscle(String name, Exercise exercise) {
+    public Muscle(String name, List<Exercise> exercises) {
         this.name = name;
-        this.exercise = exercise;
+        this.exercises = exercises;
     }
 }

@@ -1,4 +1,4 @@
-package vyvital.fitz;
+package vyvital.fitz.fragments;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -10,18 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import vyvital.fitz.R;
 
-public class FragmentB extends Fragment {
+
+public class FragBMuscle extends Fragment {
 
     int pic;
     String trans;
 
-    public FragmentB() {
+    public FragBMuscle() {
         // Required empty public constructor
     }
 
-    public static FragmentB newInstance() {
-        return new FragmentB();
+    public static FragBMuscle newInstance() {
+        return new FragBMuscle();
     }
 
 
@@ -41,7 +43,7 @@ public class FragmentB extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_b, container, false);
+        return inflater.inflate(R.layout.fragment_muscle_b, container, false);
 
     }
 

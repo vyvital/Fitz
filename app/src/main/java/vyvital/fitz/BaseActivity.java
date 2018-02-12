@@ -1,7 +1,10 @@
 package vyvital.fitz;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -61,6 +64,8 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 0, 0);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        BitmapDrawable backgrd = new BitmapDrawable(BitmapFactory.decodeResource(getResources(),R.drawable.bar));
+        getSupportActionBar().setBackgroundDrawable(backgrd);
         drawerMenu = navigation_view.getMenu();
         for(int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
@@ -154,15 +159,21 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
+                if (!this.getClass().getName().equals(MainActivity.class.getName())){
+                    Intent intent = new Intent(this,MainActivity.class);
+                    startActivity(intent);
+                }
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.workout:
                 Intent intent2 = new Intent(this,BuilderActivity.class);
                 startActivity(intent2);
                 mDrawerLayout.closeDrawers();
-                // do whatever
+                break;
+            case R.id.nutrition:
+                Intent intent3 = new Intent(this,NutriActivity.class);
+                startActivity(intent3);
+                mDrawerLayout.closeDrawers();
                 break;
             case R.id.logout:
                 signOut();

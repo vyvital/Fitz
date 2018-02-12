@@ -33,7 +33,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             Intent intent = new Intent(MainActivity.this,BuilderActivity.class);
             startActivity(intent);
         } else if (i == R.id.polygonFood) {
-            Toast.makeText(this, "Food Button Pressed", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this,NutriActivity.class);
+            startActivity(intent);
         } else if (i == R.id.polygonProgress) {
             Toast.makeText(this, "Progress Button Pressed", Toast.LENGTH_LONG).show();
         } else if (i == R.id.start) {

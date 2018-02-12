@@ -32,7 +32,8 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".ExerciseActivity" />
-        <activity android:name=".MuscleActivity"></activity>
+        <activity android:name=".MuscleActivity" />
+        <activity android:name=".NutriActivity"></activity>
     </application>
 
 </manifest>

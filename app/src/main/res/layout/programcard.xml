@@ -80,7 +80,7 @@
                 android:layout_marginStart="12dp"
                 tools:text="4 Days"
                 android:textSize="17sp"
-                android:fontFamily="@font/qanelas"
+
                 android:layout_marginTop="16dp"
                 />
 

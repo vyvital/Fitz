@@ -37,11 +37,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, int position) {
-        holder.nameOfWorkout.setText(workouts.get(position).name);
-        holder.typeOfWorkout.setText(workouts.get(position).type);
-        holder.days.setText(workouts.get(position).days +"");
-        holder.level.setText(workouts.get(position).level);
-        holder.personPhoto.setImageResource(workouts.get(position).photoId);
+        holder.nameOfWorkout.setText(workouts.get(position).getName());
+        holder.typeOfWorkout.setText(workouts.get(position).getType());
+        holder.days.setText(workouts.get(position).getSize() +"");
+        holder.level.setText(workouts.get(position).getLevel());
+        ;
     }
 
     public static class WorkoutViewHolder extends RecyclerView.ViewHolder {

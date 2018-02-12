@@ -1,4 +1,4 @@
-package vyvital.fitz;
+package vyvital.fitz.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,23 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import vyvital.fitz.R;
 
-public class FragmentA extends Fragment {
-    public static final String TAG = FragmentA.class.getSimpleName();
 
-    public FragmentA() {
+public class FragAMuscle extends Fragment {
+    public static final String TAG = FragAMuscle.class.getSimpleName();
+
+    public FragAMuscle() {
         // Required empty public constructor
     }
 
-    public static FragmentA newInstance() {
-        return new FragmentA();
+    public static FragAMuscle newInstance() {
+        return new FragAMuscle();
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_a, container, false);
+        return inflater.inflate(R.layout.fragment_muscle_a, container, false);
     }
 
     @Override
@@ -48,7 +50,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.abs_t);
                 bundle.putString("TRANS",abs_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -65,7 +67,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.chest_t);
                 bundle.putString("TRANS",chest_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -81,7 +83,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.back_t);
                 bundle.putString("TRANS",back_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -97,7 +99,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.tricep_t);
                 bundle.putString("TRANS",tricep_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -113,7 +115,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.bicep_t);
                 bundle.putString("TRANS",bicep_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -129,7 +131,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.legs_t);
                 bundle.putString("TRANS",legs_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -145,7 +147,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.cardio_t);
                 bundle.putString("TRANS",cardio_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -161,7 +163,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.crossfit_t);
                 bundle.putString("TRANS",crossfit_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()
@@ -177,7 +179,7 @@ public class FragmentA extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC",R.drawable.shoulder_t);
                 bundle.putString("TRANS",shoulder_view.getTransitionName());
-                FragmentB simpleFragmentB = FragmentB.newInstance();
+                FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 getFragmentManager()
                         .beginTransaction()

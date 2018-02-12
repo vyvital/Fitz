@@ -21,9 +21,13 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import vyvital.fitz.data.EmptyRecyclerView;
 import vyvital.fitz.data.RVAdapter;
+import vyvital.fitz.data.models.Exercise;
+import vyvital.fitz.data.models.Sets;
 import vyvital.fitz.data.models.Workout;
 
 
@@ -40,6 +44,7 @@ public class BuilderActivity extends BaseActivity implements View.OnClickListene
     Dialog workoutDialog;
 
     private DatabaseReference mRef;
+    private DatabaseReference mWorkoutsDatabaseReference;
 
 
     @Override
@@ -51,74 +56,70 @@ public class BuilderActivity extends BaseActivity implements View.OnClickListene
         FloatingActionButton fab = findViewById(R.id.fab);
 
         mRef =  FirebaseDatabase.getInstance().getReference().child("Users");
-
+        mWorkoutsDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Workouts");
         LinearLayoutManager llm = new LinearLayoutManager(this);
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setTitle("Program Manager");
-
-
 
         rv.setHasFixedSize(true);
         workouts = new ArrayList<>();
         rv.setLayoutManager(llm);
         rv.setEmptyView(emptyView);
-//        loadWorkout();
+        //addTheComplexOneAsWell();
         initializeData();
         RVAdapter adapter = new RVAdapter(workouts);
         rv.setAdapter(adapter);
         workoutDialog = new Dialog(this);
 
     }
-    private void loadWorkout(){
 
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        workouts = new ArrayList<>();
-        final String[] namez = {""};
-        final String[] typez = {""};
-        final String[] lvlz = {""};
-        final int[] dz = {0};
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                 for (DataSnapshot snaps : dataSnapshot.getChildren()) {
-                    String snap = snaps.getKey();
-                    if (dataSnapshot.child(snap).child("userID").getValue().equals(user.getUid())) {
-                        namez[0] = String.valueOf(dataSnapshot.child(snap).child("workouts").child("0").child("name").getValue());
-                        typez[0] = String.valueOf(dataSnapshot.child(snap).child("workouts").child("0").child("type").getValue());
-                        lvlz[0] = String.valueOf(dataSnapshot.child(snap).child("workouts").child("0").child("level").getValue());
-                        dz[0] = Integer.parseInt(String.valueOf(dataSnapshot.child(snap).child("workouts").child("0").child("days").getValue())) ;
-                        Log.e(TAG, namez[0]);
-                        Log.e(TAG, typez[0]);
-                        Log.e(TAG, lvlz[0]);
-                        Log.e(TAG, String.valueOf(dz[0]));
-                    }
-
-
-            }
-                workouts.add(new Workout("Summer Cut", "Maintanance", "Beginner", 5, R.drawable.profile));
-                workouts.add(new Workout(namez[0],typez[0],lvlz[0],dz[0],R.drawable.profile));
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-       // Toast.makeText(BuilderActivity.this,"txt", Toast.LENGTH_SHORT).show();
-
-    }
     private void initializeData() {
         workouts = new ArrayList<>();
-        workouts.add(new Workout("Summer Cut", "Maintanance", "Beginner", 5, R.drawable.profile));
-        workouts.add(new Workout("Strengh Gaining", "Strengh", "Medium", 3, R.drawable.profile));
-        workouts.add(new Workout("Gainz are Coming", "Hyperthrophy", "Hardcore", 4, R.drawable.profile));
+        List<Exercise> days = new ArrayList<>();
+        workouts.add(new Workout("Summer Cut", "Maintenance", "Beginner", days));
+        workouts.add(new Workout("Strengh Gaining", "Strengh", "Medium", days));
+        workouts.add(new Workout("Gainz are Coming", "Hyperthrophy", "Hardcore", days));
+    }
+
+
+    private void addTheComplexOneAsWell(){
+        String userEMail = "meme@gmail.com";
+        addWorkoutsToSpecificUserGivenEMail(userEMail);
+    }
+    private void addWorkoutsToSpecificUserGivenEMail(String userEMail){
+        String name = "Summer Cut"; // this is done by getting edit text from the app or any way ... here is just hardcoded example
+        String type = "Heavy";
+        String level = "Beginner";
+        List<Exercise> days = new ArrayList<>();
+        // add 2 fake exercises
+        Exercise exercises = getExercisesInstanceInitialized();
+        for (int i = 1; i <= 2; i++)
+            days.add(exercises);
+        Workout workouts = new Workout(name, type, level, days);
+        // --- adding more than 1 workout for ex. 4
+        List<Workout> workoutsList = new ArrayList<>();
+        for (int i = 1; i <= 2; i++)
+            workoutsList.add(workouts);
+        String nodeName = "workouts"; // CONSTANT you Specify
+        // userEMail is given
+    /*List<Integer> list = new ArrayList<>();
+    list.add(11);
+    list.add(16);*/
+        mWorkoutsDatabaseReference.push().setValue(workoutsList); // ========== here when u put in database
+    }
+    private Exercise getExercisesInstanceInitialized(){
+        String name = "Bench Press";
+        String mechanics = "Compound";
+        List<Sets> setsList = new ArrayList<>();
+        // add 3 fake sets
+        Sets sets = new Sets(6,80);
+        for (int i = 1; i <= 3; i++)
+            setsList.add(sets);
+        return new Exercise(name, mechanics, setsList);
     }
 
     @Override
     public void onClick(View v) {
-
-
 
     }
 
@@ -142,9 +143,6 @@ public class BuilderActivity extends BaseActivity implements View.OnClickListene
             }
         });
         workoutDialog.show();
-
-
     }
-
 
 }
