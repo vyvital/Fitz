@@ -4,6 +4,7 @@ package vyvital.fitz;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,6 +33,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import vyvital.fitz.data.models.User;
+import vyvital.fitz.data.models.Workout;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,11 +50,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "EmailPassword";
     private static final String TAG2 = "GoogleActivity";
     DatabaseReference mDatabaseRef;
+    private Workout wr;
     public ProgressDialog mProgressDialog;
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
-
+    private String currentDate;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference myRef = null;
+    private List<Workout> workoutList;
     // [START declare_auth]
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
@@ -75,8 +90,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
         mRef = FirebaseDatabase.getInstance().getReference();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        currentDate = sdf.format(new Date());
+
+        mDatabase = FirebaseDatabase.getInstance();
+        myRef = mDatabase.getReference("Default");
+        workoutList = new ArrayList<>();
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                    workoutList.add(childDataSnapshot.getValue(Workout.class));
+                    //workoutList.add(workout);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.d("NOPE", "Failed to read value.", error.toException());
+            }
+        });
         // [END initialize_auth]
     }
+
     public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
@@ -98,13 +136,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStop();
         hideProgressDialog();
     }
+
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser!= null){
+        if (currentUser != null) {
             updateUI(currentUser);
         }
     }
@@ -122,13 +161,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            DatabaseReference mChildDatabase = mDatabaseRef.child("Users").push();
+
+                            // Sign in success, update UI with the signed-in user's information
+                            String shorty = mAuth.getCurrentUser().getEmail();
+                            String shorty2 = shorty.substring(0, shorty.indexOf("@"));
+                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(shorty2);
 
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             mChildDatabase.child("userEmail").setValue(user.getEmail());
                             mChildDatabase.child("userID").setValue(user.getUid());
+                            mChildDatabase.child("dateReg").setValue(currentDate);
+                            mChildDatabase.child("workouts").setValue(workoutList);
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -144,6 +189,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
         // [END create_user_with_email]
     }
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG2, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
@@ -156,27 +202,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").push();
+
+
 
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG2, "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
                             final String em = user.getEmail();
+                            String shorty = mAuth.getCurrentUser().getEmail();
+                            String shorty2 = shorty.substring(0, shorty.indexOf("@"));
+                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(shorty2);
                             mRef.child("Users").orderByChild("userEmail").equalTo(em).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists())
-                                        Log.e(TAG,"User exists" );
+                                        Log.e(TAG, "User exists");
                                     else {
                                         mChildDatabase.child("userEmail").setValue(user.getEmail());
                                         mChildDatabase.child("userID").setValue(user.getUid());
+                                        mChildDatabase.child("dateReg").setValue(currentDate);
+                                        mChildDatabase.child("workouts").setValue(workoutList);
                                     }
                                 }
+
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
                                 }
                             });
-
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -191,31 +243,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
 
-            // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-            if (requestCode == RC_SIGN_IN) {
-                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                try {
-                    // Google Sign In was successful, authenticate with Firebase
-                    GoogleSignInAccount account = task.getResult(ApiException.class);
-                    firebaseAuthWithGoogle(account);
-                } catch (ApiException e) {
-                    // Google Sign In failed, update UI appropriately
-                    Log.w(TAG2, "Google sign in failed", e);
-                    // [START_EXCLUDE]
-                    updateUI(null);
-                    // [END_EXCLUDE]
-                }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG2, "Google sign in failed", e);
+                // [START_EXCLUDE]
+                updateUI(null);
+                // [END_EXCLUDE]
             }
         }
+    }
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
@@ -249,7 +303,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
     private boolean validateForm() {
         boolean valid = true;
 
@@ -275,10 +328,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         hideProgressDialog();
         if (user != null) {
             //for (UserInfo userz: FirebaseAuth.getInstance().getCurrentUser().getProviderData()) {
-               Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-               startActivity(intent);
-               finish();
-            }
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
     }
 
@@ -289,7 +342,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.email_sign_in_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i== R.id.sign_in_button){
+        } else if (i == R.id.sign_in_button) {
             signIn();
         }
     }

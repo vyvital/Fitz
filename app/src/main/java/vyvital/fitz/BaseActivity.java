@@ -34,12 +34,14 @@ import com.google.firebase.auth.UserInfo;
 
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import vyvital.fitz.data.models.User;
 
 
 public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener{
 
     public static final String TAG = "Nope";
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
+    public User userz;
     private GoogleSignInClient mGoogleSignInClient;
     private FrameLayout view_stub; //This is the framelayout to keep your content view
     private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy

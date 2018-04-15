@@ -14,7 +14,7 @@
         android:id="@+id/rv"
         />
     <RelativeLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/ pres-auto"
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

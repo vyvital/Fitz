@@ -47,4 +47,5 @@
     <string name="abs_trans">abs</string>
     <string name="cardio_trans">cardio</string>
     <string name="crossfit_trans">crossfit</string>
+    <string name="equipment">Equipment</string>
 </resources>

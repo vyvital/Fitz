@@ -1,29 +1,28 @@
 package vyvital.fitz.data.models;
 
 
-
 import java.util.List;
 
-public class Workout {
+public class Workout extends Model{
 
-    private int size;
     private String name;
     private String type;
     private String level;
-    private List<Exercise> days;
+    private int size;
+    private List<Days> days;
 
     // This is required for serialization
     public Workout() {
     }
 
-    public Workout(String name, String type, String level, List<Exercise> days) {
+    public Workout(String name, String type, String level, int size ) {
         this.name = name;
         this.type = type;
         this.level = level;
-        this.days = days;
-        this.size = days.size();
-
+        this.size = size;
+        this.days = null;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -33,8 +32,8 @@ public class Workout {
     public void setLevel(String level) {
         this.level = level;
     }
-    public void setDays(List<Exercise> days) {
-        this.days = days;
+    public void setSize(int days) {
+        this.size = days;
     }
     public String getName() {
         return name;
@@ -45,10 +44,14 @@ public class Workout {
     public String getLevel() {
         return level;
     }
-    public List<Exercise> getDays() {
-        return days;
-    }
-    public int getSize(){
+    public int getSize() {
         return size;
+    }
+    public void setDays(List<Days> days) {
+        this.days = days;
+    }
+
+    public List<Days> getDays() {
+        return days;
     }
 }

@@ -3,6 +3,7 @@ package vyvital.fitz.data;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +39,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, int position) {
         holder.nameOfWorkout.setText(workouts.get(position).getName());
+        Log.d("BOOM",workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
-        holder.days.setText(workouts.get(position).getSize() +"");
+        holder.days.setText(String.valueOf(workouts.get(position).getSize()));
         holder.level.setText(workouts.get(position).getLevel());
-        ;
+
     }
 
     public static class WorkoutViewHolder extends RecyclerView.ViewHolder {
