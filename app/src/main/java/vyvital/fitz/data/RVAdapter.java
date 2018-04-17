@@ -1,6 +1,7 @@
 package vyvital.fitz.data;
 
 
+import android.content.ClipData;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -47,7 +49,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     }
 
     public static class WorkoutViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
+        RelativeLayout cv , background;
         TextView nameOfWorkout;
         TextView typeOfWorkout;
         TextView level;
@@ -56,7 +58,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
         WorkoutViewHolder(View itemView) {
             super(itemView);
-            cv = itemView.findViewById(R.id.cv);
+            //background = itemView.findViewById(R.id.backgroundView);
+            cv = itemView.findViewById(R.id.foregroundView);
             nameOfWorkout = itemView.findViewById(R.id.workout_name);
             typeOfWorkout = itemView.findViewById(R.id.workout_type);
             level = itemView.findViewById(R.id.workout_level);
@@ -68,5 +71,15 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public void removeItem(int position){
+        workouts.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Workout item, int position){
+        workouts.add(position,item);
+        notifyItemInserted(position);
     }
 }

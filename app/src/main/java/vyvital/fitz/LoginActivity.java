@@ -163,9 +163,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
 
                             // Sign in success, update UI with the signed-in user's information
-                            String shorty = mAuth.getCurrentUser().getEmail();
-                            String shorty2 = shorty.substring(0, shorty.indexOf("@"));
-                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(shorty2);
+                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(mAuth.getCurrentUser().getUid());
 
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
@@ -209,9 +207,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Log.d(TAG2, "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
                             final String em = user.getEmail();
-                            String shorty = mAuth.getCurrentUser().getEmail();
-                            String shorty2 = shorty.substring(0, shorty.indexOf("@"));
-                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(shorty2);
+                            final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(mAuth.getCurrentUser().getUid());
                             mRef.child("Users").orderByChild("userEmail").equalTo(em).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {

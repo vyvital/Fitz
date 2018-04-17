@@ -74,42 +74,16 @@ public class FragAMuscle extends Fragment {
                 Log.d("NOPE", "Failed to read value.", error.toException());
             }
         });
-        new initAsynctask(getActivity(),view).execute();
-        return view;
-    }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //initialize(view);
-
-
-    }
-public class initAsynctask extends AsyncTask<Void,Void,Void>{
-    private Context mContext;
-    private View rootView;
-    public initAsynctask(Context context, View view) {
-        this.mContext = context;
-        this.rootView = view;
-    }
-
-    @Override
-    protected Void doInBackground(Void... voids) {
-        try {
-            Thread.sleep(1000);
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        final ImageButton abs_view = rootView.findViewById(R.id.abs);
-        final ImageButton chest_view = rootView.findViewById(R.id.chest);
-        final ImageButton back_view = rootView.findViewById(R.id.back);
-        final ImageButton tricep_view = rootView.findViewById(R.id.tricep);
-        final ImageButton bicep_view = rootView.findViewById(R.id.bicep);
-        final ImageButton legs_view = rootView.findViewById(R.id.legs);
-        final ImageButton cardio_view = rootView.findViewById(R.id.cardio);
-        final ImageButton crossfit_view = rootView.findViewById(R.id.crossfit);
-        final ImageButton shoulder_view = rootView.findViewById(R.id.shoulder);
+        final ImageButton abs_view = view.findViewById(R.id.abs);
+        final ImageButton chest_view = view.findViewById(R.id.chest);
+        final ImageButton back_view = view.findViewById(R.id.back);
+        final ImageButton tricep_view = view.findViewById(R.id.tricep);
+        final ImageButton bicep_view = view.findViewById(R.id.bicep);
+        final ImageButton legs_view = view.findViewById(R.id.legs);
+        final ImageButton cardio_view = view.findViewById(R.id.cardio);
+        final ImageButton crossfit_view = view.findViewById(R.id.crossfit);
+        final ImageButton shoulder_view = view.findViewById(R.id.shoulder);
         abs_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,6 +241,28 @@ public class initAsynctask extends AsyncTask<Void,Void,Void>{
                         .commit();
             }
         });
+        new initAsynctask(getActivity(),view).execute();
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //initialize(view);
+
+
+    }
+public class initAsynctask extends AsyncTask<Void,Void,Void>{
+    private Context mContext;
+    private View rootView;
+    public initAsynctask(Context context, View view) {
+        this.mContext = context;
+        this.rootView = view;
+    }
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+
         return null;
     }
 }

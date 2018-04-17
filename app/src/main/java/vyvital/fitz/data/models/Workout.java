@@ -10,17 +10,27 @@ public class Workout extends Model{
     private String level;
     private int size;
     private List<Days> days;
+    private int id;
 
     // This is required for serialization
     public Workout() {
     }
 
-    public Workout(String name, String type, String level, int size ) {
+    public Workout(String name, String type, String level, int size ,int id ) {
         this.name = name;
         this.type = type;
         this.level = level;
         this.size = size;
         this.days = null;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

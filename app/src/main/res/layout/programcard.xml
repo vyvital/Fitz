@@ -1,98 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cv"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginTop="8dp"
+    android:orientation="vertical"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
     >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+
+    <RelativeLayout
+        android:id="@+id/backgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/corner_bgcr"
+        android:paddingBottom="8dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_delete_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:background="@drawable/corner_bgc"
-            android:elevation="6dp"
-            >
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/workout_photo"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/profile"
-                android:layout_gravity="center"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:civ_border_color="@color/colorAccent"
-                app:civ_border_width="2dp"
-                android:layout_marginEnd="10dp"
-                />
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/delete_icon"
+            android:text="@string/delete"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/workout_name"
-                android:layout_toEndOf="@+id/workout_photo"
-                android:layout_alignParentTop="true"
-                android:textSize="24sp"
-                tools:text="Workout Name"
-                android:fontFamily="@font/qanelas"
-                android:layout_marginTop="10dp"
-                android:singleLine="true"
-                />
+    <RelativeLayout
+        android:id="@+id/foregroundView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_bgc"
+        android:elevation="6dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="18dp"
+        android:paddingStart="18dp"
+        android:paddingTop="16dp">
 
-            <TextView
-                android:id="@+id/workout_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/workout_name"
-                android:layout_toEndOf="@+id/workout_photo"
-                android:fontFamily="@font/qanelas"
-                android:textSize="17sp"
-                android:layout_marginTop="16dp"
-                tools:text="Strength" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/workout_level"
-                android:layout_toEndOf="@+id/workout_type"
-                android:layout_below="@+id/workout_name"
-                android:layout_marginStart="12dp"
-                tools:text="Beginner"
-                android:textSize="17sp"
-                android:fontFamily="@font/qanelas"
-                android:layout_marginTop="16dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/workout_days"
-                android:layout_toEndOf="@+id/workout_level"
-                android:layout_below="@+id/workout_name"
-                android:layout_marginStart="12dp"
-                tools:text="4 Days"
-                android:textSize="17sp"
 
-                android:layout_marginTop="16dp"
-                />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/workout_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/profile"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="2dp" />
 
-            <ImageButton
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/ic_edit_black_24dp"
-                android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/workout_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/workout_photo"
+            android:fontFamily="@font/qanelas"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:text="Workout Name" />
 
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/workout_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/workout_name"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/workout_photo"
+            android:fontFamily="@font/qanelas"
+            android:textSize="17sp"
+            tools:text="Strength" />
 
-    </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/workout_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/workout_name"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/workout_type"
+            android:fontFamily="@font/qanelas"
+            android:textSize="17sp"
+            tools:text="Beginner" />
+
+        <TextView
+            android:id="@+id/workout_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/workout_name"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/workout_level"
+            android:textSize="17sp"
+            tools:text="4 Days" />
+
+        <ImageButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_edit_black_24dp" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

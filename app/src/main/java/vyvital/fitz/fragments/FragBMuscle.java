@@ -73,4 +73,5 @@ public class FragBMuscle extends Fragment {
         image.setTransitionName(trans);
 
     }
+ 
 }

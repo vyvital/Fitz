@@ -15,4 +15,7 @@ public class MuscleActivity extends BaseActivity {
                 .add(R.id.content, FragAMuscle.newInstance())
                 .commit();
     }
+
+
+
 }
