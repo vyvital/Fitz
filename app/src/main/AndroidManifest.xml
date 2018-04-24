@@ -33,7 +33,10 @@
         </activity>
         <activity android:name=".ExerciseActivity" />
         <activity android:name=".MuscleActivity" />
-        <activity android:name=".NutriActivity"></activity>
+        <activity android:name=".ProgressActivity"
+            android:windowSoftInputMode="adjustNothing">
+        </activity>
+        <activity android:name=".NutriActivity"/>
     </application>
 
 </manifest>

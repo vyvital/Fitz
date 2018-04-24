@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    android:id="@+id/constraintLayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="vyvital.fitz.BuilderActivity">
 
 
     <vyvital.fitz.data.EmptyRecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/rv"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <RelativeLayout
-        xmlns:app="http://schemas.android.com/apk/ pres-auto"
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/empty_shelter_image"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/ic_fitness_center_orange_24px"/>
+            app:srcCompat="@drawable/ic_fitness_center_orange_24px" />
 
         <TextView
             android:id="@+id/empty_title_text"
@@ -38,9 +35,9 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/qanelasbold"
             android:paddingTop="10dp"
-            android:textColor="@color/colorAccent"
-            android:text="It's a bit lonely here...."
-            android:textAppearance="?android:textAppearanceMedium"/>
+            android:text="@string/it_s_a_bit_lonely_here"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorAccent" />
 
         <TextView
             android:id="@+id/empty_subtitle_text"
@@ -50,10 +47,11 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/qanelas"
             android:paddingTop="2dp"
-            android:text="Get started by adding a workout"
+            android:text="@string/get_started_by_adding_a_workout"
             android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent" />
     </RelativeLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

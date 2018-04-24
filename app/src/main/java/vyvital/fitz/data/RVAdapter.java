@@ -1,17 +1,13 @@
 package vyvital.fitz.data;
 
 
-import android.content.ClipData;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 
 import java.util.List;
 
@@ -22,7 +18,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
     List<Workout> workouts;
 
-    public RVAdapter(List<Workout> workouts){
+    public RVAdapter(List<Workout> workouts) {
         this.workouts = workouts;
     }
 
@@ -41,7 +37,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, int position) {
         holder.nameOfWorkout.setText(workouts.get(position).getName());
-        Log.d("BOOM",workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
         holder.days.setText(String.valueOf(workouts.get(position).getSize()));
         holder.level.setText(workouts.get(position).getLevel());
@@ -49,7 +44,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     }
 
     public static class WorkoutViewHolder extends RecyclerView.ViewHolder {
-        RelativeLayout cv , background;
+        RelativeLayout cv, background;
         TextView nameOfWorkout;
         TextView typeOfWorkout;
         TextView level;
@@ -58,7 +53,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
         WorkoutViewHolder(View itemView) {
             super(itemView);
-            //background = itemView.findViewById(R.id.backgroundView);
+            background = itemView.findViewById(R.id.backgroundView);
             cv = itemView.findViewById(R.id.foregroundView);
             nameOfWorkout = itemView.findViewById(R.id.workout_name);
             typeOfWorkout = itemView.findViewById(R.id.workout_type);
@@ -73,13 +68,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         workouts.remove(position);
         notifyItemRemoved(position);
     }
 
-    public void restoreItem(Workout item, int position){
-        workouts.add(position,item);
+    public void restoreItem(Workout item, int position) {
+        workouts.add(position, item);
         notifyItemInserted(position);
     }
 }

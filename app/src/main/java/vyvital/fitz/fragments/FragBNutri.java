@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -99,6 +100,7 @@ public class FragBNutri extends Fragment{
         pie.setHoleColor(getResources().getColor(R.color.colorGrey));
         pie.setHoleRadius(35f);
         pie.setData(data);
+        pie.spin(500,0,-360f, Easing.EasingOption.EaseInOutQuad);
         p.setText(String.valueOf(((int) (wt * 1.8 * 4))));
         f.setText(String.valueOf(((int) (cals * 0.3))));
         c.setText(String.valueOf(cals-((int) (wt * 1.8 * 4)) - ((int) (cals * 0.3))));

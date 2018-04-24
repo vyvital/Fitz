@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-
-
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
     @Override
@@ -25,22 +23,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
 
-
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.polygonWorkout) {
-            Intent intent = new Intent(MainActivity.this,BuilderActivity.class);
+            Intent intent = new Intent(MainActivity.this, BuilderActivity.class);
             startActivity(intent);
         } else if (i == R.id.polygonFood) {
-            Intent intent = new Intent(MainActivity.this,NutriActivity.class);
+            Intent intent = new Intent(MainActivity.this, NutriActivity.class);
             startActivity(intent);
         } else if (i == R.id.polygonProgress) {
-            Toast.makeText(this, "Progress Button Pressed", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, ProgressActivity.class);
+            startActivity(intent);
         } else if (i == R.id.start) {
             Toast.makeText(this, "Start Button Pressed", Toast.LENGTH_LONG).show();
-        } else if (i == R.id.button2){
-            Intent intent = new Intent(MainActivity.this,MuscleActivity.class);
+        } else if (i == R.id.button2) {
+            Intent intent = new Intent(MainActivity.this, MuscleActivity.class);
             startActivity(intent);
         }
     }

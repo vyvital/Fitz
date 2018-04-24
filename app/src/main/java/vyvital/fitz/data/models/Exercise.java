@@ -4,10 +4,9 @@ package vyvital.fitz.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Exercise implements Parcelable{
+public class Exercise implements Parcelable {
 
 
     private int id;
@@ -45,12 +44,21 @@ public class Exercise implements Parcelable{
         }
     };
 
-    public int getID() { return id;}
+    public int getID() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
-    public String getMechanics(){ return mechanics; }
-    public List<Equipment>  getEquip(){ return equip;}
+
+    public String getMechanics() {
+        return mechanics;
+    }
+
+    public List<Equipment> getEquip() {
+        return equip;
+    }
 
     @Override
     public int describeContents() {

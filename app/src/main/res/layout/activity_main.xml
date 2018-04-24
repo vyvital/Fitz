@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/none"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vyvital.fitz.MainActivity"
-    android:id="@+id/none"
-    >
+    tools:context="vyvital.fitz.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -20,49 +18,7 @@
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--<ImageButton-->
-        <!--android:id="@+id/imageButton3"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="52dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="30dp"-->
-        <!--android:background="@drawable/ic_hexagon_shape_by_vexels"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:srcCompat="@drawable/ic_fitness_center_black_24px"-->
-        <!--android:elevation="4dp"/>-->
 
-    <!--<ImageButton-->
-        <!--android:id="@+id/imageButton"-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="125dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="21dp"-->
-        <!--android:layout_marginStart="23dp"-->
-        <!--android:background="@drawable/ic_hexagon_shape_by_vexels"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toStartOf="@+id/imageButton2"-->
-        <!--app:layout_constraintStart_toEndOf="@+id/imageButton3"-->
-        <!--app:srcCompat="@drawable/ic_food_apple"-->
-        <!--android:elevation="4dp"/>-->
-
-    <!--<ImageButton-->
-        <!--android:id="@+id/imageButton2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="52dp"-->
-        <!--android:layout_marginEnd="30dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:background="@drawable/ic_hexagon_shape_by_vexels"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.979"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:srcCompat="@drawable/ic_show_chart_black_24dp"-->
-        <!--android:elevation="4dp"/>-->
 
     <net.grobas.view.PolygonImageView
         android:id="@+id/polygonWorkout"
@@ -70,19 +26,19 @@
         android:layout_height="140dp"
         android:layout_marginBottom="75dp"
         android:layout_marginStart="8dp"
+        android:clickable="true"
         android:elevation="4dp"
         android:src="@drawable/test1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:poly_border="true"
-        android:clickable="true"
         app:poly_border_color="@android:color/white"
         app:poly_border_width="2dp"
         app:poly_corner_radius="5"
         app:poly_shadow="true"
         app:poly_shadow_color="@android:color/black"
         app:poly_vertices="6"
-        />
+        android:focusable="true" />
 
     <net.grobas.view.PolygonImageView
         android:id="@+id/polygonFood"
@@ -91,6 +47,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:clickable="true"
         android:elevation="4dp"
         android:src="@drawable/food"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,9 +58,9 @@
         app:poly_border_width="2dp"
         app:poly_corner_radius="5"
         app:poly_shadow="true"
-        android:clickable="true"
         app:poly_shadow_color="@android:color/black"
-        app:poly_vertices="6" />
+        app:poly_vertices="6"
+        android:focusable="true" />
 
     <net.grobas.view.PolygonImageView
         android:id="@+id/polygonProgress"
@@ -112,6 +69,7 @@
         android:layout_marginBottom="75dp"
         android:layout_marginEnd="8dp"
         android:elevation="4dp"
+        android:clickable="true"
         android:src="@drawable/messu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,22 +80,22 @@
         app:poly_shadow="true"
         app:poly_shadow_color="@android:color/black"
         app:poly_vertices="6"
-        />
+        android:focusable="true" />
 
     <ImageButton
+        android:id="@+id/start"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:clickable="true"
         android:layout_marginBottom="145dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/start"
+        android:clickable="true"
         android:elevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/start"
-        />
+        android:focusable="true" />
 
     <Button
         android:id="@+id/button2"

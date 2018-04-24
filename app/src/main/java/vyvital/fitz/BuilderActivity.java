@@ -35,7 +35,7 @@ import vyvital.fitz.data.RecyclerTouchHelper;
 import vyvital.fitz.data.models.Workout;
 
 
-public class BuilderActivity extends BaseActivity implements View.OnClickListener, RecyclerTouchHelper.RecyclerItemTouchHelperListener {
+public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper.RecyclerItemTouchHelperListener {
 
 
     String[] type_data = {"Strength", "Hypertrophy", "Maintenance", "Endurance"};
@@ -151,47 +151,6 @@ public class BuilderActivity extends BaseActivity implements View.OnClickListene
 //
 //    }
 
-//
-//    private void addTheComplexOneAsWell(){
-//        String userEMail = "meme@gmail.com";
-//        addWorkoutsToSpecificUserGivenEMail(userEMail);
-//    }
-//    private void addWorkoutsToSpecificUserGivenEMail(String userEMail){
-//        String name = "Summer Cut"; // this is done by getting edit text from the app or any way ... here is just hardcoded example
-//        String type = "Heavy";
-//        String level = "Beginner";
-//        List<Exercise> days = new ArrayList<>();
-//        // add 2 fake exercises
-//        Exercise exercises = getExercisesInstanceInitialized();
-//        for (int i = 1; i <= 2; i++)
-//            days.add(exercises);
-//        Workout workouts = new Workout(name, type, level, 0);
-//        // --- adding more than 1 workout for ex. 4
-//        List<Workout> workoutsList = new ArrayList<>();
-//        for (int i = 1; i <= 2; i++)
-//            workoutsList.add(workouts);
-//        String nodeName = "workouts"; // CONSTANT you Specify
-//        // userEMail is given
-//    /*List<Integer> list = new ArrayList<>();
-//    list.add(11);
-//    list.add(16);*/
-//        mWorkoutsDatabaseReference.push().setValue(workoutsList); // ========== here when u put in database
-//    }
-//    private Exercise getExercisesInstanceInitialized(){
-//        String name = "Bench Press";
-//        String mechanics = "Compound";
-//        List<Sets> setsList = new ArrayList<>();
-//        // add 3 fake sets
-//        Sets sets = new Sets(6,80);
-//        for (int i = 1; i <= 3; i++)
-//            setsList.add(sets);
-//        return new Exercise(name, mechanics, setsList);
-//    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 
     public void popUp(View view) {
         Button btnClose;

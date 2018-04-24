@@ -1,8 +1,10 @@
 package vyvital.fitz;
 
+
 import android.os.Bundle;
 
 import vyvital.fitz.fragments.FragAMuscle;
+import vyvital.fitz.fragments.FragBMuscle;
 
 public class MuscleActivity extends BaseActivity {
 
@@ -14,8 +16,8 @@ public class MuscleActivity extends BaseActivity {
                 .beginTransaction()
                 .add(R.id.content, FragAMuscle.newInstance())
                 .commit();
-    }
 
+    }
 
 
 }

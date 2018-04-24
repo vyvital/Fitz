@@ -1,31 +1,42 @@
 package vyvital.fitz.data.models;
 
-import java.sql.Timestamp;
+import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Weight extends Model {
-
-    public Timestamp time;
-    public int weight;
-
+    private String time;
+    private float weight;
+    private URL imageUrl;
 
     public Weight() {
     }
-
-    public Weight(Timestamp time, int weight) {
+    public Weight(String time, float weight, URL imageUrl) {
 
         this.time = time;
         this.weight = weight;
+        if (imageUrl != null)
+            this.imageUrl = imageUrl;
     }
-    public Timestamp getTimestamp() {
+
+    public void setTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy (HH:mm)");
+        this.time = sdf.format(new Date());
+    }
+
+    public String getTime() {
         return time;
     }
-    public void setWeight(int weight) {
-        Date date = new Date();
-        this.time = new Timestamp(date.getTime());
+    public void setWeight(float weight) {
         this.weight = weight;
     }
-    public int getWeight() {
+    public URL getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(URL imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    public float getWeight() {
         return weight;
     }
 }

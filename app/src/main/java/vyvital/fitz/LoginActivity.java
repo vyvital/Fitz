@@ -4,7 +4,6 @@ package vyvital.fitz;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,13 +32,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import vyvital.fitz.data.models.User;
 import vyvital.fitz.data.models.Workout;
 
 
@@ -172,6 +169,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             mChildDatabase.child("userID").setValue(user.getUid());
                             mChildDatabase.child("dateReg").setValue(currentDate);
                             mChildDatabase.child("workouts").setValue(workoutList);
+                            mChildDatabase.child("weight").setValue("new");
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -202,7 +200,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
 
 
-
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG2, "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
@@ -218,6 +215,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         mChildDatabase.child("userID").setValue(user.getUid());
                                         mChildDatabase.child("dateReg").setValue(currentDate);
                                         mChildDatabase.child("workouts").setValue(workoutList);
+                                        mChildDatabase.child("weight").setValue("new");
                                     }
                                 }
 

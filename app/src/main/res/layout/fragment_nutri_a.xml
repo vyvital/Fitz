@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
         android:fontFamily="@font/qanelasbold"
         android:gravity="center"
-        android:text="LETS CALCULATE TOGETHER!"
         android:paddingTop="8dp"
-        android:layout_marginTop="9dp"
+        android:text="@string/lets_calculate_together"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/qanelas"
         android:gravity="center"
-        android:text="TDEE : Total Daily Energy Expenditure"
-        android:textColor="@color/colorAccent"
-        android:layout_marginBottom="10dp"/>
+        android:text="@string/tdee_total_daily_energy_expenditure"
+        android:textColor="@color/colorAccent" />
 
 
     <TextView
@@ -38,33 +36,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title2"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/sticky_switch_gender"
         android:fontFamily="@font/qanelas"
-        android:text="My Age Is"
-       />
+        android:text="@string/my_age_is" />
 
     <TextView
         android:id="@+id/height_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/age_txt"
-        android:layout_toEndOf="@id/sticky_switch_gender"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:text="My Height Is"
-         />
+        android:layout_toEndOf="@id/sticky_switch_gender"
+        android:text="@string/my_height_is" />
 
     <TextView
         android:id="@+id/weight_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/height_txt"
-        android:layout_toEndOf="@id/sticky_switch_gender"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:text="My Weight Is"
+        android:layout_toEndOf="@id/sticky_switch_gender"
+        android:text="@string/my_weight_is"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="159dp" />
 
@@ -73,50 +69,49 @@
         android:id="@+id/edit_age"
         android:layout_width="55dp"
         android:layout_height="35dp"
+        android:layout_below="@id/title2"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/age_txt"
         android:gravity="center"
-        android:textSize="12sp"
-        android:hint="Age"
+        android:hint="@string/age"
+        android:inputType="number"
+        android:maxLength="3"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:inputType="number"
-        android:layout_toEndOf="@id/age_txt"
-        android:layout_below="@id/title2"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="30dp"
-        android:maxLength="3"
-        />
+        android:textSize="12sp" />
+
     <EditText
         android:id="@+id/edit_height"
         android:layout_width="55dp"
-        android:gravity="center"
         android:layout_height="35dp"
-        android:hint="Height"
-        android:maxLength="3"
-        android:textSize="12sp"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:inputType="number"
-        android:layout_toEndOf="@id/age_txt"
         android:layout_below="@id/edit_age"
         android:layout_marginStart="30dp"
-        />
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/age_txt"
+        android:gravity="center"
+        android:hint="@string/height"
+        android:inputType="number"
+        android:maxLength="3"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="12sp" />
+
     <EditText
         android:id="@+id/edit_weight"
         android:layout_width="55dp"
-        android:gravity="center"
-        android:layout_marginTop="2dp"
         android:layout_height="35dp"
-        android:hint="Weight"
-        android:textSize="12sp"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:inputType="numberDecimal"
-        android:layout_toEndOf="@id/age_txt"
         android:layout_below="@id/edit_height"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/age_txt"
+        android:gravity="center"
+        android:hint="@string/weight"
+        android:inputType="numberDecimal"
         android:maxLength="3"
-        />
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="12sp" />
 
     <io.ghyeok.stickyswitch.widget.StickySwitch
         android:id="@+id/sticky_switch_gender"
@@ -124,9 +119,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/title2"
+        android:layout_marginBottom="6dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="6dp"
         app:ss_animationDuration="600"
         app:ss_animationType="line"
         app:ss_iconPadding="10dp"
@@ -160,59 +155,60 @@
         app:ss_switchColor="@color/colorAccent"
         app:ss_textColor="@color/white"
         app:ss_textSize="10sp" />
-<TextView
-    android:id="@+id/activity_txt"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="18dp"
-    android:layout_below="@id/sticky_switch_measure"
-    android:textColor="@color/colorAccent"
-    android:text="Describe Your Daily Activity Level"
-    android:layout_alignStart="@id/activity_switch"
-    android:layout_marginBottom="2dp"
-    android:fontFamily="@font/qanelas"
-    />
+
+    <TextView
+        android:id="@+id/activity_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/activity_switch"
+        android:layout_below="@id/sticky_switch_measure"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/describe_your_daily_activity_level"
+        android:textColor="@color/colorAccent" />
 
     <belka.us.androidtoggleswitch.widgets.ToggleSwitch
         android:id="@+id/activity_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/activity_txt"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="14sp"
-        app:toggleWidth="110dp"
-        app:textToggleCenter="Active"
-        app:textToggleLeft="Sedentary"
-        app:textToggleRight="Very Active"
+        app:activeBgColor="@color/colorAccent"
         app:cornerRadius="8dp"
         app:inactiveBgColor="@color/lightGrey"
         app:inactiveTextColor="@color/white"
-        app:activeBgColor="@color/colorAccent"
         app:separatorColor="@color/white"
-        android:layout_below="@id/activity_txt"/>
+        app:textToggleCenter="Active"
+        app:textToggleLeft="Sedentary"
+        app:textToggleRight="Very Active"
+        app:toggleWidth="110dp" />
 
 
     <TextView
         android:id="@+id/activity_txt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/activity_switch"
-        android:textColor="@color/colorAccent"
-        android:text="Days Per Week"
         android:layout_alignStart="@id/activity_switch"
+        android:layout_below="@id/activity_switch"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/qanelas"
-        />
+        android:text="@string/days_per_week"
+        android:textColor="@color/colorAccent" />
+
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekDays"
-        android:paddingEnd="32dp"
-        android:paddingStart="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/activity_txt3"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_below="@id/activity_txt3"
         android:layout_marginTop="6dp"
+        android:paddingEnd="32dp"
+        android:paddingStart="32dp"
+        app:bsb_anim_duration="200"
         app:bsb_bubble_color="@color/white"
         app:bsb_bubble_text_color="@color/colorPrimaryDark"
         app:bsb_max="7"
@@ -223,71 +219,69 @@
         app:bsb_section_text_position="bottom_sides"
         app:bsb_show_section_text="true"
         app:bsb_show_thumb_text="true"
-        app:bsb_anim_duration="200"
-        app:bsb_track_color="@color/lightGrey"/>
+        app:bsb_track_color="@color/lightGrey" />
 
 
     <TextView
         android:id="@+id/activity_txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_below="@id/seekDays"
-        android:textColor="@color/colorAccent"
-        android:text="How Intense Is Your Exercise"
         android:layout_alignStart="@id/activity_switch"
+        android:layout_below="@id/seekDays"
         android:layout_marginBottom="2dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/qanelas"
-        />
+        android:text="@string/how_intense_is_your_exercise"
+        android:textColor="@color/colorAccent" />
 
     <belka.us.androidtoggleswitch.widgets.ToggleSwitch
         android:id="@+id/activity_switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/activity_txt2"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="14sp"
-        app:toggleWidth="110dp"
-        app:textToggleCenter="Moderate"
-        app:textToggleLeft="Light"
-        app:textToggleRight="Intense"
+        app:activeBgColor="@color/colorAccent"
         app:cornerRadius="8dp"
         app:inactiveBgColor="@color/lightGrey"
         app:inactiveTextColor="@color/white"
-        app:activeBgColor="@color/colorAccent"
         app:separatorColor="@color/white"
-        android:layout_below="@id/activity_txt2"/>
+        app:textToggleCenter="Moderate"
+        app:textToggleLeft="Light"
+        app:textToggleRight="Intense"
+        app:toggleWidth="110dp" />
 
 
-<Button
-    android:id="@+id/calculate"
-    android:layout_width="150dp"
-    android:layout_height="40dp"
-    android:background="@drawable/corner_bgc"
-    android:text="Calculate"
-    android:fontFamily="@font/qanelas"
-    android:textColor="@color/white"
-    android:layout_marginTop="16dp"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentEnd="true"
-    android:layout_marginBottom="24dp"
-    android:layout_marginEnd="20dp"
-    android:elevation="8dp"/>
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/corner_bgc"
+        android:elevation="8dp"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/calculate"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/reset"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:background="@drawable/corner_btn"
-        android:text="Reset"
-        android:fontFamily="@font/qanelas"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="20dp"
-        android:elevation="8dp" />
+        android:layout_marginTop="16dp"
+        android:background="@drawable/corner_btn"
+        android:elevation="8dp"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/reset"
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>

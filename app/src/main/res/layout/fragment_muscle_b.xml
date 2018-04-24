@@ -21,9 +21,9 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                app:layout_collapseMode="parallax"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax">
 
                 <ImageView
                     android:id="@+id/fragment_b_image"

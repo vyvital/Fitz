@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/draw_header"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:orientation="vertical"
     android:background="@drawable/header"
+    android:orientation="vertical"
     android:padding="14dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/profile"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@color/colorAccent"
         android:layout_gravity="center"
-        />
+        android:src="@drawable/profile"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="2dp" />
+
     <TextView
+        android:id="@+id/userN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:text="@string/sarahha_eren"
         android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:id="@+id/userN"/>
+        android:textStyle="bold" />
+
     <TextView
+        android:id="@+id/userE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:text="@string/sarraheren_gmail_com"
         android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:id="@+id/userE"/>
+        android:textStyle="bold" />
 
 </LinearLayout>

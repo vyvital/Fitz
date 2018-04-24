@@ -3,11 +3,10 @@ package vyvital.fitz.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class Muscle implements Parcelable{
+public class Muscle implements Parcelable {
 
     private String name;
     private List<Exercise> exercises;

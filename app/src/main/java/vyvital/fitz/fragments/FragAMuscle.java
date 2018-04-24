@@ -1,7 +1,5 @@
 package vyvital.fitz.fragments;
 
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vyvital.fitz.R;
-import vyvital.fitz.data.models.Exercise;
 import vyvital.fitz.data.models.Muscle;
 
 
@@ -54,7 +51,7 @@ public class FragAMuscle extends Fragment {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     Muscle muscle = childDataSnapshot.getValue(Muscle.class);
                     muscleList.add(muscle);
-                //    Log.d("BOOM", "" + muscle.getName());
+                    //    Log.d("BOOM", "" + muscle.getName());
 //                    List<Exercise> exercises = muscle.getExercises();
 //                    Log.d("BOOM", exercises.get(0).getName());
 //                    Log.d("BOOM",exercises.get(0).getMechanics());
@@ -68,6 +65,7 @@ public class FragAMuscle extends Fragment {
                     //Log.v("BOOM2",""+ childDataSnapshot.child("0").child("name").getValue());   //gives the value for given keyname
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
@@ -108,8 +106,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.chest_t);
                 bundle.putString("TRANS", chest_view.getTransitionName());
-                bundle.putParcelable("MUSCLE",muscleList.get(0));
-                bundle.putInt("PHOTO",R.drawable.mchest);
+                bundle.putParcelable("MUSCLE", muscleList.get(0));
+                bundle.putInt("PHOTO", R.drawable.mchest);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -126,7 +124,7 @@ public class FragAMuscle extends Fragment {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.back_t);
-                bundle.putParcelable("MUSCLE",muscleList.get(1));
+                bundle.putParcelable("MUSCLE", muscleList.get(1));
                 bundle.putString("TRANS", back_view.getTransitionName());
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
@@ -241,7 +239,6 @@ public class FragAMuscle extends Fragment {
                         .commit();
             }
         });
-        new initAsynctask(getActivity(),view).execute();
         return view;
     }
 
@@ -252,22 +249,6 @@ public class FragAMuscle extends Fragment {
 
 
     }
-public class initAsynctask extends AsyncTask<Void,Void,Void>{
-    private Context mContext;
-    private View rootView;
-    public initAsynctask(Context context, View view) {
-        this.mContext = context;
-        this.rootView = view;
-    }
-
-    @Override
-    protected Void doInBackground(Void... voids) {
-
-        return null;
-    }
-}
-
-
 
 
 }

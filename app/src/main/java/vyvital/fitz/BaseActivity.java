@@ -1,16 +1,15 @@
 package vyvital.fitz;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,13 +30,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 
-
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import vyvital.fitz.data.models.User;
 
 
-public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener{
+public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
 
     public static final String TAG = "Nope";
     public FirebaseAuth mAuth;
@@ -60,30 +57,30 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 .build();
         // [END config_signin]
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        view_stub =  findViewById(R.id.view_stub);
-        navigation_view =  findViewById(R.id.navigation_view);
-        mDrawerLayout =  findViewById(R.id.drawer);
+        view_stub = findViewById(R.id.view_stub);
+        navigation_view = findViewById(R.id.navigation_view);
+        mDrawerLayout = findViewById(R.id.drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 0, 0);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        BitmapDrawable backgrd = new BitmapDrawable(BitmapFactory.decodeResource(getResources(),R.drawable.bar));
+        BitmapDrawable backgrd = new BitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.bar));
         getSupportActionBar().setBackgroundDrawable(backgrd);
         drawerMenu = navigation_view.getMenu();
-        for(int i = 0; i < drawerMenu.size(); i++) {
+        for (int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
         }
-        NavigationView navigationView =  findViewById(R.id.navigation_view);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
 
-        View header=navigationView.getHeaderView(0);
-/*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
-        TextView name =  header.findViewById(R.id.userN);
+        View header = navigationView.getHeaderView(0);
+        /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        TextView name = header.findViewById(R.id.userN);
         TextView email = header.findViewById(R.id.userE);
         CircleImageView img = header.findViewById(R.id.profile_image);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         for (UserInfo userInfo : user.getProviderData()) {
             String providerId = userInfo.getProviderId();
-            Log.d(TAG,"providerId = "+userInfo.getProviderId());
+            Log.d(TAG, "providerId = " + userInfo.getProviderId());
             if (providerId.equals("google.com")) {
                 email.setText(user.getEmail());
                 name.setText(user.getDisplayName());
@@ -95,8 +92,8 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 String shorty2 = shorty.substring(0, shorty.indexOf("@"));
                 name.setText(shorty2);
                 email.setText(mAuth.getCurrentUser().getEmail());
-                }
             }
+        }
     }
 
 
@@ -161,29 +158,30 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
-                if (!this.getClass().getName().equals(MainActivity.class.getName())){
-                    Intent intent = new Intent(this,MainActivity.class);
+                if (!this.getClass().getName().equals(MainActivity.class.getName())) {
+                    Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
                 }
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.workout:
-                Intent intent2 = new Intent(this,BuilderActivity.class);
+                Intent intent2 = new Intent(this, BuilderActivity.class);
                 startActivity(intent2);
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.nutrition:
-                Intent intent3 = new Intent(this,NutriActivity.class);
+                Intent intent3 = new Intent(this, NutriActivity.class);
                 startActivity(intent3);
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.logout:
                 signOut();
                 finish();
-            // and so on...
+                // and so on...
         }
         return false;
     }
+
     private void signOut() {
         // Firebase sign out
         mAuth.signOut();
@@ -192,7 +190,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Intent intent = new Intent(BaseActivity.this,LoginActivity.class);
+                        Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
                         Toast.makeText(BaseActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
 

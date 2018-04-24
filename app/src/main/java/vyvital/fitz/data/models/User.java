@@ -24,7 +24,6 @@ public class User extends Model {
     }
 
 
-
     public String getEmail() {
         return email;
     }

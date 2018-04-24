@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your TDEE Is"
+        android:text="@string/your_tdee_is"
         android:textSize="32sp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/qanelasbold"
@@ -27,12 +27,10 @@
         android:id="@+id/title2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_centerHorizontal="true"
         android:fontFamily="@font/qanelas"
         android:gravity="center"
         android:textSize="18sp"
-        android:text="Please Select Your Goal"
+        android:text="@string/please_select_your_goal"
         android:textColor="@color/colorAccent"
         android:layout_marginTop="20dp"/>
 
@@ -63,7 +61,7 @@
         android:textSize="16sp"
         android:textColor="@color/colorAccent"
         android:layout_gravity="center"
-        android:text="To reach your goal, you will need to consume"
+        android:text="@string/to_reach_your_goal_you_will_need_to_consume"
         android:fontFamily="@font/qanelas"
         />
     <LinearLayout
@@ -86,7 +84,7 @@
             android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:layout_gravity="center"
-            android:text="  Calories"
+            android:text="@string/calories"
             android:fontFamily="@font/qanelas"
             />
     </LinearLayout>
@@ -109,7 +107,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text="Calories from Protein "
+              android:text="@string/calories_from_protein"
               android:fontFamily="@font/qanelas"
               />
           <TextView
@@ -126,7 +124,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text=" ~ "
+              android:text="@string/swirl"
               />
           <TextView
               android:id="@+id/gram_protein"
@@ -142,7 +140,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text=" grams "
+              android:text="@string/grams"
               />
       </LinearLayout>
       <LinearLayout
@@ -157,7 +155,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text="Calories from fat "
+              android:text="@string/calories_from_fat"
               android:fontFamily="@font/qanelas"
               />
           <TextView
@@ -174,7 +172,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text=" ~ "
+              android:text="@string/swirl"
               />
           <TextView
               android:id="@+id/gram_fat"
@@ -190,7 +188,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text=" grams "
+              android:text="@string/grams"
               />
       </LinearLayout>
       <LinearLayout
@@ -204,7 +202,7 @@
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
               android:textSize="16sp"
-              android:text="Calories from Carbs "
+              android:text="@string/calories_from_carbs"
               android:fontFamily="@font/qanelas"
               />
           <TextView
@@ -221,7 +219,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text=" ~ "
+              android:text="@string/swirl"
               />
           <TextView
               android:id="@+id/gram_carb"
@@ -237,7 +235,7 @@
               android:textSize="16sp"
               android:textColor="@color/colorAccent"
               android:layout_gravity="center"
-              android:text=" grams "
+              android:text="@string/grams"
               />
       </LinearLayout>
       <com.github.mikephil.charting.charts.PieChart
@@ -245,6 +243,7 @@
           android:id="@+id/chart"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:layout_marginBottom="4dp"
           />
   </LinearLayout>
 
