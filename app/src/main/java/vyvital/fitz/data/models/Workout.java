@@ -1,9 +1,12 @@
 package vyvital.fitz.data.models;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Workout extends Model {
+public class Workout implements Parcelable {
 
     private String name;
     private String type;
@@ -16,14 +19,35 @@ public class Workout extends Model {
     public Workout() {
     }
 
-    public Workout(String name, String type, String level, int size, int id) {
+    public Workout(List<Days> d,String name, String type, String level, int size, int id) {
+        this.days = d;
         this.name = name;
         this.type = type;
         this.level = level;
         this.size = size;
-        this.days = null;
         this.id = id;
     }
+
+    protected Workout(Parcel in) {
+        days = in.createTypedArrayList(Days.CREATOR);
+        id = in.readInt();
+        level = in.readString();
+        name = in.readString();
+        size = in.readInt();
+        type = in.readString();
+    }
+
+    public static final Creator<Workout> CREATOR = new Creator<Workout>() {
+        @Override
+        public Workout createFromParcel(Parcel in) {
+            return new Workout(in);
+        }
+
+        @Override
+        public Workout[] newArray(int size) {
+            return new Workout[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -71,5 +95,20 @@ public class Workout extends Model {
 
     public List<Days> getDays() {
         return days;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeList(days);
+        dest.writeInt(id);
+        dest.writeString(level);
+        dest.writeString(name);
+        dest.writeInt(size);
+        dest.writeString(type);
     }
 }

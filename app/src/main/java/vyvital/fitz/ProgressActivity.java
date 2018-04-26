@@ -64,7 +64,9 @@ public class ProgressActivity extends BaseActivity {
         scrubInfoTextView = findViewById(R.id.scrub_info_textview);
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid());
         weightList = new LinkedList<>();
-        RecyclerView.LayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(llm);
 

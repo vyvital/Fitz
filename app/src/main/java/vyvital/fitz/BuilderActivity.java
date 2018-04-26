@@ -95,7 +95,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
 //                    List<Equipment> equipment = exercises.get(0).getEquip();
 //
 //                    for (int i = 0 ; i < equipment.size() ; i++)
-//                        Log.d("value is" , equipment.get(i).getName());
+//                        Log.d("xalue is" , equipment.get(i).getName());
 
                     //Log.v("BOOM",""+ childDataSnapshot.getKey()); //displays the key for the node
                     //Log.v("BOOM2",""+ childDataSnapshot.child("0").child("name").getValue());   //gives the value for given keyname
@@ -112,44 +112,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             }
         });
     }
-//    private void initializeData() {
-//        workouts = new ArrayList<>();
-//
-//        Workout.listModel("", new GetRequestListener() {
-//            @Override
-//            public void onResult(final JSONArray res) {
-//
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        for(int i=0; i < res.length(); i++){
-//
-//                            try {
-//
-//                                JSONObject workout = res.getJSONObject(i);
-//                                workouts.add(new Workout(workout.getString("name"), workout.getString("type"), workout.getString("level"), workout.getInt("days")));
-//
-//                            }catch(Exception e){
-//
-//                                e.printStackTrace();
-//                            }
-//                        }
-//
-//                        RVAdapter adapter = new RVAdapter(workouts);
-//                        rv.setAdapter(adapter);
-//
-//                    }
-//                });
-//
-//            }
-//
-//            @Override
-//            public void onFailed() {
-//
-//            }
-//        });
-//
-//    }
+
 
 
     public void popUp(View view) {

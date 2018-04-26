@@ -1,16 +1,23 @@
 package vyvital.fitz.data;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import vyvital.fitz.BuilderActivity;
+import vyvital.fitz.ExerciseActivity;
 import vyvital.fitz.R;
 import vyvital.fitz.data.models.Workout;
 
@@ -35,11 +42,21 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(WorkoutViewHolder holder, int position) {
+    public void onBindViewHolder(WorkoutViewHolder holder, final int position) {
         holder.nameOfWorkout.setText(workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
         holder.days.setText(String.valueOf(workouts.get(position).getSize()));
         holder.level.setText(workouts.get(position).getLevel());
+        holder.background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              Log.d("testing",workouts.get(position).getDays().get(0).getName());
+                Context context = v.getContext();
+                Intent i = new Intent(context,ExerciseActivity.class);
+                i.putExtra("workout",workouts.get(position));
+                context.startActivity(i);
+            }
+        });
 
     }
 
