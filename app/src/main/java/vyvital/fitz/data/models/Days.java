@@ -22,6 +22,7 @@ public class Days implements Parcelable {
     protected Days(Parcel in) {
         exercises = in.createTypedArrayList(Exercise2.CREATOR);
         name = in.readString();
+
     }
 
     public static final Creator<Days> CREATOR = new Creator<Days>() {
@@ -61,5 +62,6 @@ public class Days implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeList(exercises);
         dest.writeString(name);
+
     }
 }

@@ -1,5 +1,6 @@
 package vyvital.fitz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -22,16 +23,18 @@ import vyvital.fitz.fragments.ExerciseFragment;
 public class ExerciseActivity extends BaseActivity {
 
 
-    private static Workout w;
+    private static Exercise2 w;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-
-        w = getIntent().getExtras().getParcelable("workout");
-        Toast.makeText(this, w.getDays().get(0).getName(), Toast.LENGTH_SHORT).show();
-
+        Intent intent = getIntent();
+         w = intent.getParcelableExtra("workout");
+        Log.d("REPS", w.getSets().get(0).getReps()+"");
+        Log.d("WE", w.getSets().get(0).getWeight()+"");
+        Log.d("REPS", w.getSets().get(1).getReps()+"");
+        Log.d("WE", w.getSets().get(1).getWeight()+"");
 
         ViewPager viewPager = findViewById(R.id.pager);
         SmartTabLayout viewPagerTab = findViewById(R.id.viewpagertab);

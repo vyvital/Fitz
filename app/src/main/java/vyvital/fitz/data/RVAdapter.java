@@ -19,6 +19,8 @@ import java.util.List;
 import vyvital.fitz.BuilderActivity;
 import vyvital.fitz.ExerciseActivity;
 import vyvital.fitz.R;
+import vyvital.fitz.data.models.Days;
+import vyvital.fitz.data.models.Exercise2;
 import vyvital.fitz.data.models.Workout;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder> {
@@ -50,10 +52,16 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Log.d("testing",workouts.get(position).getDays().get(0).getName());
+                Exercise2 w = workouts.get(position).getDays().get(0).getExercises().get(0);
+               // Log.d("testing",workouts.get(position).getDays().get(position).getName());
+               // Log.d("testing",workouts.get(position).getDays().get(position+1).getName());
+                Log.d("REPS", w.getSets().get(0).getReps()+"");
+                Log.d("WE", w.getSets().get(0).getWeight()+"");
+                Log.d("REPS", w.getSets().get(1).getReps()+"");
+                Log.d("WE", w.getSets().get(1).getWeight()+"");
                 Context context = v.getContext();
                 Intent i = new Intent(context,ExerciseActivity.class);
-                i.putExtra("workout",workouts.get(position));
+                i.putExtra("workout",workouts.get(position).getDays().get(0).getExercises().get(0));
                 context.startActivity(i);
             }
         });
