@@ -7,22 +7,21 @@ import java.util.List;
 
 public class Days implements Parcelable {
 
-    private List<Exercise2> exercises;
+    private List<Exercises> exercises;
     private String name;
 
     public Days() {
     }
 
-
-    public Days(List<Exercise2> ex, String name) {
+    public Days(List<Exercises> ex, String name) {
         this.exercises = ex;
         this.name = name;
     }
 
     protected Days(Parcel in) {
-        exercises = in.createTypedArrayList(Exercise2.CREATOR);
-        name = in.readString();
 
+        name = in.readString();
+        exercises = in.createTypedArrayList(Exercises.CREATOR);
     }
 
     public static final Creator<Days> CREATOR = new Creator<Days>() {
@@ -37,20 +36,22 @@ public class Days implements Parcelable {
         }
     };
 
+
+
+    public void setExercises(List<Exercises> exercises) {
+        this.exercises = exercises;
+    }
+
+    public List<Exercises> getExercises() {
+        return exercises;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setExercises(List<Exercise2> exercises) {
-        this.exercises = exercises;
-    }
-
-    public List<Exercise2> getExercises() {
-        return exercises;
     }
 
     @Override
@@ -60,8 +61,9 @@ public class Days implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeList(exercises);
+
         dest.writeString(name);
+        dest.writeTypedList(exercises);
 
     }
 }

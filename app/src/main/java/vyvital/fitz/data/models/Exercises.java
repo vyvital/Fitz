@@ -1,51 +1,56 @@
 package vyvital.fitz.data.models;
 
-
 import android.os.Parcel;
+
 import android.os.Parcelable;
+
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
 import java.util.List;
 
-public class Exercise2 implements Parcelable {
+public class Exercises implements Parcelable,ParentObject {
 
-
+    private List<Sets> sets;
+    private List<Object> s;
     private String id;
     private String name;
     private String mechanics;
     private String equip;
-    private List<Sets> sets;
 
-    public Exercise2() {
+
+    public Exercises() {
     }
 
-    public Exercise2(String id, String name, String mechanics, String equip, List<Sets> sets) {
-        this.id = id;
+    public Exercises(String id, String name, String mechanics, String equip, List<Sets> sets) {
         this.name = name;
+        this.id = id;
         this.mechanics = mechanics;
         this.equip = equip;
         this.sets = sets;
     }
 
 
-    protected Exercise2(Parcel in) {
-        id = in.readString();
+    protected Exercises(Parcel in) {
         name = in.readString();
-        mechanics = in.readString();
+        id = in.readString();
         equip = in.readString();
+        mechanics = in.readString();
         sets = in.createTypedArrayList(Sets.CREATOR);
     }
 
-    public static final Creator<Exercise2> CREATOR = new Creator<Exercise2>() {
+    public static final Creator<Exercises> CREATOR = new Creator<Exercises>() {
         @Override
-        public Exercise2 createFromParcel(Parcel in) {
-            return new Exercise2(in);
+        public Exercises createFromParcel(Parcel in) {
+            return new Exercises(in);
         }
 
         @Override
-        public Exercise2[] newArray(int size) {
-            return new Exercise2[size];
+        public Exercises[] newArray(int size) {
+            return new Exercises[size];
         }
     };
+
+
 
     public String getID() {
         return id;
@@ -79,11 +84,20 @@ public class Exercise2 implements Parcelable {
     @Override
 
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
         dest.writeString(name);
-        dest.writeString(mechanics);
+        dest.writeString(id);
         dest.writeString(equip);
-        dest.writeList(sets);
+        dest.writeString(mechanics);
+        dest.writeTypedList(sets);
     }
 
+    @Override
+    public List<Object> getChildObjectList() {
+        return s;
+    }
+
+    @Override
+    public void setChildObjectList(List<Object> list) {
+        s = list;
+    }
 }

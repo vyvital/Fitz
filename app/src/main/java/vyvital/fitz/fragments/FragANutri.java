@@ -69,16 +69,16 @@ public class FragANutri extends Fragment{
                     dialog.show();
                 if (gender.getDirection().name().equals("LEFT")) {
                     if (measure.getDirection().name().equals("LEFT")){
-                        bmr = BMRcalcKG(Integer.parseInt(ageT.getText().toString()),Integer.parseInt(heightT.getText().toString()),Integer.parseInt(weightT.getText().toString()),false);
-                        weightz = Integer.parseInt(weightT.getText().toString());
+                        bmr = BMRcalcKG(Integer.parseInt(ageT.getText().toString()),Integer.parseInt(heightT.getText().toString()),Double.parseDouble(weightT.getText().toString()),false);
+                        weightz = Double.parseDouble(weightT.getText().toString());
                     } else if (measure.getDirection().name().equals("RIGHT")){
                         bmr = BMRcalcLB(Integer.parseInt(ageT.getText().toString()),Integer.parseInt(heightT.getText().toString()),Integer.parseInt(weightT.getText().toString()),false);
                         weightz = Integer.parseInt(weightT.getText().toString())/2.2;
                     }
                 } else if (gender.getDirection().name().equals("RIGHT")) {
                     if (measure.getDirection().name().equals("LEFT")) {
-                        bmr = BMRcalcKG(Integer.parseInt(ageT.getText().toString()), Integer.parseInt(heightT.getText().toString()), Integer.parseInt(weightT.getText().toString()), true);
-                        weightz = Integer.parseInt(weightT.getText().toString());
+                        bmr = BMRcalcKG(Integer.parseInt(ageT.getText().toString()), Integer.parseInt(heightT.getText().toString()), Double.parseDouble(weightT.getText().toString()), true);
+                        weightz = Double.parseDouble(weightT.getText().toString());
                     } else if (measure.getDirection().name().equals("RIGHT")) {
                         bmr = BMRcalcLB(Integer.parseInt(ageT.getText().toString()), Integer.parseInt(heightT.getText().toString()), Integer.parseInt(weightT.getText().toString()), true);
                         weightz = Integer.parseInt(weightT.getText().toString())/2.2;
@@ -140,7 +140,7 @@ public class FragANutri extends Fragment{
         return ((int) (bmr * seeki2));
     }
 
-    public int BMRcalcKG(int age, int height, int weight, boolean gender){
+    public int BMRcalcKG(int age, int height, double weight, boolean gender){
         if (gender){
             return (int)((10*weight)+(6.25*height)-(5*age)+5);
         } else {

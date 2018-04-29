@@ -108,7 +108,7 @@
         android:gravity="center"
         android:hint="@string/weight"
         android:inputType="numberDecimal"
-        android:maxLength="3"
+        android:maxLength="5"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         android:textSize="12sp" />

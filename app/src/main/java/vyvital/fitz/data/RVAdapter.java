@@ -12,21 +12,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import vyvital.fitz.BuilderActivity;
 import vyvital.fitz.ExerciseActivity;
 import vyvital.fitz.R;
 import vyvital.fitz.data.models.Days;
-import vyvital.fitz.data.models.Exercise2;
+import vyvital.fitz.data.models.Exercises;
 import vyvital.fitz.data.models.Workout;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder> {
 
     List<Workout> workouts;
-
+    Exercises exx;
     public RVAdapter(List<Workout> workouts) {
         this.workouts = workouts;
     }
@@ -52,16 +50,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Exercise2 w = workouts.get(position).getDays().get(0).getExercises().get(0);
-               // Log.d("testing",workouts.get(position).getDays().get(position).getName());
-               // Log.d("testing",workouts.get(position).getDays().get(position+1).getName());
-                Log.d("REPS", w.getSets().get(0).getReps()+"");
-                Log.d("WE", w.getSets().get(0).getWeight()+"");
-                Log.d("REPS", w.getSets().get(1).getReps()+"");
-                Log.d("WE", w.getSets().get(1).getWeight()+"");
+               Workout w = workouts.get(position);
+               Days ex = w.getDays().get(1);
+                Log.d("name", ex.getName());
+                Log.d("name", w.getName());
+                Log.d("name", w.getType());
+                Log.d("REPS", w.getDays().get(0).getName());
                 Context context = v.getContext();
                 Intent i = new Intent(context,ExerciseActivity.class);
-                i.putExtra("workout",workouts.get(position).getDays().get(0).getExercises().get(0));
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("workout",w);
+                i.putExtras(bundle);
                 context.startActivity(i);
             }
         });

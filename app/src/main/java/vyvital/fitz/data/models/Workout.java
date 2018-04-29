@@ -29,12 +29,13 @@ public class Workout implements Parcelable {
     }
 
     protected Workout(Parcel in) {
-        days = in.createTypedArrayList(Days.CREATOR);
+
         id = in.readInt();
         level = in.readString();
         name = in.readString();
         size = in.readInt();
         type = in.readString();
+        days = in.createTypedArrayList(Days.CREATOR);
     }
 
     public static final Creator<Workout> CREATOR = new Creator<Workout>() {
@@ -104,11 +105,11 @@ public class Workout implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeList(days);
         dest.writeInt(id);
         dest.writeString(level);
         dest.writeString(name);
         dest.writeInt(size);
         dest.writeString(type);
+        dest.writeTypedList(days);
     }
 }

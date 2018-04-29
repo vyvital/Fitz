@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="horizontal"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/item_subtitle"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/exerciseRVuser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Page:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        />
+        android:layout_margin="16dp"
+        android:layout_marginBottom="455dp"
+        android:layout_marginEnd="304dp"
+        android:elevation="6dp"
+        android:clickable="true"
+        android:scaleType="center"
+        app:fabSize="normal"
+        app:rippleColor="@color/colorPrimaryRipple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/ic_muscle"
+        android:focusable="true" />
 
-    <TextView
-        android:id="@+id/item_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="80sp"
-        />
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

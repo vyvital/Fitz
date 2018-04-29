@@ -60,11 +60,14 @@
         android:layout_marginBottom="455dp"
         android:layout_marginEnd="304dp"
         android:elevation="6dp"
+        android:clickable="true"
         android:onClick="popUp"
+        app:rippleColor="@color/colorPrimaryRipple"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/ic_add_black_24px" />
+        app:srcCompat="@drawable/ic_add_black_24px"
+        android:focusable="true" />
 
 </android.support.constraint.ConstraintLayout>

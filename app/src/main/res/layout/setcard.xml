@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RLayoutSet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="50dp"
+    android:layout_marginStart="50dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_marginTop="2dp"
+    android:background="@color/lightGrey">
+
+
+    <EditText
+        android:id="@+id/exReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/qanelas"
+        android:singleLine="true"
+        android:textSize="24sp"
+        android:background="@android:color/transparent"
+        tools:text="8" />
+    <TextView
+        android:id="@+id/Reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginBottom="2dp"
+        android:layout_marginStart="8dp"
+        android:singleLine="true"
+        android:textSize="24sp"
+        android:text="reps - " />
+
+    <EditText
+        android:id="@+id/exWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/qanelas"
+        android:singleLine="true"
+        android:background="@android:color/transparent"
+        android:textSize="24sp"
+        tools:text="50"/>
+    <TextView
+        android:id="@+id/Weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/qanelas"
+        android:singleLine="true"
+        android:textSize="24sp"
+        android:text="Kg" />
+</LinearLayout>
