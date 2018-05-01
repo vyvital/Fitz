@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,7 @@ import java.util.Random;
 import vyvital.fitz.data.EmptyRecyclerView;
 import vyvital.fitz.data.RVAdapter;
 import vyvital.fitz.data.RecyclerTouchHelper;
+import vyvital.fitz.data.models.Days;
 import vyvital.fitz.data.models.Workout;
 
 
@@ -40,8 +42,9 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
 
     String[] type_data = {"Strength", "Hypertrophy", "Maintenance", "Endurance"};
     String[] lvl_data = {"Novice", "Intermediate", "Advanced", "Elite"};
-    String[] day_data = {"1 Days", "2 Days", "3 Days", "4 Days", "5 Days", "6 days", "7 Days"};
+    String[] day_data = {"1 Day", "2 Days", "3 Days", "4 Days", "5 Days", "6 days", "7 Days"};
     Dialog workoutDialog;
+    Dialog workoutDialogDays;
     public List<Workout> workouts;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef = null;
@@ -49,7 +52,6 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     private List<Workout> workoutList;
     public RVAdapter adapter;
     EmptyRecyclerView rv;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         View emptyView = findViewById(R.id.empty_view);
         FloatingActionButton fab = findViewById(R.id.fab);
         constraintLayout = findViewById(R.id.constraintLayout);
+
         mDatabase = FirebaseDatabase.getInstance();
         workouts = new LinkedList<>();
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
@@ -76,9 +79,15 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         ItemTouchHelper.SimpleCallback touchHelperCallBack = new RecyclerTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(touchHelperCallBack).attachToRecyclerView(rv);
         initializeData();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popUp(null);
+            }
+        });
 
         workoutDialog = new Dialog(this);
-
+        workoutDialogDays = new Dialog(this);
     }
 
     private void initializeData() {
@@ -113,25 +122,376 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         });
     }
 
+    public void popDown(final Workout workout) {
+        Button btnClosePop;
+        Button btnOKPop;
+        workoutDialogDays.setContentView(R.layout.addworkoutdays);
+        btnOKPop = workoutDialogDays.findViewById(R.id.done_adding2);
+        btnClosePop = workoutDialogDays.findViewById(R.id.cancel_adding2);
+        final EditText day1 = workoutDialogDays.findViewById(R.id.day1);
+        final EditText day2 = workoutDialogDays.findViewById(R.id.day2);
+        final EditText day3 = workoutDialogDays.findViewById(R.id.day3);
+        final EditText day4 = workoutDialogDays.findViewById(R.id.day4);
+        final EditText day5 = workoutDialogDays.findViewById(R.id.day5);
+        final EditText day6 = workoutDialogDays.findViewById(R.id.day6);
+        final EditText day7 = workoutDialogDays.findViewById(R.id.day7);
+        if (workout.getDays() != null) {
+            day1.setText(workout.getDays().get(0).getName());
+            switch (workout.getDays().size()) {
+                case 2:
+                    day2.setText(workout.getDays().get(1).getName());
+                    break;
+                case 3:
+                    day2.setText(workout.getDays().get(1).getName());
+                    day3.setText(workout.getDays().get(2).getName());
+                    break;
+                case 4:
+                    day2.setText(workout.getDays().get(1).getName());
+                    day3.setText(workout.getDays().get(2).getName());
+                    day4.setText(workout.getDays().get(3).getName());
+                    break;
+                case 5:
+                    day2.setText(workout.getDays().get(1).getName());
+                    day3.setText(workout.getDays().get(2).getName());
+                    day4.setText(workout.getDays().get(3).getName());
+                    day5.setText(workout.getDays().get(4).getName());
+                    break;
+                case 6:
+                    day2.setText(workout.getDays().get(1).getName());
+                    day3.setText(workout.getDays().get(2).getName());
+                    day4.setText(workout.getDays().get(3).getName());
+                    day5.setText(workout.getDays().get(4).getName());
+                    day6.setText(workout.getDays().get(5).getName());
+                    break;
+                default:
+                    day2.setText(workout.getDays().get(1).getName());
+                    day3.setText(workout.getDays().get(2).getName());
+                    day4.setText(workout.getDays().get(3).getName());
+                    day5.setText(workout.getDays().get(4).getName());
+                    day6.setText(workout.getDays().get(5).getName());
+                    day7.setText(workout.getDays().get(6).getName());
+                    break;
 
+            }
 
-    public void popUp(View view) {
+        }
+        final List<Days> daysList = new ArrayList<>();
+        final Days d1, d2, d3, d4, d5, d6, d7;
+        d1 = new Days();
+        d2 = new Days();
+        d3 = new Days();
+        d4 = new Days();
+        d5 = new Days();
+        d6 = new Days();
+        d7 = new Days();
+        switch (workout.getSize()) {
+            case 1:
+                day2.setVisibility(View.INVISIBLE);
+                day3.setVisibility(View.INVISIBLE);
+                day4.setVisibility(View.INVISIBLE);
+                day5.setVisibility(View.INVISIBLE);
+                day6.setVisibility(View.INVISIBLE);
+                day7.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                day3.setVisibility(View.INVISIBLE);
+                day4.setVisibility(View.INVISIBLE);
+                day5.setVisibility(View.INVISIBLE);
+                day6.setVisibility(View.INVISIBLE);
+                day7.setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                day4.setVisibility(View.INVISIBLE);
+                day5.setVisibility(View.INVISIBLE);
+                day6.setVisibility(View.INVISIBLE);
+                day7.setVisibility(View.INVISIBLE);
+                break;
+            case 4:
+                day5.setVisibility(View.INVISIBLE);
+                day6.setVisibility(View.INVISIBLE);
+                day7.setVisibility(View.INVISIBLE);
+                break;
+            case 5:
+                day6.setVisibility(View.INVISIBLE);
+                day7.setVisibility(View.INVISIBLE);
+                break;
+            case 6:
+                day7.setVisibility(View.INVISIBLE);
+                break;
+            default:
+                break;
+        }
+
+        btnClosePop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                workoutDialogDays.dismiss();
+            }
+        });
+        btnOKPop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (workout.getDays() == null) {
+                    switch (workout.getSize()) {
+                        case 1:
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            break;
+                        case 2:
+                            d1.setName(day1.getText().toString());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d1);
+                            daysList.add(d2);
+                            break;
+                        case 3:
+                            d1.setName(day1.getText().toString());
+                            d2.setName(day2.getText().toString());
+                            d3.setName(day3.getText().toString());
+                            daysList.add(d1);
+                            daysList.add(d2);
+                            daysList.add(d3);
+                            break;
+                        case 4:
+                            d1.setName(day1.getText().toString());
+                            d2.setName(day2.getText().toString());
+                            d3.setName(day3.getText().toString());
+                            d4.setName(day4.getText().toString());
+                            daysList.add(d1);
+                            daysList.add(d2);
+                            daysList.add(d3);
+                            daysList.add(d4);
+                            break;
+                        case 5:
+                            d1.setName(day1.getText().toString());
+                            d2.setName(day2.getText().toString());
+                            d3.setName(day3.getText().toString());
+                            d4.setName(day4.getText().toString());
+                            d5.setName(day5.getText().toString());
+                            daysList.add(d1);
+                            daysList.add(d2);
+                            daysList.add(d3);
+                            daysList.add(d4);
+                            daysList.add(d5);
+                            break;
+                        case 6:
+                            d1.setName(day1.getText().toString());
+                            d2.setName(day2.getText().toString());
+                            d3.setName(day3.getText().toString());
+                            d4.setName(day4.getText().toString());
+                            d5.setName(day5.getText().toString());
+                            d6.setName(day6.getText().toString());
+                            daysList.add(d1);
+                            daysList.add(d2);
+                            daysList.add(d3);
+                            daysList.add(d4);
+                            daysList.add(d5);
+                            daysList.add(d6);
+                            break;
+                        default:
+                            d1.setName(day1.getText().toString());
+                            d2.setName(day2.getText().toString());
+                            d3.setName(day3.getText().toString());
+                            d4.setName(day4.getText().toString());
+                            d5.setName(day5.getText().toString());
+                            d6.setName(day6.getText().toString());
+                            d7.setName(day6.getText().toString());
+                            daysList.add(d1);
+                            daysList.add(d2);
+                            daysList.add(d3);
+                            daysList.add(d4);
+                            daysList.add(d5);
+                            daysList.add(d6);
+                            daysList.add(d7);
+                            break;
+
+                    }
+                } else {
+                    switch (workout.getSize()) {
+                        case 1:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            break;
+                        case 2:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            if (workout.getDays().size() > 1)
+                                if (workout.getDays().get(1).getExercises() != null)
+                                    d2.setExercises(workout.getDays().get(1).getExercises());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d2);
+                            break;
+
+                        case 3:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            if (workout.getDays().size() > 1)
+                                if (workout.getDays().get(1).getExercises() != null)
+                                    d2.setExercises(workout.getDays().get(1).getExercises());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d2);
+                            if (workout.getDays().size() > 2)
+                                if (workout.getDays().get(2).getExercises() != null)
+                                    d3.setExercises(workout.getDays().get(2).getExercises());
+                            d3.setName(day3.getText().toString());
+                            daysList.add(d3);
+                            break;
+                        case 4:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            if (workout.getDays().size() > 1)
+                                if (workout.getDays().get(1).getExercises() != null)
+                                    d2.setExercises(workout.getDays().get(1).getExercises());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d2);
+                            if (workout.getDays().size() > 2)
+                                if (workout.getDays().get(2).getExercises() != null)
+                                    d3.setExercises(workout.getDays().get(2).getExercises());
+                            d3.setName(day3.getText().toString());
+                            daysList.add(d3);
+                            if (workout.getDays().size() > 3)
+                                if (workout.getDays().get(3).getExercises() != null)
+                                    d4.setExercises(workout.getDays().get(3).getExercises());
+                            d4.setName(day4.getText().toString());
+                            daysList.add(d4);
+                            break;
+                        case 5:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            if (workout.getDays().size() > 1)
+                                if (workout.getDays().get(1).getExercises() != null)
+                                    d2.setExercises(workout.getDays().get(1).getExercises());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d2);
+                            if (workout.getDays().size() > 2)
+                                if (workout.getDays().get(2).getExercises() != null)
+                                    d3.setExercises(workout.getDays().get(2).getExercises());
+                            d3.setName(day3.getText().toString());
+                            daysList.add(d3);
+                            if (workout.getDays().size() > 3)
+                                if (workout.getDays().get(3).getExercises() != null)
+                                    d4.setExercises(workout.getDays().get(3).getExercises());
+                            d4.setName(day4.getText().toString());
+                            daysList.add(d4);
+                            if (workout.getDays().size() > 4)
+                                if (workout.getDays().get(4).getExercises() != null)
+                                    d5.setExercises(workout.getDays().get(4).getExercises());
+                            d5.setName(day5.getText().toString());
+                            daysList.add(d5);
+                            break;
+                        case 6:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            if (workout.getDays().size() > 1)
+                                if (workout.getDays().get(1).getExercises() != null)
+                                    d2.setExercises(workout.getDays().get(1).getExercises());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d2);
+                            if (workout.getDays().size() > 2)
+                                if (workout.getDays().get(2).getExercises() != null)
+                                    d3.setExercises(workout.getDays().get(2).getExercises());
+                            d3.setName(day3.getText().toString());
+                            daysList.add(d3);
+                            if (workout.getDays().size() > 3)
+                                if (workout.getDays().get(3).getExercises() != null)
+                                    d4.setExercises(workout.getDays().get(3).getExercises());
+                            d4.setName(day4.getText().toString());
+                            daysList.add(d4);
+                            if (workout.getDays().size() > 4)
+                                if (workout.getDays().get(4).getExercises() != null)
+                                    d5.setExercises(workout.getDays().get(4).getExercises());
+                            d5.setName(day5.getText().toString());
+                            daysList.add(d5);
+                            if (workout.getDays().size() > 5)
+                                if (workout.getDays().get(5).getExercises() != null)
+                                    d6.setExercises(workout.getDays().get(5).getExercises());
+                            d6.setName(day6.getText().toString());
+                            daysList.add(d6);
+                            break;
+                        default:
+                            if (workout.getDays().get(0).getExercises() != null)
+                                d1.setExercises(workout.getDays().get(0).getExercises());
+                            d1.setName(day1.getText().toString());
+                            daysList.add(d1);
+                            if (workout.getDays().size() > 1)
+                                if (workout.getDays().get(1).getExercises() != null)
+                                    d2.setExercises(workout.getDays().get(1).getExercises());
+                            d2.setName(day2.getText().toString());
+                            daysList.add(d2);
+                            if (workout.getDays().size() > 2)
+                                if (workout.getDays().get(2).getExercises() != null)
+                                    d3.setExercises(workout.getDays().get(2).getExercises());
+                            d3.setName(day3.getText().toString());
+                            daysList.add(d3);
+                            if (workout.getDays().size() > 3)
+                                if (workout.getDays().get(3).getExercises() != null)
+                                    d4.setExercises(workout.getDays().get(3).getExercises());
+                            d4.setName(day4.getText().toString());
+                            daysList.add(d4);
+                            if (workout.getDays().size() > 4)
+                                if (workout.getDays().get(4).getExercises() != null)
+                                    d5.setExercises(workout.getDays().get(4).getExercises());
+                            d5.setName(day5.getText().toString());
+                            daysList.add(d5);
+                            if (workout.getDays().size() > 5)
+                                if (workout.getDays().get(5).getExercises() != null)
+                                    d6.setExercises(workout.getDays().get(5).getExercises());
+                            d6.setName(day6.getText().toString());
+                            daysList.add(d6);
+                            if (workout.getDays().size() > 6)
+                                if (workout.getDays().get(6).getExercises() != null)
+                                    d7.setExercises(workout.getDays().get(6).getExercises());
+                            d7.setName(day7.getText().toString());
+                            daysList.add(d7);
+                            break;
+                    }
+                }
+                workout.setDays(daysList);
+                if (!workoutList.contains(workout))
+                    workoutList.add(workout);
+                workoutDialogDays.dismiss();
+                mRef.child(String.valueOf(workout.getId())).setValue(workout);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        workoutDialogDays.show();
+    }
+
+    public void popUp(final Workout zzz) {
         Button btnClose;
         Button btnOK;
         workoutDialog.setContentView(R.layout.addworkout);
+
         final TextInputLayout name = workoutDialog.findViewById(R.id.input_workout_name);
         btnClose = workoutDialog.findViewById(R.id.cancel_adding);
         btnOK = workoutDialog.findViewById(R.id.done_adding);
         final MaterialBetterSpinner workoutTypeSpinner = workoutDialog.findViewById(R.id.type_spinner);
         final MaterialBetterSpinner workoutDateSpinner = workoutDialog.findViewById(R.id.day_spinner);
         final MaterialBetterSpinner workoutLevelSpinner = workoutDialog.findViewById(R.id.lvl_spinner);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, type_data);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, day_data);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lvl_data);
+        final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, type_data);
+        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, day_data);
+        final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lvl_data);
         workoutTypeSpinner.setAdapter(adapter1);
         workoutDateSpinner.setAdapter(adapter2);
         workoutLevelSpinner.setAdapter(adapter3);
 
+        if (zzz != null) {
+            name.getEditText().setText(zzz.getName());
+            workoutDateSpinner.setText(adapter2.getItem(zzz.getSize() - 1));
+            workoutLevelSpinner.setText(zzz.getLevel());
+            workoutTypeSpinner.setText(zzz.getType());
+        }
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,15 +502,44 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             @Override
             public void onClick(View v) {
                 Workout w = new Workout();
-                w.setName(name.getEditText().getText().toString());
-                w.setType(workoutTypeSpinner.getText().toString());
-                w.setId(randomFind());
-                w.setSize(Integer.parseInt(workoutDateSpinner.getText().toString().substring(0, 1)));
-                w.setLevel(workoutLevelSpinner.getText().toString());
-                workoutList.add(w);
-                workoutDialog.dismiss();
-                mRef.child(String.valueOf(w.getId())).setValue(w);
-                adapter.notifyDataSetChanged();
+                if (zzz == null) {
+                    w.setName(name.getEditText().getText().toString());
+                    if (name.getEditText().getText().toString().equals("")) {
+                        name.getEditText().setText("Temp name");
+                        w.setName("Temp name");
+                    } else if (workoutTypeSpinner.getText().toString().equals(""))
+                        workoutTypeSpinner.setError("Don't forget me!");
+                    else if (workoutLevelSpinner.getText().toString().equals(""))
+                        workoutLevelSpinner.setError("Don't forget me!");
+                    else if (workoutDateSpinner.getText().toString().equals(""))
+                        workoutDateSpinner.setError("Don't forget me!");
+                    else {
+                        w.setType(workoutTypeSpinner.getText().toString());
+                        w.setId(randomFind());
+                        w.setSize(Integer.parseInt(workoutDateSpinner.getText().toString().substring(0, 1)));
+                        w.setLevel(workoutLevelSpinner.getText().toString());
+                        popDown(w);
+                        workoutDialog.dismiss();
+                    }
+                } else {
+                    zzz.setName(name.getEditText().getText().toString());
+                    if (name.getEditText().getText().toString().equals("")) {
+                        name.getEditText().setText("Temp name");
+                        zzz.setName("Temp name");
+                    } else if (workoutTypeSpinner.getText().toString().equals(""))
+                        workoutTypeSpinner.setError("Don't forget me!");
+                    else if (workoutLevelSpinner.getText().toString().equals(""))
+                        workoutLevelSpinner.setError("Don't forget me!");
+                    else if (workoutDateSpinner.getText().toString().equals(""))
+                        workoutDateSpinner.setError("Don't forget me!");
+                    else {
+                        zzz.setType(workoutTypeSpinner.getText().toString());
+                        zzz.setSize(Integer.parseInt(workoutDateSpinner.getText().toString().substring(0, 1)));
+                        zzz.setLevel(workoutLevelSpinner.getText().toString());
+                        popDown(zzz);
+                        workoutDialog.dismiss();
+                    }
+                }
             }
         });
         workoutDialog.show();

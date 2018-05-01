@@ -61,7 +61,6 @@
         android:layout_marginEnd="304dp"
         android:elevation="6dp"
         android:clickable="true"
-        android:onClick="popUp"
         app:rippleColor="@color/colorPrimaryRipple"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"

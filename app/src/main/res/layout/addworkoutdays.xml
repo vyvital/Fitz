@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="230dp"
+    android:layout_gravity="center"
+    android:background="@drawable/corner_bg"
+    android:elevation="4dp"
+    android:padding="6dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/let_s_name_your_workout_days"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/day1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 1"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 1"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/day2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 2"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 2"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toEndOf="@id/day1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/day3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 3"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 3"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day1" />
+
+    <EditText
+        android:id="@+id/day4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginStart="90dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 4"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 4"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toEndOf="@id/day3"
+        app:layout_constraintTop_toBottomOf="@id/day2" />
+
+    <EditText
+        android:id="@+id/day5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 5"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 5"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day3" />
+
+    <EditText
+        android:id="@+id/day6"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginStart="90dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 6"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 6"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@id/day5"
+        app:layout_constraintTop_toBottomOf="@id/day4" />
+
+    <EditText
+        android:id="@+id/day7"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/qanelas"
+        android:hint="Day 7"
+        android:inputType="text"
+        android:singleLine="true"
+        android:text="Day 7"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/day5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day5" />
+
+
+    <Button
+        android:id="@+id/done_adding2"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="79dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/qanelas"
+        android:text="@string/done"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cancel_adding2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/cancel_adding2"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="79dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/qanelas"
+        android:padding="-50dp"
+        android:text="@string/cancel"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/done_adding2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
+
+</android.support.constraint.ConstraintLayout>

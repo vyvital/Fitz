@@ -54,8 +54,8 @@ public class ExerciseFragment extends Fragment{
 
     private List<ParentObject> init() {
         List<ParentObject> parentObjects = new ArrayList<>();
-
         List<Object> child = null;
+        if (d.getExercises()!=null){
         for (int p = 0; p < d.getExercises().size(); p++) {
             Exercises ex = d.getExercises().get(p);
             child = new ArrayList<>();
@@ -65,7 +65,8 @@ public class ExerciseFragment extends Fragment{
             }
             ex.setChildObjectList(child);
             parentObjects.add(ex);
-        }
+        }}
         return parentObjects;
     }
+
 }

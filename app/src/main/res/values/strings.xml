@@ -80,7 +80,8 @@
     <string name="_1w">1W</string>
     <string name="sign">-</string>
     <string name="add">Add</string>
-
+    <string name="next">NEXT</string>
+    <string name="let_s_name_your_workout_days">Let\'s Name your workout days</string>
 
 
 </resources>

@@ -13,22 +13,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="455dp"
-        android:layout_marginEnd="304dp"
-        android:elevation="6dp"
-        android:clickable="true"
-        android:scaleType="center"
-        app:fabSize="normal"
-        app:rippleColor="@color/colorPrimaryRipple"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/ic_muscle"
-        android:focusable="true" />
+
 
 </android.support.constraint.ConstraintLayout>

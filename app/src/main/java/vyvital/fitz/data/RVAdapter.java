@@ -1,6 +1,7 @@
 package vyvital.fitz.data;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
+import vyvital.fitz.BuilderActivity;
 import vyvital.fitz.ExerciseActivity;
 import vyvital.fitz.R;
 import vyvital.fitz.data.models.Days;
@@ -24,7 +28,8 @@ import vyvital.fitz.data.models.Workout;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder> {
 
     List<Workout> workouts;
-    Exercises exx;
+
+
     public RVAdapter(List<Workout> workouts) {
         this.workouts = workouts;
     }
@@ -43,23 +48,30 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, final int position) {
+
         holder.nameOfWorkout.setText(workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
         holder.days.setText(String.valueOf(workouts.get(position).getSize()));
         holder.level.setText(workouts.get(position).getLevel());
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    ((BuilderActivity) v.getContext()).popUp(workouts.get(position));
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
+        });
         holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Workout w = workouts.get(position);
-               Days ex = w.getDays().get(1);
-                Log.d("name", ex.getName());
-                Log.d("name", w.getName());
-                Log.d("name", w.getType());
-                Log.d("REPS", w.getDays().get(0).getName());
+                Workout w = workouts.get(position);
+
                 Context context = v.getContext();
-                Intent i = new Intent(context,ExerciseActivity.class);
+                Intent i = new Intent(context, ExerciseActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("workout",w);
+                bundle.putParcelable("workout", w);
                 i.putExtras(bundle);
                 context.startActivity(i);
             }
@@ -74,6 +86,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         TextView level;
         TextView days;
         ImageView personPhoto;
+        ImageButton edit;
+
 
         WorkoutViewHolder(View itemView) {
             super(itemView);
@@ -84,6 +98,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
             level = itemView.findViewById(R.id.workout_level);
             days = itemView.findViewById(R.id.workout_days);
             personPhoto = itemView.findViewById(R.id.workout_photo);
+            edit = itemView.findViewById(R.id.edit);
         }
     }
 

@@ -41,10 +41,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } else if (i == R.id.button2) {
             Intent intent = new Intent(MainActivity.this, MuscleActivity.class);
             startActivity(intent);
-        } else if (i == R.id.button3test) {
-            Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
-            startActivity(intent);
-        }
+        } 
     }
 
 
