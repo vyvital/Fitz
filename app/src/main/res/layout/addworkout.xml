@@ -81,7 +81,7 @@
     <Button
         android:id="@+id/done_adding"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="79dp"
+        android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/qanelas"
@@ -92,12 +92,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/cancel_adding"
         app:layout_constraintTop_toBottomOf="@+id/day_spinner"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
         android:id="@+id/cancel_adding"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="79dp"
+        android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="150dp"
         android:layout_marginTop="16dp"
@@ -107,6 +107,23 @@
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/done_adding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/day_spinner"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/set_default"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/qanelas"
+        android:padding="-50dp"
+        android:visibility="gone"
+        android:text="@string/set_default"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_adding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/day_spinner"
         app:layout_constraintVertical_bias="0.26" />

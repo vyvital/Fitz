@@ -1,9 +1,11 @@
 package vyvital.fitz;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -37,8 +39,11 @@ import vyvital.fitz.data.models.User;
 public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
 
     public static final String TAG = "Nope";
+    public static final String GIT = "https://github.com/vyvital";
+    public static final String LINKEDIN = "https://www.linkedin.com/in/vyvital";
     public FirebaseAuth mAuth;
     public User userz;
+    Dialog aboutDialog;
     private GoogleSignInClient mGoogleSignInClient;
     private FrameLayout view_stub; //This is the framelayout to keep your content view
     private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
@@ -94,6 +99,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 email.setText(mAuth.getCurrentUser().getEmail());
             }
         }
+        aboutDialog = new Dialog(this);
     }
 
 
@@ -174,12 +180,42 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 startActivity(intent3);
                 mDrawerLayout.closeDrawers();
                 break;
+            case R.id.progress:
+                Intent intent4 = new Intent(this, ProgressActivity.class);
+                startActivity(intent4);
+                mDrawerLayout.closeDrawers();
+                break;
+            case R.id.info:
+                aboutDialog.setContentView(R.layout.about);
+                TextView link,git;
+                link = aboutDialog.findViewById(R.id.linkedin);
+                git = aboutDialog.findViewById(R.id.github);
+                link.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        lunch(LINKEDIN);
+                    }
+                });
+                git.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        lunch(GIT);
+                    }
+                });
+                aboutDialog.show();
+                mDrawerLayout.closeDrawers();
+                break;
             case R.id.logout:
                 signOut();
                 finish();
-                // and so on...
+
         }
         return false;
+    }
+
+    private void lunch(String link) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        startActivity(browserIntent);
     }
 
     private void signOut() {

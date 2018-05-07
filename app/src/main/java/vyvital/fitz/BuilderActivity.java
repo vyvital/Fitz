@@ -2,6 +2,8 @@ package vyvital.fitz;
 
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -45,7 +47,6 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     String[] day_data = {"1 Day", "2 Days", "3 Days", "4 Days", "5 Days", "6 days", "7 Days"};
     Dialog workoutDialog;
     Dialog workoutDialogDays;
-    public List<Workout> workouts;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef = null;
     private ConstraintLayout constraintLayout;
@@ -63,10 +64,10 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         constraintLayout = findViewById(R.id.constraintLayout);
 
         mDatabase = FirebaseDatabase.getInstance();
-        workouts = new LinkedList<>();
+
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
         workoutList = new ArrayList<>();
-        // mRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setTitle("Program Manager");
@@ -88,6 +89,17 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
 
         workoutDialog = new Dialog(this);
         workoutDialogDays = new Dialog(this);
+        saveDefault();
+    }
+
+    private void saveDefault() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("Tdee", Context.MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = sharedPreferences.edit();
+        for (Workout p : workoutList){
+            if (p.isDef())
+                mEditor.putInt("DEF",p.getId());
+        }
+        mEditor.apply();
     }
 
     private void initializeData() {
@@ -471,11 +483,14 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     public void popUp(final Workout zzz) {
         Button btnClose;
         Button btnOK;
+        Button setDefault;
         workoutDialog.setContentView(R.layout.addworkout);
 
         final TextInputLayout name = workoutDialog.findViewById(R.id.input_workout_name);
         btnClose = workoutDialog.findViewById(R.id.cancel_adding);
         btnOK = workoutDialog.findViewById(R.id.done_adding);
+        setDefault = workoutDialog.findViewById(R.id.set_default);
+        setDefault.setVisibility(View.GONE);
         final MaterialBetterSpinner workoutTypeSpinner = workoutDialog.findViewById(R.id.type_spinner);
         final MaterialBetterSpinner workoutDateSpinner = workoutDialog.findViewById(R.id.day_spinner);
         final MaterialBetterSpinner workoutLevelSpinner = workoutDialog.findViewById(R.id.lvl_spinner);
@@ -491,10 +506,27 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             workoutDateSpinner.setText(adapter2.getItem(zzz.getSize() - 1));
             workoutLevelSpinner.setText(zzz.getLevel());
             workoutTypeSpinner.setText(zzz.getType());
+            if (zzz.isDef())
+            setDefault.setVisibility(View.GONE);
+            else setDefault.setVisibility(View.VISIBLE);
         }
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                workoutDialog.dismiss();
+            }
+        });
+        setDefault.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (Workout w : workoutList){
+                    w.setDef(false);
+                    if (w.getId()==zzz.getId())
+                        w.setDef(true);
+                }
+                saveDefault();
+                mRef.setValue(workoutList);
+                adapter.notifyDataSetChanged();
                 workoutDialog.dismiss();
             }
         });

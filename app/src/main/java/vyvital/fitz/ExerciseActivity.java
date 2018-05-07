@@ -105,7 +105,7 @@ public class ExerciseActivity extends BaseActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(ExerciseActivity.this, "ok", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ExerciseActivity.this, position+"", Toast.LENGTH_SHORT).show();
                 }
             });
         }

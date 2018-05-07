@@ -19,6 +19,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/qanelasbold"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/name"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView" />
+    <TextView
+        android:id="@+id/cals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/qanelasbold"
+        android:gravity="center"
+        android:text="@string/your_current_calorie_instake_is"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/name"
+        app:layout_goneMarginTop="14dp"/>
+
+    <TextView
+        android:id="@+id/calsNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/qanelasbold"
+        android:gravity="center"
+        android:text="1234"
+        android:textColor="@color/colorPrimary"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cals" />
+
+    <TextView
+        android:id="@+id/workoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/qanelasbold"
+        android:gravity="center"
+        android:text=""
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@id/lay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calsNum" />
+
+    <LinearLayout
+        android:id="@+id/lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calsNum"
+        app:layout_constraintVertical_bias="0.63">
+
+        <TextView
+            android:id="@+id/dayName"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:fontFamily="@font/qanelasbold"
+            android:gravity="center"
+            android:text=""
+            android:textSize="26sp" />
+
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+    </LinearLayout>
+
 
     <net.grobas.view.PolygonImageView
         android:id="@+id/polygonWorkout"
@@ -86,7 +166,7 @@
         android:id="@+id/start"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="145dp"
+        android:layout_marginBottom="160dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/start"
@@ -97,15 +177,31 @@
         app:layout_constraintStart_toStartOf="parent"
         android:focusable="true" />
 
+    <com.natasa.progressviews.CircleSegmentBar
+        android:id="@+id/segment_bar"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:visibility="visible"
+        android:layout_marginBottom="160dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:bar_width="14dp"
+        app:progress_color="#f77630"
+        app:progress_width="10dp" />
+
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="86dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:text="Muscle Test Button"
+        android:layout_marginTop="156dp"
+        android:text="Muscle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

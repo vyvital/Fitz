@@ -29,6 +29,7 @@ import vyvital.fitz.R;
 public class FragBNutri extends Fragment{
     public static final String TAG = FragBNutri.class.getSimpleName();
     int tdee = 0;
+    int goal = 0;
     int cals = 0;
     double wt = 0;
     int protein = 0;
@@ -48,16 +49,18 @@ public class FragBNutri extends Fragment{
         if (getArguments()!=null){
             tdee = getArguments().getInt("TDEE");
             wt = getArguments().getDouble("WEIGHT");
-            update(tdee,wt);
+            goal = getArguments().getInt("GOAL");
+            update(tdee,wt,goal);
         }
 
     }
 
-    private void update(int tdee, double wt) {
+    private void update(int tdee, double wt,int goal) {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
         mEditor.putInt("TDEE",tdee);
         mEditor.putLong("WEIGHT",Double.doubleToLongBits(wt));
+        mEditor.putInt("GOAL",goal);
         mEditor.apply();
 
     }
@@ -114,6 +117,7 @@ public class FragBNutri extends Fragment{
                     cals = tdee-250;
                     protein = ((int) (wt * 2.1 * 4));
                     fats = ((int)( wt * 9));
+
                 }
                 else if (position==2) {
                     cals = tdee+200;
@@ -125,6 +129,7 @@ public class FragBNutri extends Fragment{
                     protein = ((int) (wt * 1.8 * 4));
                     fats = ((int) (cals * 0.3));
                 }
+                goal = cals;
                 carbs = cals - protein - fats;
                 tdd.setText(String.valueOf(cals));
                 p.setText(String.valueOf(protein));
@@ -151,7 +156,7 @@ public class FragBNutri extends Fragment{
                 pie.setData(data);
                 pie.notifyDataSetChanged();
                 pie.invalidate();
-
+                update(tdee,wt,goal);
             }
 
         });

@@ -4,11 +4,12 @@ import android.os.Parcel;
 
 import android.os.Parcelable;
 
-import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+
+import com.bignerdranch.expandablerecyclerview.model.Parent;
 
 import java.util.List;
 
-public class Exercises implements Parcelable,ParentObject {
+public class Exercises implements Parcelable,Parent<Sets> {
 
     private List<Sets> sets;
     private List<Object> s;
@@ -51,7 +52,6 @@ public class Exercises implements Parcelable,ParentObject {
     };
 
 
-
     public String getID() {
         return id;
     }
@@ -92,12 +92,12 @@ public class Exercises implements Parcelable,ParentObject {
     }
 
     @Override
-    public List<Object> getChildObjectList() {
-        return s;
+    public List<Sets> getChildList() {
+        return sets;
     }
 
     @Override
-    public void setChildObjectList(List<Object> list) {
-        s = list;
+    public boolean isInitiallyExpanded() {
+        return false;
     }
 }

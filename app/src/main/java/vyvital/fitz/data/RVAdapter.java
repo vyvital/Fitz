@@ -48,7 +48,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
 
     @Override
     public void onBindViewHolder(WorkoutViewHolder holder, final int position) {
-
+        if (workouts.get(position).isDef())
+            holder.rib.setVisibility(View.VISIBLE);
+        else holder.rib.setVisibility(View.INVISIBLE);
         holder.nameOfWorkout.setText(workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
         holder.days.setText(String.valueOf(workouts.get(position).getSize()));
@@ -87,6 +89,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         TextView days;
         ImageView personPhoto;
         ImageButton edit;
+        ImageView rib;
 
 
         WorkoutViewHolder(View itemView) {
@@ -99,6 +102,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
             days = itemView.findViewById(R.id.workout_days);
             personPhoto = itemView.findViewById(R.id.workout_photo);
             edit = itemView.findViewById(R.id.edit);
+            rib = itemView.findViewById(R.id.rib);
         }
     }
 

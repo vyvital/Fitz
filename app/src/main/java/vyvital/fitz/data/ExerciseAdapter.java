@@ -64,6 +64,18 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
         final Exercise exercise = exercises.get(position);
         holder.name.setText(exercise.getName());
         holder.mechanics.setText(exercise.getMechanics());
+
+        if (exercise.getID()==305 || exercise.getID()==306 || exercise.getID()==307 || exercise.getID()==308 || exercise.getID()==309 || exercise.getID()==310 || exercise.getID()==313)
+            this.photo = R.drawable.mham;
+        else if (exercise.getID()==711 || exercise.getID()==712 || exercise.getID()==713)
+            this.photo = R.drawable.mobliq;
+        else if (exercise.getID()==701 || exercise.getID()==702 || exercise.getID()==703)
+            this.photo = R.drawable.mabs;
+        else if (exercise.getID()==301 || exercise.getID()==302 || exercise.getID()==303 || exercise.getID()==304 || exercise.getID()==311 || exercise.getID()==312 || exercise.getID()==314 || exercise.getID()==315)
+            this.photo = R.drawable.mquad;
+        else if (exercise.getID()==316 || exercise.getID()==317)
+            this.photo = R.drawable.mcalf;
+
         Glide.with(mContext).load(photo).into(holder.img);
         List<String> equip = new ArrayList<>();
         for (int i = 0;i<exercise.getEquip().size();i++){

@@ -14,27 +14,29 @@ public class Workout implements Parcelable {
     private int size;
     private List<Days> days;
     private int id;
+    private boolean def;
 
     // This is required for serialization
     public Workout() {
     }
 
-    public Workout(List<Days> d,String name, String type, String level, int size, int id) {
+    public Workout(List<Days> d,String name, String type, String level, int size, int id, boolean def) {
         this.days = d;
         this.name = name;
         this.type = type;
         this.level = level;
         this.size = size;
         this.id = id;
+        this.def = def;
     }
 
     protected Workout(Parcel in) {
-
         id = in.readInt();
         level = in.readString();
         name = in.readString();
         size = in.readInt();
         type = in.readString();
+        def = in.readByte() != 0;
         days = in.createTypedArrayList(Days.CREATOR);
     }
 
@@ -82,6 +84,14 @@ public class Workout implements Parcelable {
         return type;
     }
 
+    public boolean isDef() {
+        return def;
+    }
+
+    public void setDef(boolean def) {
+        this.def = def;
+    }
+
     public String getLevel() {
         return level;
     }
@@ -110,6 +120,7 @@ public class Workout implements Parcelable {
         dest.writeString(name);
         dest.writeInt(size);
         dest.writeString(type);
+        dest.writeByte((byte)(def ? 1 : 0));
         dest.writeTypedList(days);
     }
 }

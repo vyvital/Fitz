@@ -11,16 +11,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import vyvital.fitz.R;
-import vyvital.fitz.data.UserExerciseAdapter;
+import vyvital.fitz.data.ParentChildAdapter;
 import vyvital.fitz.data.models.Days;
-import vyvital.fitz.data.models.Exercises;
-import vyvital.fitz.data.models.Sets;
 
 public class ExerciseFragment extends Fragment {
     private RecyclerView exRV;
@@ -39,30 +32,12 @@ public class ExerciseFragment extends Fragment {
         exRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         exRV.setLayoutManager(mLayoutManager);
-        UserExerciseAdapter adapter = new UserExerciseAdapter(getActivity(), init(),d.getExercises());
-        adapter.setParentClickableViewAnimationDefaultDuration();
-        adapter.setParentAndIconExpandOnClick(true);
+        ParentChildAdapter adapter = new ParentChildAdapter(getActivity(), d.getExercises());
         exRV.setAdapter(adapter);
         Animation bottomUp = AnimationUtils.loadAnimation(getContext(), R.anim.bottom_up);
         exRV.startAnimation(bottomUp);
 
     }
 
-    private List<ParentObject> init() {
-        final List<ParentObject> parentObjects = new ArrayList<>();
-        List<Object> child = null;
-        if (d.getExercises() != null) {
-            for (int p = 0; p < d.getExercises().size(); p++) {
-                Exercises ex = d.getExercises().get(p);
-                child = new ArrayList<>();
-                for (int c = 0; c < ex.getSets().size(); c++) {
-                    child.add(new Sets(ex.getSets().get(c).getReps(), ex.getSets().get(c).getWeight()));
-                }
-                ex.setChildObjectList(child);
-                parentObjects.add(ex);
-            }
-        }
-        return parentObjects;
-    }
 
 }

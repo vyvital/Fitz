@@ -24,7 +24,6 @@ public class FragANutri extends Fragment{
     int tdee = 15;
     int bmr = 0;
     double weightz;
-    int activityFactor;
     public FragANutri() {
         // Required empty public constructor
     }
@@ -89,14 +88,12 @@ public class FragANutri extends Fragment{
                 int seeki = seek.getProgress();
                 tdee = tdeeTest(bmr,activ,intense,seeki);
 
-                new CountDownTimer(5000, 1000) {
+                new CountDownTimer(3000, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        // TODO Auto-generated method stub
                     }
                     @Override
                     public void onFinish() {
-                        // TODO Auto-generated method stub
                         dialog.dismiss();
                         Bundle bundle = new Bundle();
                         bundle.putDouble("WEIGHT",weightz);

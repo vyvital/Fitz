@@ -34,7 +34,6 @@
             android:layout_width="69dp"
             android:layout_height="59dp"
             android:layout_gravity="center"
-
             android:background="@drawable/t1" />
 
         <android.support.design.widget.TextInputLayout

@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import vyvital.fitz.R;
 import vyvital.fitz.data.ExerciseAdapter;
@@ -63,7 +66,6 @@ public class FragBMuscle extends Fragment {
         exerciseRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         exerciseRV.setLayoutManager(mLayoutManager);
-        //Toast.makeText(getContext(), muscle.getName() + muscle.getExercises().get(0).getName(), Toast.LENGTH_SHORT).show();
         exerciseRV.setAdapter(new ExerciseAdapter(getActivity(), muscle.getExercises(), img));
         bottomUp = AnimationUtils.loadAnimation(getContext(), R.anim.bottom_up);
         bottomDown = AnimationUtils.loadAnimation(getContext(), R.anim.bottom_down);
@@ -79,6 +81,4 @@ public class FragBMuscle extends Fragment {
         image.setImageResource(pic);
         image.setTransitionName(trans);
     }
-
-
 }

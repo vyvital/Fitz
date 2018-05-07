@@ -51,9 +51,8 @@
         android:background="@drawable/corner_bgc"
         android:elevation="6dp"
         android:paddingBottom="8dp"
-        android:paddingEnd="18dp"
-        android:paddingStart="18dp"
-        android:paddingTop="16dp">
+        android:paddingStart="12dp"
+        android:paddingTop="10dp">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -110,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/workout_name"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/workout_level"
             android:textSize="17sp"
             tools:text="4 Days" />
@@ -119,11 +118,20 @@
             android:id="@+id/edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
             android:background="@drawable/ic_edit_black_24dp" />
 
+        <ImageView
+            android:id="@+id/rib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ribbon"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"/>
     </RelativeLayout>
 
 

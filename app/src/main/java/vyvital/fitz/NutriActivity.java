@@ -24,6 +24,7 @@ public class NutriActivity extends BaseActivity {
             Bundle bundle = new Bundle();
             bundle.putDouble("WEIGHT", getData2());
             bundle.putInt("TDEE", getData());
+            bundle.putInt("GOAL",getData3());
             FragBNutri simpleFragmentB = FragBNutri.newInstance();
             simpleFragmentB.setArguments(bundle);
             getSupportFragmentManager()
@@ -44,6 +45,11 @@ public class NutriActivity extends BaseActivity {
     private double getData2() {
         SharedPreferences sharedPreferences = getSharedPreferences("Tdee", MODE_PRIVATE);
         return Double.longBitsToDouble(sharedPreferences.getLong("WEIGHT", 0));
+    }
+    private int getData3() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Tdee", MODE_PRIVATE);
+        int GoalCal = sharedPreferences.getInt("GOAL", 0);
+        return GoalCal;
     }
 
     @Override
@@ -66,6 +72,7 @@ public class NutriActivity extends BaseActivity {
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
         mEditor.putInt("TDEE", 0);
         mEditor.putLong("WEIGHT", Double.doubleToLongBits(0));
+        mEditor.putInt("GOAL",0);
         mEditor.apply();
         finish();
         startActivity(getIntent());

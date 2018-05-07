@@ -88,6 +88,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.abs_t);
                 bundle.putString("TRANS", abs_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(6));
+                bundle.putInt("PHOTO", R.drawable.mabs);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -126,6 +128,7 @@ public class FragAMuscle extends Fragment {
                 bundle.putInt("PIC", R.drawable.back_t);
                 bundle.putParcelable("MUSCLE", muscleList.get(1));
                 bundle.putString("TRANS", back_view.getTransitionName());
+                bundle.putInt("PHOTO", R.drawable.mback);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -143,6 +146,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.tricep_t);
                 bundle.putString("TRANS", tricep_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(5));
+                bundle.putInt("PHOTO", R.drawable.mtriceps);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -160,6 +165,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.bicep_t);
                 bundle.putString("TRANS", bicep_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(4));
+                bundle.putInt("PHOTO", R.drawable.mbicep);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -177,6 +184,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.legs_t);
                 bundle.putString("TRANS", legs_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(2));
+                bundle.putInt("PHOTO", R.drawable.mquad);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -194,6 +203,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.cardio_t);
                 bundle.putString("TRANS", cardio_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(7));
+                bundle.putInt("PHOTO", R.drawable.mtest);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -211,6 +222,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.crossfit_t);
                 bundle.putString("TRANS", crossfit_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(8));
+                bundle.putInt("PHOTO", R.drawable.mc2);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -228,6 +241,8 @@ public class FragAMuscle extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("PIC", R.drawable.shoulder_t);
                 bundle.putString("TRANS", shoulder_view.getTransitionName());
+                bundle.putParcelable("MUSCLE", muscleList.get(3));
+                bundle.putInt("PHOTO", R.drawable.mdelt);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
