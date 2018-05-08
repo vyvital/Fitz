@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 
 import vyvital.fitz.R;
 import vyvital.fitz.data.ExerciseAdapter;
+import vyvital.fitz.data.models.Days;
 import vyvital.fitz.data.models.Muscle;
 
 
@@ -33,6 +34,7 @@ public class FragBMuscle extends Fragment {
     private Muscle muscle;
     private Animation bottomUp;
     private static Animation bottomDown;
+    Days day;
 
     public FragBMuscle() {
         // Required empty public constructor
@@ -54,6 +56,7 @@ public class FragBMuscle extends Fragment {
             trans = getArguments().getString("TRANS");
             muscle = getArguments().getParcelable("MUSCLE");
             img = getArguments().getInt("PHOTO");
+            day = getArguments().getParcelable("currentDay");
         }
     }
 

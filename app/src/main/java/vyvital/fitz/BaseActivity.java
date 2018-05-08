@@ -1,11 +1,15 @@
 package vyvital.fitz;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -31,6 +35,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import vyvital.fitz.data.models.User;
@@ -187,19 +196,26 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 break;
             case R.id.info:
                 aboutDialog.setContentView(R.layout.about);
-                TextView link,git;
+                TextView link, git;
                 link = aboutDialog.findViewById(R.id.linkedin);
                 git = aboutDialog.findViewById(R.id.github);
                 link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        lunch(LINKEDIN);
+                        ConnectivityManager connMan = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                        assert connMan != null;
+                        NetworkInfo netInfo = connMan.getActiveNetworkInfo();
+                        if (netInfo != null && netInfo.isConnected()) {
+                            lunch(LINKEDIN);
+                        } else
+                            Toast.makeText(BaseActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 git.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        lunch(GIT);
+                        new CheckTask().execute(GIT);
                     }
                 });
                 aboutDialog.show();
@@ -216,6 +232,49 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     private void lunch(String link) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
         startActivity(browserIntent);
+    }
+
+    private class CheckTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String strUrl = params[0];
+            ConnectivityManager connMan = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            assert connMan != null;
+            NetworkInfo netInfo = connMan.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()) {
+                try {
+                    URL urlServer = new URL(params[0]);
+                    HttpURLConnection urlConn = (HttpURLConnection) urlServer.openConnection();
+                    urlConn.setConnectTimeout(2000); //<- 3Seconds Timeout
+                    urlConn.connect();
+                    if (urlConn.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                        return params[0];
+                    } else {
+                        return null;
+                    }
+                } catch (MalformedURLException e1) {
+                    return e1.getMessage();
+                } catch (IOException e) {
+                    return e.getMessage();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result == null)
+                Toast.makeText(BaseActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+            else
+                lunch(result);
+
+
+        }
     }
 
     private void signOut() {

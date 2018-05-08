@@ -110,6 +110,7 @@ public class FragBNutri extends Fragment{
         gp.setText(String.valueOf(((int) (wt * 1.8 ))));
         gf.setText(String.valueOf(((int) (cals * 0.3 / 9))));
         gc.setText(String.valueOf((int)(cals-(wt * 1.8 * 4) -  (cals * 0.3))/4));
+        update(tdee,wt,tdee);
         ts.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener(){
             @Override
             public void onToggleSwitchChangeListener(int position, boolean isChecked) {

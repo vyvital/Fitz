@@ -1,64 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/RLayoutEx"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="2dp"
-    android:layout_marginStart="2dp"
-    android:layout_marginTop="2dp"
-    android:background="@color/lightGrey">
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/exPhoto"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginEnd="10dp"
-        android:padding="2dp"
-        android:src="@drawable/profile"
-        app:civ_border_color="#808080"
-        app:civ_border_width="2dp" />
-
-    <TextView
-        android:id="@+id/exName"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/RLayoutEx"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/exPhoto"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/qanelas"
-        android:singleLine="true"
-        android:textSize="24sp"
-        tools:text="Exercise Name" />
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/lightGrey">
 
-    <TextView
-        android:id="@+id/exEquip"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/exPhoto"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:padding="2dp"
+            android:src="@drawable/profile"
+            app:civ_border_color="#808080"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/exName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@id/exPhoto"
+            android:fontFamily="@font/qanelas"
+            android:singleLine="true"
+            android:textSize="24sp"
+            tools:text="Exercise Name" />
+
+        <TextView
+            android:id="@+id/exEquip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exName"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/exPhoto"
+            android:fontFamily="@font/qanelas"
+            android:textSize="17sp"
+            tools:text="Equipment" />
+
+        <Spinner
+            android:id="@+id/setSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exName"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/exEquip"
+            android:dropDownWidth="wrap_content">
+
+        </Spinner>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/child"
+        android:layout_below="@id/RLayoutEx"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/exName"
-        android:layout_toEndOf="@id/exPhoto"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="@font/qanelas"
-        android:textSize="17sp"
-        tools:text="Equipment" />
+        android:visibility="gone"
+        android:layoutAnimation="@anim/layout_animation"
+        android:layout_height="wrap_content">
 
-    <Spinner
-        android:id="@+id/setSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:dropDownWidth="wrap_content"
-        android:layout_below="@id/exName"
-        android:layout_toEndOf="@id/exEquip"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="35dp"
-        >
-    </Spinner>
-
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

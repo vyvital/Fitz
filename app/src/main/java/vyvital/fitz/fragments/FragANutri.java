@@ -24,6 +24,7 @@ public class FragANutri extends Fragment{
     int tdee = 15;
     int bmr = 0;
     double weightz;
+
     public FragANutri() {
         // Required empty public constructor
     }

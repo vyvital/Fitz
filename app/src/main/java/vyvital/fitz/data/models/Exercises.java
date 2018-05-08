@@ -1,15 +1,14 @@
 package vyvital.fitz.data.models;
 
 import android.os.Parcel;
-
 import android.os.Parcelable;
 
 
-import com.bignerdranch.expandablerecyclerview.model.Parent;
+
 
 import java.util.List;
 
-public class Exercises implements Parcelable,Parent<Sets> {
+public class Exercises  implements Parcelable {
 
     private List<Sets> sets;
     private List<Object> s;
@@ -18,11 +17,13 @@ public class Exercises implements Parcelable,Parent<Sets> {
     private String mechanics;
     private String equip;
 
+    public Exercises()
+    {
 
-    public Exercises() {
     }
 
     public Exercises(String id, String name, String mechanics, String equip, List<Sets> sets) {
+        super();
         this.name = name;
         this.id = id;
         this.mechanics = mechanics;
@@ -32,6 +33,7 @@ public class Exercises implements Parcelable,Parent<Sets> {
 
 
     protected Exercises(Parcel in) {
+
         name = in.readString();
         id = in.readString();
         equip = in.readString();
@@ -82,7 +84,6 @@ public class Exercises implements Parcelable,Parent<Sets> {
     }
 
     @Override
-
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(id);
@@ -91,13 +92,6 @@ public class Exercises implements Parcelable,Parent<Sets> {
         dest.writeTypedList(sets);
     }
 
-    @Override
-    public List<Sets> getChildList() {
-        return sets;
-    }
 
-    @Override
-    public boolean isInitiallyExpanded() {
-        return false;
-    }
+
 }
