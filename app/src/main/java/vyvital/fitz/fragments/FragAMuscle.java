@@ -20,8 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import vyvital.fitz.MuscleActivity;
 import vyvital.fitz.R;
 import vyvital.fitz.data.models.Days;
+import vyvital.fitz.data.models.Exercises;
 import vyvital.fitz.data.models.Muscle;
 
 
@@ -31,6 +33,7 @@ public class FragAMuscle extends Fragment {
     private DatabaseReference myRef = null;
     private List<Muscle> muscleList;
     Days day;
+    public MuscleActivity muscleActivity;
 
     public FragAMuscle() {
         // Required empty public constructor
@@ -45,10 +48,13 @@ public class FragAMuscle extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_muscle_a, container, false);
-        if (getArguments() != null) {
-            day = getArguments().getParcelable("currentDay");
-        }
-
+//        if (getArguments() != null) {
+//            day = getArguments().getParcelable("currentDay");
+//        }
+//        muscleActivity = (MuscleActivity)getActivity();
+//        muscleActivity.workout.getDays().get(0).setName("lol");
+//        muscleActivity.workout.getDays().get(0).getExercises().get(0).setName("BS exercise");
+       // Toast.makeText(muscleActivity, muscleActivity.workout.getName(), Toast.LENGTH_SHORT).show();
         mDatabase = FirebaseDatabase.getInstance();
         myRef = mDatabase.getReference("muscles");
         muscleList = new ArrayList<>();
@@ -85,7 +91,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", abs_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(6));
                 bundle.putInt("PHOTO", R.drawable.mabs);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -106,7 +111,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", chest_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(0));
                 bundle.putInt("PHOTO", R.drawable.mchest);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -126,7 +130,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putParcelable("MUSCLE", muscleList.get(1));
                 bundle.putString("TRANS", back_view.getTransitionName());
                 bundle.putInt("PHOTO", R.drawable.mback);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -146,7 +149,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", tricep_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(5));
                 bundle.putInt("PHOTO", R.drawable.mtriceps);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -166,7 +168,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", bicep_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(4));
                 bundle.putInt("PHOTO", R.drawable.mbicep);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -186,7 +187,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", legs_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(2));
                 bundle.putInt("PHOTO", R.drawable.mquad);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -206,7 +206,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", cardio_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(7));
                 bundle.putInt("PHOTO", R.drawable.mtest);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -226,7 +225,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", crossfit_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(8));
                 bundle.putInt("PHOTO", R.drawable.mc2);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;
@@ -246,7 +244,6 @@ public class FragAMuscle extends Fragment {
                 bundle.putString("TRANS", shoulder_view.getTransitionName());
                 bundle.putParcelable("MUSCLE", muscleList.get(3));
                 bundle.putInt("PHOTO", R.drawable.mdelt);
-                bundle.putParcelable("currentDay",day);
                 FragBMuscle simpleFragmentB = FragBMuscle.newInstance();
                 simpleFragmentB.setArguments(bundle);
                 assert getFragmentManager() != null;

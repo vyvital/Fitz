@@ -1,12 +1,10 @@
 package vyvital.fitz.data;
 
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,23 +13,25 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.lang.reflect.Method;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import vyvital.fitz.BuilderActivity;
 import vyvital.fitz.ExerciseActivity;
 import vyvital.fitz.R;
-import vyvital.fitz.data.models.Days;
-import vyvital.fitz.data.models.Exercises;
 import vyvital.fitz.data.models.Workout;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder> {
 
     List<Workout> workouts;
+    Context mContext;
+    private int photo;
 
 
-    public RVAdapter(List<Workout> workouts) {
+    public RVAdapter(List<Workout> workouts, Context context) {
         this.workouts = workouts;
+        this.mContext = context;
     }
 
     @Override
@@ -51,6 +51,15 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         if (workouts.get(position).isDef())
             holder.rib.setVisibility(View.VISIBLE);
         else holder.rib.setVisibility(View.INVISIBLE);
+        if (workouts.get(position).getType().equals("Strength"))
+            this.photo = R.drawable.str;
+        else if (workouts.get(position).getType().equals("Hypertrophy"))
+            this.photo = R.drawable.hyper;
+        else if (workouts.get(position).getType().equals("Endurance"))
+            this.photo = R.drawable.endurance;
+        else if (workouts.get(position).getType().equals("Maintenance"))
+            this.photo = R.drawable.maint;
+        Glide.with(mContext).load(photo).into(holder.personPhoto);
         holder.nameOfWorkout.setText(workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
         holder.days.setText(String.valueOf(workouts.get(position).getSize()));
@@ -69,7 +78,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
             @Override
             public void onClick(View v) {
                 Workout w = workouts.get(position);
-
                 Context context = v.getContext();
                 Intent i = new Intent(context, ExerciseActivity.class);
                 Bundle bundle = new Bundle();

@@ -1,7 +1,6 @@
 package vyvital.fitz.data;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,10 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,8 +29,15 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
     private Context context;
     ChildAdapter adapter;
     List<Sets> s;
+    boolean today = false;
 
     public ParentAdapter(Context context, List<Exercises> exercises) {
+        this.context = context;
+        this.exercisesList = exercises;
+    }
+
+    public ParentAdapter(Context context, List<Exercises> exercises, boolean today) {
+        this.today = today;
         this.context = context;
         this.exercisesList = exercises;
     }
@@ -60,7 +64,10 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewHolder.sets.setAdapter(dataAdapter);
         viewHolder.sets.setSelection(ex.getSets().size());
-        adapter = new ChildAdapter(context, ex.getSets());
+        if (today)
+            adapter = new ChildAdapter(context, ex.getSets(),true);
+        else
+            adapter = new ChildAdapter(context, ex.getSets());
 
         viewHolder.rv.setAdapter(adapter);
         viewHolder.sets.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -75,7 +82,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
                     for (int t = 0; t < s.size() - position; t++) {
                         s.remove(s.size() - 1);
                     }
-                } else if (position ==0)
+                } else if (position == 0)
                     s.clear();
                 ex.setSets(s);
                 viewHolder.rv.getAdapter().notifyDataSetChanged();
@@ -88,6 +95,8 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
             }
         });
 
+        if (today)
+            viewHolder.sets.setEnabled(false);
 
     }
 
@@ -98,8 +107,8 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(exercisesList,fromPosition,toPosition);
-        notifyItemMoved(fromPosition,toPosition);
+        Collections.swap(exercisesList, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
         return true;
     }
 
@@ -109,7 +118,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         notifyItemRemoved(position);
     }
 
-    public final static class ParentViewHolder extends RecyclerView.ViewHolder  implements
+    public final static class ParentViewHolder extends RecyclerView.ViewHolder implements
             SimpleItemTouchHelperCallback.ItemTouchHelperViewHolder {
         RelativeLayout relativeLayout;
         public TextView name, equipment;

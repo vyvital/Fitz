@@ -54,7 +54,7 @@ public class Exercises  implements Parcelable {
     };
 
 
-    public String getID() {
+    public String getId() {
         return id;
     }
 
@@ -73,6 +73,23 @@ public class Exercises  implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMechanics(String mechanics) {
+        this.mechanics = mechanics;
+    }
+
+    public void setEquip(String equip) {
+        this.equip = equip;
     }
 
     public List<Sets> getSets() {

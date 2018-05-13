@@ -38,9 +38,19 @@
         <activity android:name=".MuscleActivity" />
         <activity
             android:name=".ProgressActivity"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".NutriActivity" />
-        <activity android:name=".WorkingOutActivity"></activity>
+        <activity android:name=".WorkingOutActivity" />
+
+        <receiver android:name=".data.FitzWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/fitz_widget_provider_info" />
+        </receiver>
     </application>
 
 </manifest>

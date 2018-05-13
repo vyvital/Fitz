@@ -2,6 +2,7 @@ package vyvital.fitz;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -63,7 +64,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.polygonWorkout).setOnClickListener(this);
         findViewById(R.id.polygonFood).setOnClickListener(this);
         findViewById(R.id.polygonProgress).setOnClickListener(this);
-        findViewById(R.id.button2).setOnClickListener(this);
         name = findViewById(R.id.name);
         name.setText(mAuth.getCurrentUser().getDisplayName());
         mHandler = new Handler();
@@ -169,9 +169,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
         } else if (i == R.id.start) {
             Toast.makeText(this, "Start Button Pressed", Toast.LENGTH_LONG).show();
-        } else if (i == R.id.button2) {
-            Intent intent = new Intent(MainActivity.this, MuscleActivity.class);
-            startActivity(intent);
         }
     }
 
@@ -183,7 +180,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private int getDefault() {
         SharedPreferences sharedPreferences = getSharedPreferences("Tdee", MODE_PRIVATE);
-        int defT = sharedPreferences.getInt("DEF", 100);
+        int defT = sharedPreferences.getInt("DEF", 101);
         return defT;
     }
 
@@ -192,17 +189,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         mDatabase = FirebaseDatabase.getInstance();
+        SharedPreferences sharedPreferences = this.getSharedPreferences("Tdee", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor mEditor = sharedPreferences.edit();
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
         mRef.orderByChild("def").equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                    if (childDataSnapshot!=null)
                     dzdz = childDataSnapshot.getValue(Workout.class);
                 }
+                if (dzdz!=null){
                 workoutName.setText(dzdz.getName());
                 daysList = dzdz.getDays();
                 workoutNow = dzdz;
-                dayName.setText(daysList.get(0).getName());
+                mEditor.putInt("DEF",workoutNow.getId());
+                dayName.setText(daysList.get(0).getName());}
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -214,10 +216,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         else cals.setText(getData3() + "");
         if (getDefault() == 101) {
             workoutName.setText("Pick a workout");
+            mEditor.putString("WORK","Pick a workout");
         } else if (dzdz != null) {
             workoutName.setText(workoutNow.getName());
             dayName.setText(workoutNow.getDays().get(day).getName());
+            mEditor.putString("WORK",workoutNow.getName());
         }
+        mEditor.apply();
     }
 }
 

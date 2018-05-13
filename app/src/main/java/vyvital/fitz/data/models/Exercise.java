@@ -44,8 +44,26 @@ public class Exercise implements Parcelable {
         }
     };
 
-    public int getID() {
+    public int getId() {
         return id;
+    }
+
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMechanics(String mechanics) {
+        this.mechanics = mechanics;
+    }
+
+    public void setEquip(List<Equipment> equip) {
+        this.equip = equip;
     }
 
     public String getName() {

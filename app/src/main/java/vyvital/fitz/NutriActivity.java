@@ -44,7 +44,7 @@ public class NutriActivity extends BaseActivity {
 
     private double getData2() {
         SharedPreferences sharedPreferences = getSharedPreferences("Tdee", MODE_PRIVATE);
-        return Double.longBitsToDouble(sharedPreferences.getLong("WEIGHT", 0));
+        return Double.valueOf(sharedPreferences.getString("WEIGHT", "0"));
     }
     private int getData3() {
         SharedPreferences sharedPreferences = getSharedPreferences("Tdee", MODE_PRIVATE);
@@ -71,7 +71,7 @@ public class NutriActivity extends BaseActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
         mEditor.putInt("TDEE", 0);
-        mEditor.putLong("WEIGHT", Double.doubleToLongBits(0));
+        mEditor.putString("WEIGHT", "0");
         mEditor.putInt("GOAL",0);
         mEditor.apply();
         finish();

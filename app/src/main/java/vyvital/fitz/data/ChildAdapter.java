@@ -18,11 +18,19 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
     private List<Sets> setsList;
     private Context context;
+    boolean today = false;
 
 
     public ChildAdapter(Context context, List<Sets> sets) {
         this.context = context;
         this.setsList = sets;
+
+    }
+
+    public ChildAdapter(Context context, List<Sets> sets,boolean today) {
+        this.context = context;
+        this.setsList = sets;
+        this.today = today;
 
     }
 
@@ -37,6 +45,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
         Sets s = setsList.get(position);
         viewHolder.weight.setText(String.valueOf(s.getWeight()));
         viewHolder.reps.setText(String.valueOf(s.getReps()));
+        if (today) {
+            viewHolder.reps.setEnabled(false);
+            viewHolder.weight.setEnabled(false);
+        }
+
         viewHolder.reps.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

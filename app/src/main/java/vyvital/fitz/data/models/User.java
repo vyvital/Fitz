@@ -3,7 +3,7 @@ package vyvital.fitz.data.models;
 
 import java.util.List;
 
-public class User extends Model {
+public class User  {
     public String email;
     public String id;
     public List<Workout> workoutList;

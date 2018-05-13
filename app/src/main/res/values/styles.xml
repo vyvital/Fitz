@@ -39,13 +39,20 @@
         <item name="android:scrollbars">vertical</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="MyStyle">
         <item name="android:textSize">14sp</item>
         <item name="colorControlNormal">@color/colorAccent</item>
         <item name="colorControlActivated">@color/colorAccent</item>
-        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
     </style>
 
+    <style name="ButtonStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">14sp</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+    </style>
     <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">
         <item name="android:layout_marginTop">@dimen/icon_top_margin</item>
         <item name="android:layout_marginBottom">@dimen/icon_bottom_margin</item>

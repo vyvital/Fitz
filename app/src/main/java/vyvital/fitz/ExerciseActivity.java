@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -30,7 +31,7 @@ import vyvital.fitz.fragments.ExerciseFragment;
 public class ExerciseActivity extends BaseActivity {
 
 
-
+    private static final int REQUEST_CODE = 111;
     private static Workout ex;
     FloatingActionButton fab;
     FragmentPagerItemAdapter adapter;
@@ -45,8 +46,7 @@ public class ExerciseActivity extends BaseActivity {
         Bundle b = new Bundle();
         b = getIntent().getExtras();
         ex = b.getParcelable("workout");
-
-         fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         final ViewPager viewPager = findViewById(R.id.pager);
         SmartTabLayout viewPagerTab = findViewById(R.id.viewpagertab);
         FragmentPagerItems pages = new FragmentPagerItems(this);
@@ -105,12 +105,34 @@ public class ExerciseActivity extends BaseActivity {
                 public void onClick(View v) {
                    // Toast.makeText(ExerciseActivity.this, position+"", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ExerciseActivity.this, MuscleActivity.class);
-                    intent.putExtra("currentDay",ex.getDays().get(position));
-                    startActivity(intent);
+                    intent.putExtra("currentWorkout",ex);
+                    intent.putExtra("currentDay",position);
+                    startActivityForResult(intent,REQUEST_CODE);
                 }
             });
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Workout result = data.getExtras().getParcelable("currentWorkout");
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("workout",result);
+                Intent intent = new Intent(ExerciseActivity.this,ExerciseActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                ExerciseActivity.this.finish();
+                //Toast.makeText(this, "YEAH", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
+
+
+
 
     public static String[] tab10() {
         String[] dayNames = new String[ex.getSize()];

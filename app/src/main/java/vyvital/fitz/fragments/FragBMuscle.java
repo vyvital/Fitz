@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import vyvital.fitz.MuscleActivity;
 import vyvital.fitz.R;
 import vyvital.fitz.data.ExerciseAdapter;
 import vyvital.fitz.data.models.Days;
@@ -35,6 +36,7 @@ public class FragBMuscle extends Fragment {
     private Animation bottomUp;
     private static Animation bottomDown;
     Days day;
+    public MuscleActivity muscleActivity;
 
     public FragBMuscle() {
         // Required empty public constructor
@@ -56,8 +58,8 @@ public class FragBMuscle extends Fragment {
             trans = getArguments().getString("TRANS");
             muscle = getArguments().getParcelable("MUSCLE");
             img = getArguments().getInt("PHOTO");
-            day = getArguments().getParcelable("currentDay");
         }
+        muscleActivity = (MuscleActivity)getActivity();
     }
 
 
@@ -69,7 +71,7 @@ public class FragBMuscle extends Fragment {
         exerciseRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         exerciseRV.setLayoutManager(mLayoutManager);
-        exerciseRV.setAdapter(new ExerciseAdapter(getActivity(), muscle.getExercises(), img));
+        exerciseRV.setAdapter(new ExerciseAdapter(getActivity(), muscle.getExercises(), img,muscleActivity));
         bottomUp = AnimationUtils.loadAnimation(getContext(), R.anim.bottom_up);
         bottomDown = AnimationUtils.loadAnimation(getContext(), R.anim.bottom_down);
         exerciseRV.startAnimation(bottomUp);

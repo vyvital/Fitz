@@ -47,6 +47,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     String[] day_data = {"1 Day", "2 Days", "3 Days", "4 Days", "5 Days", "6 days", "7 Days"};
     Dialog workoutDialog;
     Dialog workoutDialogDays;
+    Context context;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef = null;
     private ConstraintLayout constraintLayout;
@@ -62,7 +63,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         View emptyView = findViewById(R.id.empty_view);
         FloatingActionButton fab = findViewById(R.id.fab);
         constraintLayout = findViewById(R.id.constraintLayout);
-
+        context = BuilderActivity.this;
         mDatabase = FirebaseDatabase.getInstance();
 
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
@@ -109,21 +110,9 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     Workout workout = childDataSnapshot.getValue(Workout.class);
                     workoutList.add(workout);
-//                    List<Exercise> exercises = muscle.getExercises();
-//                    Log.d("BOOM", exercises.get(0).getName());
-//                    Log.d("BOOM",exercises.get(0).getMechanics());
-//                    Log.d("BOOM", (String.valueOf(exercises.get(0).getID())));
-//                    List<Equipment> equipment = exercises.get(0).getEquip();
-//
-//                    for (int i = 0 ; i < equipment.size() ; i++)
-//                        Log.d("xalue is" , equipment.get(i).getName());
-
-                    //Log.v("BOOM",""+ childDataSnapshot.getKey()); //displays the key for the node
-                    //Log.v("BOOM2",""+ childDataSnapshot.child("0").child("name").getValue());   //gives the value for given keyname
                 }
-                adapter = new RVAdapter(workoutList);
+                adapter = new RVAdapter(workoutList,context);
                 rv.setAdapter(adapter);
-
             }
 
             @Override
@@ -631,4 +620,5 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             snackbar.show();
         }
     }
+
 }

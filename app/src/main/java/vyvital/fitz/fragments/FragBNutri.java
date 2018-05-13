@@ -59,7 +59,7 @@ public class FragBNutri extends Fragment{
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
         mEditor.putInt("TDEE",tdee);
-        mEditor.putLong("WEIGHT",Double.doubleToLongBits(wt));
+        mEditor.putString("WEIGHT",String.valueOf(wt));
         mEditor.putInt("GOAL",goal);
         mEditor.apply();
 

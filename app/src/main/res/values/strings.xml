@@ -89,6 +89,15 @@
     <string name="fitz_fitness_lifestyle"><![CDATA[Fitz - Fitness & Lifestyle]]></string>
     <string name="vyvital">vyvital</string>
     <string name="save">save</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="zero">0</string>
+    <string name="prog_name">Program Name</string>
+    <string name="let_s_go">Let\'s Go!!!</string>
+    <string name="name2">Name</string>
+    <string name="program">Program</string>
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
 
 
 </resources>
