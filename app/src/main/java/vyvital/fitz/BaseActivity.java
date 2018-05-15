@@ -59,11 +59,13 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private Menu drawerMenu;
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
+        BaseActivity.context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -221,6 +223,12 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 aboutDialog.show();
                 mDrawerLayout.closeDrawers();
                 break;
+            case R.id.FAQ:
+                Intent intent5 = new Intent(this, FAQActivity.class);
+                startActivity(intent5);
+                mDrawerLayout.closeDrawers();
+                break;
+
             case R.id.logout:
                 signOut();
                 finish();
@@ -229,12 +237,15 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         return false;
     }
 
-    private void lunch(String link) {
+    private static void lunch(String link) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        startActivity(browserIntent);
+        getAppContext().startActivity(browserIntent);
     }
 
-    private class CheckTask extends AsyncTask<String, Void, String> {
+    public static Context getAppContext() {
+        return BaseActivity.context;
+    }
+    public static class CheckTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected void onPreExecute() {
@@ -243,7 +254,8 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         @Override
         protected String doInBackground(String... params) {
             String strUrl = params[0];
-            ConnectivityManager connMan = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+            ConnectivityManager connMan = (ConnectivityManager) getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
             assert connMan != null;
             NetworkInfo netInfo = connMan.getActiveNetworkInfo();
             if (netInfo != null && netInfo.isConnected()) {
@@ -257,8 +269,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                     } else {
                         return null;
                     }
-                } catch (MalformedURLException e1) {
-                    return e1.getMessage();
                 } catch (IOException e) {
                     return e.getMessage();
                 }
@@ -269,7 +279,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         @Override
         protected void onPostExecute(String result) {
             if (result == null)
-                Toast.makeText(BaseActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getAppContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
             else
                 lunch(result);
 

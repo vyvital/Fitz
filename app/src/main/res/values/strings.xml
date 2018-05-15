@@ -98,6 +98,8 @@
     <string name="program">Program</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
+    <string name="ok">OK</string>
+    <string name="faq">FAQ</string>
 
 
 </resources>

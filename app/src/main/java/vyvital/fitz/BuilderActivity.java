@@ -16,6 +16,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -77,7 +79,8 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setLayoutManager(llm);
         rv.setEmptyView(emptyView);
-
+        Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.item_animation_from_right);
+        rv.startAnimation(bottomUp);
         ItemTouchHelper.SimpleCallback touchHelperCallBack = new RecyclerTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(touchHelperCallBack).attachToRecyclerView(rv);
         initializeData();

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialogLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+
+    <RelativeLayout
+        android:id="@+id/con"
+        android:layout_width="320dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:background="@drawable/corner_bg"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Success"
+            android:textColor="@color/black"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/success"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-light"
+            android:padding="8dp"
+            android:text="quote"
+            android:textColor="@color/black"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ok"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-light"
+            android:text="We'll see you soon!"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/ok"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/corner_bgc"
+            android:elevation="4dp"
+            android:fontFamily="@font/qanelas"
+            android:text="@string/ok"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabfake"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_above="@id/con"
+        android:src="@drawable/ic_done_black_24dp"
+        app:elevation="0dp"
+        app:layout_anchor="@id/con"
+        app:layout_anchorGravity="center_horizontal" />
+
+
+</android.support.design.widget.CoordinatorLayout>

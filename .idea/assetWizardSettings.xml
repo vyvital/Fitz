@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_save_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_done_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="fbfdff" />
-                            <entry key="outputName" value="ic_save_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\Vital\Desktop\if_linkedin_circle_color_107178.svg" />
+                            <entry key="outputName" value="ic_myfitnesspal" />
+                            <entry key="sourceFile" value="C:\Users\Vital\Desktop\myfitnesspal.svg" />
                           </map>
                         </option>
                       </PersistentState>

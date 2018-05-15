@@ -11,7 +11,7 @@
     <group
         android:id="@+id/menu_bottom"
         >
-    <item android:id="@+id/Setting" android:title="@string/setting" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_settings_black_24dp"/>
+    <item android:id="@+id/FAQ" android:title="@string/faq" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_question_mark"/>
     <item android:id="@+id/info" android:title="@string/about" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_info_outline_black_24dp"/>
     <item android:id="@+id/logout" android:title="@string/sign_out" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_login_variant" />
     </group>

@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,7 +60,6 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         for (int z = 0; z < 10; z++) {
             equip.add(z + " Sets");
         }
-
         final ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_spinner_item, equip);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -68,7 +69,6 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
             adapter = new ChildAdapter(context, ex.getSets(),true);
         else
             adapter = new ChildAdapter(context, ex.getSets());
-
         viewHolder.rv.setAdapter(adapter);
         viewHolder.sets.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -94,7 +94,62 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
 
             }
         });
-
+        switch (ex.getId().substring(0, 1)) {
+            case "1":
+                Glide.with(context).load(R.drawable.mchest).into(viewHolder.img);
+                break;
+            case "2":
+                Glide.with(context).load(R.drawable.mback).into(viewHolder.img);
+                break;
+            case "3":
+                switch (ex.getId()) {
+                    case "316":
+                    case "317":
+                        Glide.with(context).load(R.drawable.mcalf).into(viewHolder.img);
+                        break;
+                    case "301":
+                    case "302":
+                    case "303":
+                    case "304":
+                    case "311":
+                    case "312":
+                    case "314":
+                    case "315":
+                        Glide.with(context).load(R.drawable.mquad).into(viewHolder.img);
+                        break;
+                    default:
+                        Glide.with(context).load(R.drawable.mham).into(viewHolder.img);
+                        break;
+                }
+                break;
+            case "4":
+                Glide.with(context).load(R.drawable.mdelt).into(viewHolder.img);
+                break;
+            case "5":
+                Glide.with(context).load(R.drawable.mbicep).into(viewHolder.img);
+                break;
+            case "6":
+                Glide.with(context).load(R.drawable.mtriceps).into(viewHolder.img);
+                break;
+            case "7":
+                switch (ex.getId()) {
+                    case "711":
+                    case "712":
+                    case "713":
+                        Glide.with(context).load(R.drawable.mobliq).into(viewHolder.img);
+                        break;
+                    default:
+                        Glide.with(context).load(R.drawable.mabs).into(viewHolder.img);
+                        break;
+                }
+                break;
+            case "8":
+                Glide.with(context).load(R.drawable.mtest).into(viewHolder.img);
+                break;
+            case "9":
+                Glide.with(context).load(R.drawable.mccro).into(viewHolder.img);
+                break;
+        }
         if (today)
             viewHolder.sets.setEnabled(false);
 

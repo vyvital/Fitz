@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container"
     tools:context="vyvital.fitz.WorkingOutActivity">
 
     <LinearLayout
@@ -44,7 +45,6 @@
                 android:text="@string/pause"
                 android:theme="@style/ButtonStyle" />
 
-
         </LinearLayout>
         <Chronometer
             android:id="@+id/chrono"
@@ -56,16 +56,15 @@
             android:textSize="60sp"
             android:format="%S"
             />
-        <!--<TextView-->
-            <!--android:id="@+id/stopwatch"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="2"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:fontFamily="@font/qanelasbold"-->
-            <!--android:text="00:00"-->
-            <!--android:textSize="58sp"-->
-            <!--/>-->
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Done"
+
+            />
     </LinearLayout>
 
 

@@ -56,6 +56,7 @@ dependencies {
     implementation 'com.github.natasam:DemoProgressViewsLibApp:5843c69b44'
     implementation ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.11.0@aar'){
         transitive=true }
+    implementation 'com.github.jinatonic.confetti:confetti:1.1.1'
 
 }
 apply plugin: 'com.google.gms.google-services'

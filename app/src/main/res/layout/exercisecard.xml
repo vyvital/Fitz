@@ -36,7 +36,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="6dp"
             android:layout_toEndOf="@id/exPhoto"
-            android:fontFamily="@font/qanelas"
+            android:fontFamily="sans-serif"
             android:singleLine="true"
             android:textSize="24sp"
             tools:text="Exercise Name" />

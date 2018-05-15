@@ -31,7 +31,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/muscle_photo"
-        android:fontFamily="@font/qanelas"
+        android:fontFamily="sans-serif"
         android:singleLine="true"
         android:textSize="24sp"
         tools:text="Exercise Name" />

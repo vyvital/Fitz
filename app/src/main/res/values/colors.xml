@@ -14,6 +14,13 @@
     <color name="mainLight">#f8bbad</color>
     <color name="lightGrey">#4E5159</color>
     <color name="colorPrimaryRipple">#F16343</color>
+    <color name="lightGreen">#2E7D32</color>
+    <color name="black">#000000</color>
+    <color name="gold_dark">#946335</color>
+    <color name="gold_med">#ab804b</color>
+    <color name="gold">#cea774</color>
+    <color name="gold_light">#edd3b2</color>
+    <color name="mfp">#147FCC</color>
 
 
 </resources>

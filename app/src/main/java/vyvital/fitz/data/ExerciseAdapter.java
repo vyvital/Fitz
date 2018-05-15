@@ -60,9 +60,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.musclecard, parent, false);
-
-
-
         return new MyViewHolder(itemView);
     }
 

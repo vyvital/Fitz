@@ -31,7 +31,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
+
         </activity>
+
         <activity
             android:name=".ExerciseActivity"
             android:windowSoftInputMode="adjustNothing" />
@@ -41,7 +43,7 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".NutriActivity" />
         <activity android:name=".WorkingOutActivity" />
-
+        <activity android:name=".FAQActivity" />
         <receiver android:name=".data.FitzWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
