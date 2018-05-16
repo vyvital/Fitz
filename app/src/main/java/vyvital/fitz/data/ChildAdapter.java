@@ -47,9 +47,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
 
     @Override
     public void onBindViewHolder(final ChildViewHolder viewHolder, final int position) {
-        Sets s = setsList.get(position);
-        viewHolder.weight.setText(String.valueOf(s.getWeight()));
-        viewHolder.reps.setText(String.valueOf(s.getReps()));
+        Sets set = setsList.get(position);
+        viewHolder.weight.setTag(set);
+        viewHolder.reps.setTag(set);
+        viewHolder.weight.setText(String.valueOf(set.getWeight()));
+        viewHolder.reps.setText(String.valueOf(set.getReps()));
         if (today) {
             viewHolder.reps.setEnabled(false);
             viewHolder.weight.setEnabled(false);
@@ -84,8 +86,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
                 @Override
                 public void afterTextChanged(Editable s) {
                     if (s.length() > 0)
-                        setsList.get(position).setReps(Integer.parseInt(s.toString()));
-                    if (s.toString().equals(""))
+                        ((Sets) viewHolder.reps.getTag()).setReps(Integer.parseInt(s.toString()));
+                    else if (s.toString().equals(""))
                         viewHolder.reps.setText("0");
                 }
             });
@@ -102,7 +104,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
                 @Override
                 public void afterTextChanged(Editable s) {
                     if (s.length() > 0)
-                        setsList.get(position).setWeight(Integer.parseInt(s.toString()));
+                        ((Sets) viewHolder.weight.getTag()).setWeight(Integer.parseInt(s.toString()));
                     if (s.toString().equals(""))
                         viewHolder.weight.setText("0");
                 }
