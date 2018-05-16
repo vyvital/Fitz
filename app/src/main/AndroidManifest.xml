@@ -41,9 +41,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-
         </activity>
-
         <activity
             android:name=".ExerciseActivity"
             android:windowSoftInputMode="adjustPan"
@@ -73,6 +71,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/fitz_widget_provider_info" />
         </receiver>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="0c4aa1ae73af0999a5a34e09cb4f42ff37f0ca5c"
+            />
     </application>
 
 </manifest>

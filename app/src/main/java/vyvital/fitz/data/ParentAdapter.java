@@ -57,7 +57,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         viewHolder.name.setText(ex.getName());
         viewHolder.equipment.setText(ex.getEquip());
         List<String> equip = new ArrayList<>();
-        for (int z = 0; z < 10; z++) {
+        for (int z = 0; z <= 10; z++) {
             equip.add(z + " Sets");
         }
         final ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context,
@@ -78,13 +78,13 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
                     for (int t = position - s.size(); t > 0; t--) {
                         s.add(new Sets());
                     }
-                } else if (position < s.size()) {
-                    for (int t = 0; t < s.size() - position; t++) {
+                    ex.setSets(s);
+                } else if (position < s.size() && position != 0) {
+                    while (s.size() > position)
                         s.remove(s.size() - 1);
-                    }
+                    ex.setSets(s);
                 } else if (position == 0)
-                    s.clear();
-                ex.setSets(s);
+                    onItemDismiss(position);
                 viewHolder.rv.getAdapter().notifyDataSetChanged();
                 adapter.notifyDataSetChanged();
             }
