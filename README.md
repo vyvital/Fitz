@@ -1,7 +1,7 @@
 <p align="center"><img src="assets/icoico.png" width=280</p>
 <h2 align="center"><b>Fitz - Fitness Android App</b></h2>
 <h4 align="center">An android application focused on achieving fitness and health goals in a more convenient way.</h4>
-<h3 align="center">*[Download Fitz APK here!](https://github.com/vyvital/Fitz/releases)*
+<h3 align="center">*[Download Fitz APK here!](https://github.com/vyvital/Fitz/releases)* </h3>
 
 ## Description
 
