@@ -1,7 +1,7 @@
-<p align="center"><img src="assets/icoico.png"</p>
+<p align="center"><img src="assets/icoico.png" width=280</p>
 <h2 align="center"><b>Fitz - Fitness Android App</b></h2>
 <h4 align="center">An android application focused on achieving fitness and health goals in a more convenient way.</h4>
-<h3 align="center">[*Download Fitz APK here!*](https://github.com/vyvital/Fitz/assets/Fitz.apk)
+<h3 align="center">[*Download Fitz APK here!*](assets/Fitz.apk)
 
 ## Description
 
@@ -25,9 +25,9 @@ It's time you stop bringing your workout routine sheet to the gym and just pop i
 
 ## Screenshots
 
-<img src="assets/1.png" width=300/><img src="assets/2.png" width=300/><img src="assets/3.png" width=300/>
-<img src="assets/4.png" width=300/><img src="assets/5.png" width=300/> <img src="assets/6.png" width=300/>
-<img src="assets/7.png" width=300/><img src="assets/8.png" width=300/><img src="assets/9.png" width=300/>
+<img src="assets/1.png" width=280/><img src="assets/2.png" width=280/><img src="assets/3.png" width=280/>
+<img src="assets/4.png" width=280/><img src="assets/5.png" width=280/> <img src="assets/6.png" width=280/>
+<img src="assets/7.png" width=280/><img src="assets/8.png" width=280/><img src="assets/9.png" width=280/>
 
 ## Open-source libraries:
 
