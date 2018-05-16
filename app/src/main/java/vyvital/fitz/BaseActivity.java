@@ -38,12 +38,10 @@ import com.google.firebase.auth.UserInfo;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import vyvital.fitz.data.models.User;
-
 
 public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
 
@@ -55,10 +53,8 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     Dialog aboutDialog;
     private GoogleSignInClient mGoogleSignInClient;
     private FrameLayout view_stub; //This is the framelayout to keep your content view
-    private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private Menu drawerMenu;
     private static Context context;
 
     @Override
@@ -74,21 +70,19 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         // [END config_signin]
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         view_stub = findViewById(R.id.view_stub);
-        navigation_view = findViewById(R.id.navigation_view);
+        NavigationView navigation_view = findViewById(R.id.navigation_view);
         mDrawerLayout = findViewById(R.id.drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 0, 0);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         BitmapDrawable backgrd = new BitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.bar));
         getSupportActionBar().setBackgroundDrawable(backgrd);
-        drawerMenu = navigation_view.getMenu();
+        Menu drawerMenu = navigation_view.getMenu();
         for (int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
         }
-        NavigationView navigationView = findViewById(R.id.navigation_view);
 
-        View header = navigationView.getHeaderView(0);
-        /*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+        View header = navigation_view.getHeaderView(0);
         TextView name = header.findViewById(R.id.userN);
         TextView email = header.findViewById(R.id.userE);
         CircleImageView img = header.findViewById(R.id.profile_image);
@@ -113,7 +107,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         aboutDialog = new Dialog(this);
     }
 
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -127,9 +120,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /* Override all setContentView methods to put the content view to the FrameLayout view_stub
-     * so that, we can make other activity implementations looks like normal activity subclasses.
-     */
     @Override
     public void setContentView(int layoutResID) {
         if (view_stub != null) {
@@ -167,7 +157,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
             return true;
         }
         // Handle your other action bar items...
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -211,7 +200,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                             lunch(LINKEDIN);
                         } else
                             Toast.makeText(BaseActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
-
                     }
                 });
                 git.setOnClickListener(new View.OnClickListener() {
@@ -232,7 +220,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
             case R.id.logout:
                 signOut();
                 finish();
-
         }
         return false;
     }
@@ -245,6 +232,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     public static Context getAppContext() {
         return BaseActivity.context;
     }
+
     public static class CheckTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -282,8 +270,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                 Toast.makeText(getAppContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
             else
                 lunch(result);
-
-
         }
     }
 
@@ -298,8 +284,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                         Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
                         Toast.makeText(BaseActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
-
-
                     }
                 });
     }

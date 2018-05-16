@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/your_tdee_is"
-        android:textSize="32sp"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/qanelasbold"
+        android:text="@string/your_tdee_is"
         android:textColor="@color/colorAccent"
-        android:layout_gravity="center"
-        />
+        android:textSize="32sp" />
+
     <TextView
         android:id="@+id/tdee2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="234234"
-        android:textSize="32sp"/>
+        tools:text="@string/_234234"
+        android:textSize="32sp" />
 
     <TextView
         android:id="@+id/title2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/qanelas"
         android:gravity="center"
-        android:textSize="18sp"
         android:text="@string/please_select_your_goal"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:textSize="18sp" />
 
     <belka.us.androidtoggleswitch.widgets.ToggleSwitch
         android:id="@+id/goal_switch"
@@ -41,210 +42,215 @@
         android:layout_gravity="center"
         android:layout_marginTop="6dp"
         android:textSize="14sp"
-        app:toggleWidth="117dp"
-        app:textToggleCenter="Maintenance"
-        app:textToggleLeft="Fat Loss"
-        app:textToggleRight="Mass Gain"
+        app:activeBgColor="@color/colorAccent"
         app:cornerRadius="8dp"
         app:inactiveBgColor="@color/lightGrey"
         app:inactiveTextColor="@color/white"
-        app:activeBgColor="@color/colorAccent"
         app:separatorColor="@color/white"
-        />
-
+        app:textToggleCenter="Maintenance"
+        app:textToggleLeft="Fat Loss"
+        app:textToggleRight="Mass Gain"
+        app:toggleWidth="117dp" />
 
     <TextView
         android:id="@+id/activity_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorAccent"
         android:layout_gravity="center"
-        android:text="@string/to_reach_your_goal_you_will_need_to_consume"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/qanelas"
-        />
+        android:text="@string/to_reach_your_goal_you_will_need_to_consume"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/tdee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="234234"
-            android:textSize="24sp"/>
+            tools:text="@string/_234234"
+            android:textSize="24sp" />
+
         <TextView
-            android:layout_marginTop="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/colorAccent"
             android:layout_gravity="center"
-            android:text="@string/calories"
+            android:layout_marginTop="3dp"
             android:fontFamily="@font/qanelas"
-            />
+            android:text="@string/calories"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp" />
     </LinearLayout>
-  <LinearLayout
-      android:layout_gravity="center"
-      android:layout_marginTop="8dp"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_marginStart="25dp"
-          >
-          <TextView
 
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/calories_from_protein"
-              android:fontFamily="@font/qanelas"
-              />
-          <TextView
-              android:id="@+id/cal_protein"
-              android:textSize="16sp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:text="234234"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/swirl"
-              />
-          <TextView
-              android:id="@+id/gram_protein"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:layout_gravity="center"
-              android:text="345"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/grams"
-              />
-      </LinearLayout>
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_marginStart="25dp">
-          <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
 
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/calories_from_fat"
-              android:fontFamily="@font/qanelas"
-              />
-          <TextView
-              android:id="@+id/cal_fat"
-              android:textSize="16sp"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:text="234234"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/swirl"
-              />
-          <TextView
-              android:id="@+id/gram_fat"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:layout_gravity="center"
-              android:text="345"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/grams"
-              />
-      </LinearLayout>
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_marginStart="25dp">
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:textSize="16sp"
-              android:text="@string/calories_from_carbs"
-              android:fontFamily="@font/qanelas"
-              />
-          <TextView
-              android:id="@+id/cal_carb"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:textSize="16sp"
-              android:text="234234"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/swirl"
-              />
-          <TextView
-              android:id="@+id/gram_carb"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:layout_gravity="center"
-              android:text="345"
-              />
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="16sp"
-              android:textColor="@color/colorAccent"
-              android:layout_gravity="center"
-              android:text="@string/grams"
-              />
-      </LinearLayout>
-      <com.github.mikephil.charting.charts.PieChart
-          android:padding="22dp"
-          android:id="@+id/chart"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginBottom="4dp"
-          />
-  </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/qanelas"
+                android:text="@string/calories_from_protein"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cal_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="@string/_234234"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/swirl"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/gram_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="@string/_234234"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/grams"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/qanelas"
+                android:text="@string/calories_from_fat"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cal_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="@string/_234234"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/swirl"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/gram_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="@string/_234234"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/grams"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/qanelas"
+                android:text="@string/calories_from_carbs"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cal_carb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="@string/_234234"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/swirl"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/gram_carb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:text="@string/_234234"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/grams"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:padding="22dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,9 +1,8 @@
 package vyvital.fitz.data.models;
 
-
 import java.util.List;
 
-public class User  {
+public class User {
     public String email;
     public String id;
     public List<Workout> workoutList;
@@ -22,7 +21,6 @@ public class User  {
         if (workouts != null)
             this.workoutList = workouts;
     }
-
 
     public String getEmail() {
         return email;

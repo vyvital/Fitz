@@ -3,12 +3,9 @@ package vyvital.fitz.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
-
-
 import java.util.List;
 
-public class Exercises  implements Parcelable {
+public class Exercises implements Parcelable {
 
     private List<Sets> sets;
     private List<Object> s;
@@ -17,8 +14,7 @@ public class Exercises  implements Parcelable {
     private String mechanics;
     private String equip;
 
-    public Exercises()
-    {
+    public Exercises() {
 
     }
 
@@ -30,7 +26,6 @@ public class Exercises  implements Parcelable {
         this.equip = equip;
         this.sets = sets;
     }
-
 
     protected Exercises(Parcel in) {
 
@@ -53,7 +48,6 @@ public class Exercises  implements Parcelable {
         }
     };
 
-
     public String getId() {
         return id;
     }
@@ -74,7 +68,6 @@ public class Exercises  implements Parcelable {
     public int describeContents() {
         return 0;
     }
-
 
     public void setId(String id) {
         this.id = id;
@@ -108,7 +101,4 @@ public class Exercises  implements Parcelable {
         dest.writeString(mechanics);
         dest.writeTypedList(sets);
     }
-
-
-
 }

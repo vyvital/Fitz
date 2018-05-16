@@ -1,5 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
+<resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
@@ -8,6 +7,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
+
     <style name="AppTheme2" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
@@ -18,7 +18,6 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
-
     <!-- Dark Buttons -->
     <style name="ThemeOverlay.MyDarkButton" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorButtonNormal">@color/colorAccent</item>
@@ -28,7 +27,6 @@
     </style>
 
     <!-- Light EditTexts -->
-
     <style name="ThemeOverlay.MyTextDetail" parent="AppTheme">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -53,10 +51,7 @@
         <item name="colorControlActivated">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorPrimaryLight</item>
     </style>
-    <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">
-        <item name="android:layout_marginTop">@dimen/icon_top_margin</item>
-        <item name="android:layout_marginBottom">@dimen/icon_bottom_margin</item>
-    </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">@color/colorGrey</item>

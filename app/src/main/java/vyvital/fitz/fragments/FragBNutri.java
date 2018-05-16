@@ -1,6 +1,5 @@
 package vyvital.fitz.fragments;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -25,8 +23,7 @@ import java.util.List;
 import belka.us.androidtoggleswitch.widgets.ToggleSwitch;
 import vyvital.fitz.R;
 
-
-public class FragBNutri extends Fragment{
+public class FragBNutri extends Fragment {
     public static final String TAG = FragBNutri.class.getSimpleName();
     int tdee = 0;
     int goal = 0;
@@ -35,6 +32,7 @@ public class FragBNutri extends Fragment{
     int protein = 0;
     int carbs = 0;
     int fats = 0;
+
     public FragBNutri() {
         // Required empty public constructor
     }
@@ -46,23 +44,21 @@ public class FragBNutri extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments()!=null){
+        if (getArguments() != null) {
             tdee = getArguments().getInt("TDEE");
             wt = getArguments().getDouble("WEIGHT");
             goal = getArguments().getInt("GOAL");
-            update(tdee,wt,goal);
+            update(tdee, wt, goal);
         }
-
     }
 
-    private void update(int tdee, double wt,int goal) {
+    private void update(int tdee, double wt, int goal) {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
-        mEditor.putInt("TDEE",tdee);
-        mEditor.putString("WEIGHT",String.valueOf(wt));
-        mEditor.putInt("GOAL",goal);
+        mEditor.putInt("TDEE", tdee);
+        mEditor.putString("WEIGHT", String.valueOf(wt));
+        mEditor.putInt("GOAL", goal);
         mEditor.apply();
-
     }
 
     @Override
@@ -70,6 +66,7 @@ public class FragBNutri extends Fragment{
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_nutri_b, container, false);
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -88,11 +85,11 @@ public class FragBNutri extends Fragment{
         tdd.setText(String.valueOf(tdee));
         cals = tdee;
         List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry((int) (wt * 1.8 ), "Protein"));
-        entries.add(new PieEntry((int) (cals - cals * 0.3 - wt*1.8*4)/4, "Carb"));
-        entries.add(new PieEntry((int) (cals * 0.3/9), "Fat"));
+        entries.add(new PieEntry((int) (wt * 1.8), "Protein"));
+        entries.add(new PieEntry((int) (cals - cals * 0.3 - wt * 1.8 * 4) / 4, "Carb"));
+        entries.add(new PieEntry((int) (cals * 0.3 / 9), "Fat"));
         PieDataSet set = new PieDataSet(entries, null);
-        set.setColors(getResources().getColor(R.color.bluez), getResources().getColor(R.color.greenz),getResources().getColor(R.color.red));
+        set.setColors(getResources().getColor(R.color.bluez), getResources().getColor(R.color.greenz), getResources().getColor(R.color.red));
         set.setSliceSpace(3f);
         set.setSelectionShift(9f);
         set.setValueFormatter(new PercentFormatter());
@@ -103,32 +100,34 @@ public class FragBNutri extends Fragment{
         pie.setHoleColor(getResources().getColor(R.color.colorGrey));
         pie.setHoleRadius(35f);
         pie.setData(data);
-        pie.spin(500,0,-360f, Easing.EasingOption.EaseInOutQuad);
+        pie.spin(500, 0, -360f, Easing.EasingOption.EaseInOutQuad);
         p.setText(String.valueOf(((int) (wt * 1.8 * 4))));
         f.setText(String.valueOf(((int) (cals * 0.3))));
-        c.setText(String.valueOf(cals-((int) (wt * 1.8 * 4)) - ((int) (cals * 0.3))));
-        gp.setText(String.valueOf(((int) (wt * 1.8 ))));
+        c.setText(String.valueOf(cals - ((int) (wt * 1.8 * 4)) - ((int) (cals * 0.3))));
+        gp.setText(String.valueOf(((int) (wt * 1.8))));
         gf.setText(String.valueOf(((int) (cals * 0.3 / 9))));
-        gc.setText(String.valueOf((int)(cals-(wt * 1.8 * 4) -  (cals * 0.3))/4));
-        update(tdee,wt,tdee);
-        ts.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener(){
+        gc.setText(String.valueOf((int) (cals - (wt * 1.8 * 4) - (cals * 0.3)) / 4));
+        update(tdee, wt, tdee);
+        ts.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener() {
             @Override
             public void onToggleSwitchChangeListener(int position, boolean isChecked) {
-                if (position==0) {
-                    cals = tdee-250;
-                    protein = ((int) (wt * 2.1 * 4));
-                    fats = ((int)( wt * 9));
+                switch (position) {
+                    case 0:
+                        cals = tdee - 250;
+                        protein = ((int) (wt * 2.1 * 4));
+                        fats = ((int) (wt * 9));
 
-                }
-                else if (position==2) {
-                    cals = tdee+200;
-                    protein = ((int) (wt * 1.8 * 4));
-                    fats = ((int) (cals * 0.25));
-                }
-                else  {
-                    cals=tdee;
-                    protein = ((int) (wt * 1.8 * 4));
-                    fats = ((int) (cals * 0.3));
+                        break;
+                    case 2:
+                        cals = tdee + 200;
+                        protein = ((int) (wt * 1.8 * 4));
+                        fats = ((int) (cals * 0.25));
+                        break;
+                    default:
+                        cals = tdee;
+                        protein = ((int) (wt * 1.8 * 4));
+                        fats = ((int) (cals * 0.3));
+                        break;
                 }
                 goal = cals;
                 carbs = cals - protein - fats;
@@ -136,15 +135,15 @@ public class FragBNutri extends Fragment{
                 p.setText(String.valueOf(protein));
                 f.setText(String.valueOf(fats));
                 c.setText(String.valueOf(carbs));
-                gp.setText(String.valueOf(protein/4));
-                gf.setText(String.valueOf(fats/9));
-                gc.setText(String.valueOf(carbs/4));
+                gp.setText(String.valueOf(protein / 4));
+                gf.setText(String.valueOf(fats / 9));
+                gc.setText(String.valueOf(carbs / 4));
                 List<PieEntry> entries = new ArrayList<>();
-                entries.add(new PieEntry(protein/4, "Protein"));
-                entries.add(new PieEntry(carbs/4, "Carb"));
-                entries.add(new PieEntry(fats/9, "Fat"));
+                entries.add(new PieEntry(protein / 4, "Protein"));
+                entries.add(new PieEntry(carbs / 4, "Carb"));
+                entries.add(new PieEntry(fats / 9, "Fat"));
                 PieDataSet set = new PieDataSet(entries, null);
-                set.setColors(getResources().getColor(R.color.bluez), getResources().getColor(R.color.greenz),getResources().getColor(R.color.red));
+                set.setColors(getResources().getColor(R.color.bluez), getResources().getColor(R.color.greenz), getResources().getColor(R.color.red));
                 set.setSliceSpace(3f);
                 set.setSelectionShift(9f);
                 set.setValueFormatter(new PercentFormatter());
@@ -157,12 +156,8 @@ public class FragBNutri extends Fragment{
                 pie.setData(data);
                 pie.notifyDataSetChanged();
                 pie.invalidate();
-                update(tdee,wt,goal);
+                update(tdee, wt, goal);
             }
-
         });
-
     }
-
-
 }

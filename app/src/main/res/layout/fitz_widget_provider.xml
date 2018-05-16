@@ -1,55 +1,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetID"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/widget_margin"
     android:gravity="center"
-    android:id="@+id/widgetID">
-
+    android:padding="@dimen/widget_margin">
 
     <ImageView
         android:id="@+id/appwidget_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:src="@drawable/widgetback"
-
-       />
+        android:layout_margin="8dp"
+        android:src="@drawable/widgetback" />
 
     <TextView
         android:id="@+id/user_cal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:text="@string/zero"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="24sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/prog_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="77dp"
-        android:layout_marginStart="43dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="74dp"
         android:maxLength="9"
         android:text="@string/program"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/prog_name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="97dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="90dp"
         android:maxLength="9"
         android:text="@string/name2"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="20sp" />
-
+        android:textSize="18sp" />
 
 </RelativeLayout>

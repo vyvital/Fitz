@@ -92,7 +92,6 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -137,6 +136,5 @@
         app:cb_color="@color/colorAccent"
         app:layout_anchor="@+id/master_frame"
         app:layout_anchorGravity="bottom|center" />
-
 
 </android.support.design.widget.CoordinatorLayout>

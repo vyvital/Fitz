@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-
 import vyvital.fitz.R;
 import vyvital.fitz.data.ParentAdapter;
 import vyvital.fitz.data.SimpleItemTouchHelperCallback;
 import vyvital.fitz.data.models.Days;
 
-public class ExerciseFragment extends Fragment{
-    private RecyclerView exRV;
+public class ExerciseFragment extends Fragment {
     Days d;
     private ItemTouchHelper mItemTouchHelper;
 
@@ -33,24 +31,20 @@ public class ExerciseFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         d = getArguments().getParcelable("w");
-        exRV = view.findViewById(R.id.exerciseRVuser);
+        RecyclerView exRV = view.findViewById(R.id.exerciseRVuser);
         exRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         exRV.setLayoutManager(mLayoutManager);
-        ParentAdapter adapter = new ParentAdapter(getActivity(),d.getExercises());
-        //ParentChildAdapter adapter = new ParentChildAdapter(getActivity(), d.getExercises());
+        ParentAdapter adapter = new ParentAdapter(getActivity(), d.getExercises());
         exRV.setAdapter(adapter);
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(exRV);
         Animation bottomUp = AnimationUtils.loadAnimation(getContext(), R.anim.bottom_up);
         exRV.startAnimation(bottomUp);
-
     }
 
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
     }
-
-
 }

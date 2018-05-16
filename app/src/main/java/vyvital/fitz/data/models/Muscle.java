@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-
 public class Muscle implements Parcelable {
 
     private String name;
@@ -21,13 +20,10 @@ public class Muscle implements Parcelable {
         this.exercises = exercises;
     }
 
-
     protected Muscle(Parcel in) {
         name = in.readString();
         exercises = in.createTypedArrayList(Exercise.CREATOR);
         id = in.readInt();
-        //exercises = new ArrayList<Exercise>();
-        //in.readList(exercises,Exercise.class.getClassLoader());
     }
 
     public static final Creator<Muscle> CREATOR = new Creator<Muscle>() {
@@ -53,7 +49,6 @@ public class Muscle implements Parcelable {
     public int getId() {
         return id;
     }
-
 
     @Override
     public int describeContents() {

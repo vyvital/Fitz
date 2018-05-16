@@ -3,28 +3,15 @@
     <string name="sign_out">Sign Out</string>
     <string name="Fitz">Fitz</string>
     <string name="loading">Loading…</string>
-    <string name="signed_in">Signed In</string>
-    <string name="desc_firebase_lockup">Firebase logo and name</string>
-    <string name="firebase_status_fmt">Firebase User: %s</string>
-    <string name="google_status_fmt">Google User: %s</string>
-    <string name="google_title_text">Google Sign In</string>
-    <string name="auth_failed">Authentication Failed</string>
     <string name="action_settings">Setting</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="emailpassword_title_text">Email and Password</string>
     <string name="reg">Don\'t have an account? <b>Sign Up</b></string>
     <string name="signup">Sign Up</string>
-    <string name="login">Login</string>
     <item name="visible" type="id" />
     <item name="masked" type="id" />
-
-    <string name="open">Open</string>
-    <string name="close">Close</string>
     <string name="nutrition"><![CDATA[Nutrition & Macros]]></string>
     <string name="progress">Progress</string>
-    <string name="setting">Setting</string>
     <string name="about">About</string>
     <string name="program_builder">Program Manager</string>
     <string name="home">Home</string>
@@ -37,7 +24,6 @@
     <string name="workout_name">Workout Name</string>
     <string name="workout_type">Workout Type</string>
     <string name="weekly_days">Weekly Days</string>
-
     <string name="chest_trans">chest</string>
     <string name="back_trans">back</string>
     <string name="legs_trans">legs</string>
@@ -47,7 +33,6 @@
     <string name="abs_trans">abs</string>
     <string name="cardio_trans">cardio</string>
     <string name="crossfit_trans">crossfit</string>
-    <string name="equipment">Equipment</string>
     <string name="delete">DELETE</string>
     <string name="lets_calculate_together">LETS CALCULATE TOGETHER!</string>
     <string name="tdee_total_daily_energy_expenditure">TDEE : Total Daily Energy Expenditure</string>
@@ -83,23 +68,32 @@
     <string name="next">NEXT</string>
     <string name="let_s_name_your_workout_days">Let\'s Name your workout days</string>
     <string name="name">name</string>
-    <string name="your_current_calorie_instake_is">Your current daily calorie instake is</string>
+    <string name="your_current_calorie_instake_is">Your current daily calorie intake is</string>
     <string name="please_calc">Please calculate your macros</string>
     <string name="set_default">Set Default</string>
     <string name="fitz_fitness_lifestyle"><![CDATA[Fitz - Fitness & Lifestyle]]></string>
     <string name="vyvital">vyvital</string>
     <string name="save">save</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
     <string name="zero">0</string>
-    <string name="prog_name">Program Name</string>
-    <string name="let_s_go">Let\'s Go!!!</string>
     <string name="name2">Name</string>
     <string name="program">Program</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="ok">OK</string>
     <string name="faq">FAQ</string>
-
-
+    <string name="version_1_0_0">Version 1.0.0</string>
+    <string name="_1234">1234</string>
+    <string name="day_1">Day 1</string>
+    <string name="day_2">Day 2</string>
+    <string name="day_3">Day 3</string>
+    <string name="day_4">Day 4</string>
+    <string name="day_5">Day 5</string>
+    <string name="day_6">Day 6</string>
+    <string name="day_7">Day 7</string>
+    <string name="success">Success</string>
+    <string name="we_ll_see_you_soon">We\'ll see you soon!</string>
+    <string name="myfitnesspal">myfitnesspal</string>
+    <string name="kg">Kg</string>
+    <string name="_234234">234234</string>
+    <string name="temp_name">Temp name</string>
 </resources>

@@ -21,20 +21,17 @@ public class BodyWeightAdapter extends RecyclerView.Adapter<BodyWeightAdapter.We
         this.weightList = weights;
     }
 
-
     @Override
     public WeightViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.weightcard, parent, false);
-        WeightViewHolder wvh = new WeightViewHolder(v);
-        return wvh;
+        return new WeightViewHolder(v);
     }
-
 
     @Override
     public void onBindViewHolder(WeightViewHolder holder, int position) {
         holder.weight.setText(String.valueOf(weightList.get(position).getWeight()));
         holder.date.setText(weightList.get(position).getTime());
-        holder.kg_lb.setText("Kg");
+        holder.kg_lb.setText(R.string.kg);
     }
 
     @Override
@@ -46,7 +43,6 @@ public class BodyWeightAdapter extends RecyclerView.Adapter<BodyWeightAdapter.We
         TextView weight, kg_lb, date, sign2;
         ImageView imageUrl;
 
-
         WeightViewHolder(View itemView) {
             super(itemView);
             weight = itemView.findViewById(R.id.weight);
@@ -56,5 +52,4 @@ public class BodyWeightAdapter extends RecyclerView.Adapter<BodyWeightAdapter.We
 //            imageUrl = itemView.findViewById(R.id.img);
         }
     }
-
 }

@@ -23,13 +23,14 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/qanelasbold"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/qanelasbold"
         android:gravity="center"
         android:text="@string/name"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/textView" />
+
     <TextView
         android:id="@+id/cals"
         android:layout_width="match_parent"
@@ -41,7 +42,7 @@
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/name"
-        app:layout_goneMarginTop="14dp"/>
+        app:layout_goneMarginTop="14dp" />
 
     <TextView
         android:id="@+id/calsNum"
@@ -50,7 +51,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/qanelasbold"
         android:gravity="center"
-        android:text="1234"
+        android:text="@string/_1234"
         android:textColor="@color/colorPrimary"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
     </LinearLayout>
 
 
@@ -108,6 +110,7 @@
         android:layout_marginStart="8dp"
         android:clickable="true"
         android:elevation="4dp"
+        android:focusable="true"
         android:src="@drawable/test1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,8 +120,7 @@
         app:poly_corner_radius="5"
         app:poly_shadow="true"
         app:poly_shadow_color="@android:color/black"
-        app:poly_vertices="6"
-        android:focusable="true" />
+        app:poly_vertices="6" />
 
     <net.grobas.view.PolygonImageView
         android:id="@+id/polygonFood"
@@ -129,6 +131,7 @@
         android:layout_marginStart="8dp"
         android:clickable="true"
         android:elevation="4dp"
+        android:focusable="true"
         android:src="@drawable/food"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,8 +142,7 @@
         app:poly_corner_radius="5"
         app:poly_shadow="true"
         app:poly_shadow_color="@android:color/black"
-        app:poly_vertices="6"
-        android:focusable="true" />
+        app:poly_vertices="6" />
 
     <net.grobas.view.PolygonImageView
         android:id="@+id/polygonProgress"
@@ -148,8 +150,9 @@
         android:layout_height="140dp"
         android:layout_marginBottom="75dp"
         android:layout_marginEnd="8dp"
-        android:elevation="4dp"
         android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
         android:src="@drawable/messu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,8 +162,7 @@
         app:poly_corner_radius="5"
         app:poly_shadow="true"
         app:poly_shadow_color="@android:color/black"
-        app:poly_vertices="6"
-        android:focusable="true" />
+        app:poly_vertices="6" />
 
     <ImageButton
         android:id="@+id/start"
@@ -172,27 +174,24 @@
         android:background="@drawable/start"
         android:clickable="true"
         android:elevation="6dp"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:focusable="true" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.natasa.progressviews.CircleSegmentBar
         android:id="@+id/segment_bar"
         android:layout_width="135dp"
         android:layout_height="135dp"
-        android:visibility="visible"
         android:layout_marginBottom="160dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="5dp"
+        android:visibility="visible"
+        app:bar_width="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:bar_width="14dp"
         app:progress_color="#f77630"
         app:progress_width="10dp" />
-
-
-
 
 </android.support.constraint.ConstraintLayout>

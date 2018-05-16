@@ -28,6 +28,7 @@
             android:hint="@string/workout_name"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
+
     </android.support.design.widget.TextInputLayout>
 
     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
@@ -119,9 +120,9 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/qanelas"
         android:padding="-50dp"
-        android:visibility="gone"
         android:text="@string/set_default"
         android:textColor="@color/colorAccent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cancel_adding"
         app:layout_constraintStart_toStartOf="parent"

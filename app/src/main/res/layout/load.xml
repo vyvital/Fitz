@@ -10,8 +10,7 @@
         android:id="@+id/txt_prog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/qanelas"
-        android:text="Loading..."
+        android:text="@string/loading"
         android:textColor="@color/colorAccent" />
 
     <com.wang.avi.AVLoadingIndicatorView
@@ -22,4 +21,5 @@
         android:visibility="visible"
         app:indicatorColor="@color/colorAccent"
         app:indicatorName="BallClipRotatePulseIndicator" />
+
 </LinearLayout>

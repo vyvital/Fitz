@@ -1,4 +1,5 @@
 package vyvital.fitz.data;
+
 import android.graphics.Canvas;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -77,7 +78,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
                 itemViewHolder.onItemSelected();
             }
         }
-
         super.onSelectedChanged(viewHolder, actionState);
     }
 
@@ -94,14 +94,15 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         }
     }
 
-
     public interface ItemTouchHelperAdapter {
         boolean onItemMove(int fromPosition, int toPosition);
+
         void onItemDismiss(int position);
     }
+
     public interface ItemTouchHelperViewHolder {
         void onItemSelected();
+
         void onItemClear();
     }
-
 }

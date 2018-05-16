@@ -6,12 +6,10 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.widget.RemoteViews;
 
 import vyvital.fitz.MainActivity;
 import vyvital.fitz.R;
-
 
 public class FitzWidgetProvider extends AppWidgetProvider {
 
@@ -19,15 +17,15 @@ public class FitzWidgetProvider extends AppWidgetProvider {
                                 int appWidgetId) {
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.fitz_widget_provider);
-        SharedPreferences mFav = context.getSharedPreferences("Tdee",  Context.MODE_PRIVATE);
+        SharedPreferences mFav = context.getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         int cal = mFav.getInt("GOAL", 0);
         String name = mFav.getString("WORK", "Pick a program");
         String first = "";
         String second = "";
-        for (int i = 0; i<name.length();i++){
-            if (name.charAt(i)==' '){
-                first = name.substring(0,i);
-                second = name.substring(i+1,name.length());
+        for (int i = 0; i < name.length(); i++) {
+            if (name.charAt(i) == ' ') {
+                first = name.substring(0, i);
+                second = name.substring(i + 1, name.length());
                 break;
             }
         }
@@ -60,4 +58,3 @@ public class FitzWidgetProvider extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 }
-

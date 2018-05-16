@@ -30,7 +30,6 @@
         android:text="@string/tdee_total_daily_energy_expenditure"
         android:textColor="@color/colorAccent" />
 
-
     <TextView
         android:id="@+id/age_txt"
         android:layout_width="wrap_content"
@@ -63,7 +62,6 @@
         android:text="@string/my_weight_is"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="159dp" />
-
 
     <EditText
         android:id="@+id/edit_age"
@@ -186,7 +184,6 @@
         app:textToggleRight="Very Active"
         app:toggleWidth="110dp" />
 
-
     <TextView
         android:id="@+id/activity_txt3"
         android:layout_width="wrap_content"
@@ -221,7 +218,6 @@
         app:bsb_show_thumb_text="true"
         app:bsb_track_color="@color/lightGrey" />
 
-
     <TextView
         android:id="@+id/activity_txt2"
         android:layout_width="wrap_content"
@@ -251,7 +247,6 @@
         app:textToggleLeft="Light"
         app:textToggleRight="Intense"
         app:toggleWidth="110dp" />
-
 
     <Button
         android:id="@+id/calculate"

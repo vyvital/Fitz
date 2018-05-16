@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
     tools:context="vyvital.fitz.WorkingOutActivity">
 
     <LinearLayout
@@ -20,9 +20,9 @@
         <LinearLayout
             android:id="@+id/miniLinearLayout"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
@@ -46,27 +46,25 @@
                 android:theme="@style/ButtonStyle" />
 
         </LinearLayout>
+
         <Chronometer
             android:id="@+id/chrono"
             android:layout_width="0dp"
-            android:layout_weight="2"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:fontFamily="@font/qanelasbold"
-            android:textSize="60sp"
             android:format="%S"
-            />
+            android:gravity="center"
+            android:textSize="60sp" />
 
         <Button
             android:id="@+id/done"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Done"
+            android:layout_weight="1"
+            android:text="@string/done" />
 
-            />
     </LinearLayout>
-
 
 
     <android.support.v7.widget.RecyclerView
@@ -80,4 +78,5 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
     </android.support.v7.widget.RecyclerView>
+
 </android.support.constraint.ConstraintLayout>

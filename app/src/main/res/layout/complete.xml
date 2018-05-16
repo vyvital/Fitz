@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialogLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent">
-
 
     <RelativeLayout
         android:id="@+id/con"
@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-light"
-            android:text="Success"
+            android:text="@string/success"
             android:textColor="@color/black"
             android:textSize="36sp" />
 
@@ -34,9 +34,9 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-light"
             android:padding="8dp"
-            android:text="quote"
             android:textColor="@color/black"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            tools:text="quote" />
 
         <TextView
             android:id="@+id/end"
@@ -45,7 +45,7 @@
             android:layout_above="@id/ok"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-light"
-            android:text="We'll see you soon!"
+            android:text="@string/we_ll_see_you_soon"
             android:textColor="@color/black" />
 
         <Button
@@ -74,6 +74,5 @@
         app:elevation="0dp"
         app:layout_anchor="@id/con"
         app:layout_anchorGravity="center_horizontal" />
-
 
 </android.support.design.widget.CoordinatorLayout>

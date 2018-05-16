@@ -1,7 +1,6 @@
 package vyvital.fitz.data;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -51,59 +50,70 @@ public class QaAdapter extends RecyclerView.Adapter<QaAdapter.MyViewHolder> {
         final boolean[] bool = {false};
         QA qa = qaList.get(position);
         holder.question.setText(qa.getQuestion());
-        if (position == 4){
-            SpannableString ss = new SpannableString(qa.getAnswer());
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View textView) {
-                    activity.mail();
-                }
-                @Override
-                public void updateDrawState(TextPaint ds) {
-                    super.updateDrawState(ds);
-                    ds.setUnderlineText(false);
-                }
-            };
-            ss.setSpan(clickableSpan,96,117, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            holder.answer.setText(ss);
-            holder.answer.setMovementMethod(LinkMovementMethod.getInstance());
-            holder.answer.setHighlightColor(Color.TRANSPARENT);
-        } else if (position == 5){
-            SpannableString ss = new SpannableString(qa.getAnswer());
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View textView) {
-                    activity.mail();
-                }
-                @Override
-                public void updateDrawState(TextPaint ds) {
-                    super.updateDrawState(ds);
-                    ds.setUnderlineText(false);
-                }
-            };
-            ss.setSpan(clickableSpan,159,180, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            holder.answer.setText(ss);
-            holder.answer.setMovementMethod(LinkMovementMethod.getInstance());
-            holder.answer.setHighlightColor(Color.TRANSPARENT);
-        } else if (position == 6){
-            SpannableString ss = new SpannableString(qa.getAnswer());
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View textView) {
-                    activity.mail();
-                }
-                @Override
-                public void updateDrawState(TextPaint ds) {
-                    super.updateDrawState(ds);
-                    ds.setUnderlineText(false);
-                }
-            };
-            ss.setSpan(clickableSpan,25,46, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            holder.answer.setText(ss);
-            holder.answer.setMovementMethod(LinkMovementMethod.getInstance());
-            holder.answer.setHighlightColor(Color.TRANSPARENT);
-        } else {
-            holder.answer.setText(qa.getAnswer());
+        switch (position) {
+            case 4: {
+                SpannableString ss = new SpannableString(qa.getAnswer());
+                ClickableSpan clickableSpan = new ClickableSpan() {
+                    @Override
+                    public void onClick(View textView) {
+                        activity.mail();
+                    }
+
+                    @Override
+                    public void updateDrawState(TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setUnderlineText(false);
+                    }
+                };
+                ss.setSpan(clickableSpan, 96, 117, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.answer.setText(ss);
+                holder.answer.setMovementMethod(LinkMovementMethod.getInstance());
+                holder.answer.setHighlightColor(Color.TRANSPARENT);
+                break;
+            }
+            case 5: {
+                SpannableString ss = new SpannableString(qa.getAnswer());
+                ClickableSpan clickableSpan = new ClickableSpan() {
+                    @Override
+                    public void onClick(View textView) {
+                        activity.mail();
+                    }
+
+                    @Override
+                    public void updateDrawState(TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setUnderlineText(false);
+                    }
+                };
+                ss.setSpan(clickableSpan, 159, 180, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.answer.setText(ss);
+                holder.answer.setMovementMethod(LinkMovementMethod.getInstance());
+                holder.answer.setHighlightColor(Color.TRANSPARENT);
+                break;
+            }
+            case 6: {
+                SpannableString ss = new SpannableString(qa.getAnswer());
+                ClickableSpan clickableSpan = new ClickableSpan() {
+                    @Override
+                    public void onClick(View textView) {
+                        activity.mail();
+                    }
+
+                    @Override
+                    public void updateDrawState(TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setUnderlineText(false);
+                    }
+                };
+                ss.setSpan(clickableSpan, 25, 46, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.answer.setText(ss);
+                holder.answer.setMovementMethod(LinkMovementMethod.getInstance());
+                holder.answer.setHighlightColor(Color.TRANSPARENT);
+                break;
+            }
+            default:
+                holder.answer.setText(qa.getAnswer());
+                break;
         }
         holder.question.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,8 +141,6 @@ public class QaAdapter extends RecyclerView.Adapter<QaAdapter.MyViewHolder> {
                     new BaseActivity.CheckTask().execute("https://play.google.com/store/apps/details?id=com.myfitnesspal.android");
                 } else
                     Toast.makeText(activity, "Please check your internet connection", Toast.LENGTH_SHORT).show();
-
-
             }
         });
     }
@@ -144,7 +152,7 @@ public class QaAdapter extends RecyclerView.Adapter<QaAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView answer;
-        private Button question,mfp;
+        private Button question, mfp;
 
         public MyViewHolder(View view) {
             super(view);

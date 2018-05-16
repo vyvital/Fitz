@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,14 +22,10 @@ import java.util.List;
 import vyvital.fitz.MuscleActivity;
 import vyvital.fitz.R;
 import vyvital.fitz.data.models.Days;
-import vyvital.fitz.data.models.Exercises;
 import vyvital.fitz.data.models.Muscle;
-
 
 public class FragAMuscle extends Fragment {
     public static final String TAG = FragAMuscle.class.getSimpleName();
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference myRef = null;
     private List<Muscle> muscleList;
     Days day;
     public MuscleActivity muscleActivity;
@@ -43,20 +38,13 @@ public class FragAMuscle extends Fragment {
         return new FragAMuscle();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_muscle_a, container, false);
-//        if (getArguments() != null) {
-//            day = getArguments().getParcelable("currentDay");
-//        }
-//        muscleActivity = (MuscleActivity)getActivity();
-//        muscleActivity.workout.getDays().get(0).setName("lol");
-//        muscleActivity.workout.getDays().get(0).getExercises().get(0).setName("BS exercise");
-       // Toast.makeText(muscleActivity, muscleActivity.workout.getName(), Toast.LENGTH_SHORT).show();
-        mDatabase = FirebaseDatabase.getInstance();
-        myRef = mDatabase.getReference("muscles");
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = mDatabase.getReference("muscles");
+        myRef.keepSynced(true);
         muscleList = new ArrayList<>();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -262,9 +250,5 @@ public class FragAMuscle extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //initialize(view);
-
-
     }
-
-
 }

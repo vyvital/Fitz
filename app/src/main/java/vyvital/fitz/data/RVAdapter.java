@@ -28,7 +28,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     Context mContext;
     private int photo;
 
-
     public RVAdapter(List<Workout> workouts, Context context) {
         this.workouts = workouts;
         this.mContext = context;
@@ -42,8 +41,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
     @Override
     public WorkoutViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.programcard, parent, false);
-        WorkoutViewHolder wvh = new WorkoutViewHolder(v);
-        return wvh;
+        return new WorkoutViewHolder(v);
     }
 
     @Override
@@ -51,14 +49,20 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         if (workouts.get(position).isDef())
             holder.rib.setVisibility(View.VISIBLE);
         else holder.rib.setVisibility(View.INVISIBLE);
-        if (workouts.get(position).getType().equals("Strength"))
-            this.photo = R.drawable.str;
-        else if (workouts.get(position).getType().equals("Hypertrophy"))
-            this.photo = R.drawable.hyper;
-        else if (workouts.get(position).getType().equals("Endurance"))
-            this.photo = R.drawable.endurance;
-        else if (workouts.get(position).getType().equals("Maintenance"))
-            this.photo = R.drawable.maint;
+        switch (workouts.get(position).getType()) {
+            case "Strength":
+                this.photo = R.drawable.str;
+                break;
+            case "Hypertrophy":
+                this.photo = R.drawable.hyper;
+                break;
+            case "Endurance":
+                this.photo = R.drawable.endurance;
+                break;
+            case "Maintenance":
+                this.photo = R.drawable.maint;
+                break;
+        }
         Glide.with(mContext).load(photo).into(holder.personPhoto);
         holder.nameOfWorkout.setText(workouts.get(position).getName());
         holder.typeOfWorkout.setText(workouts.get(position).getType());
@@ -98,7 +102,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.WorkoutViewHolder>
         ImageView personPhoto;
         ImageButton edit;
         ImageView rib;
-
 
         WorkoutViewHolder(View itemView) {
             super(itemView);

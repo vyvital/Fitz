@@ -1,6 +1,5 @@
 package vyvital.fitz;
 
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -30,7 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -40,9 +38,7 @@ import vyvital.fitz.data.RecyclerTouchHelper;
 import vyvital.fitz.data.models.Days;
 import vyvital.fitz.data.models.Workout;
 
-
 public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper.RecyclerItemTouchHelperListener {
-
 
     String[] type_data = {"Strength", "Hypertrophy", "Maintenance", "Endurance"};
     String[] lvl_data = {"Novice", "Intermediate", "Advanced", "Elite"};
@@ -50,7 +46,6 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     Dialog workoutDialog;
     Dialog workoutDialogDays;
     Context context;
-    private FirebaseDatabase mDatabase;
     private DatabaseReference mRef = null;
     private ConstraintLayout constraintLayout;
     private List<Workout> workoutList;
@@ -66,11 +61,11 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         FloatingActionButton fab = findViewById(R.id.fab);
         constraintLayout = findViewById(R.id.constraintLayout);
         context = BuilderActivity.this;
-        mDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
 
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
+        mRef.keepSynced(true);
         workoutList = new ArrayList<>();
-
 
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setTitle("Program Manager");
@@ -99,9 +94,9 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     private void saveDefault() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
-        for (Workout p : workoutList){
+        for (Workout p : workoutList) {
             if (p.isDef())
-                mEditor.putInt("DEF",p.getId());
+                mEditor.putInt("DEF", p.getId());
         }
         mEditor.apply();
     }
@@ -114,7 +109,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                     Workout workout = childDataSnapshot.getValue(Workout.class);
                     workoutList.add(workout);
                 }
-                adapter = new RVAdapter(workoutList,context);
+                adapter = new RVAdapter(workoutList, context);
                 rv.setAdapter(adapter);
             }
 
@@ -175,9 +170,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                     day6.setText(workout.getDays().get(5).getName());
                     day7.setText(workout.getDays().get(6).getName());
                     break;
-
             }
-
         }
         final List<Days> daysList = new ArrayList<>();
         final Days d1, d2, d3, d4, d5, d6, d7;
@@ -486,9 +479,9 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         final MaterialBetterSpinner workoutTypeSpinner = workoutDialog.findViewById(R.id.type_spinner);
         final MaterialBetterSpinner workoutDateSpinner = workoutDialog.findViewById(R.id.day_spinner);
         final MaterialBetterSpinner workoutLevelSpinner = workoutDialog.findViewById(R.id.lvl_spinner);
-        final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, type_data);
-        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, day_data);
-        final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lvl_data);
+        final ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, type_data);
+        final ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, day_data);
+        final ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, lvl_data);
         workoutTypeSpinner.setAdapter(adapter1);
         workoutDateSpinner.setAdapter(adapter2);
         workoutLevelSpinner.setAdapter(adapter3);
@@ -499,7 +492,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             workoutLevelSpinner.setText(zzz.getLevel());
             workoutTypeSpinner.setText(zzz.getType());
             if (zzz.isDef())
-            setDefault.setVisibility(View.GONE);
+                setDefault.setVisibility(View.GONE);
             else setDefault.setVisibility(View.VISIBLE);
         }
         btnClose.setOnClickListener(new View.OnClickListener() {
@@ -511,9 +504,9 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         setDefault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (Workout w : workoutList){
+                for (Workout w : workoutList) {
                     w.setDef(false);
-                    if (w.getId()==zzz.getId())
+                    if (w.getId() == zzz.getId())
                         w.setDef(true);
                 }
                 saveDefault();
@@ -529,7 +522,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                 if (zzz == null) {
                     w.setName(name.getEditText().getText().toString());
                     if (name.getEditText().getText().toString().equals("")) {
-                        name.getEditText().setText("Temp name");
+                        name.getEditText().setText(R.string.temp_name);
                         w.setName("Temp name");
                     } else if (workoutTypeSpinner.getText().toString().equals(""))
                         workoutTypeSpinner.setError("Don't forget me!");
@@ -548,7 +541,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                 } else {
                     zzz.setName(name.getEditText().getText().toString());
                     if (name.getEditText().getText().toString().equals("")) {
-                        name.getEditText().setText("Temp name");
+                        name.getEditText().setText(R.string.temp_name);
                         zzz.setName("Temp name");
                     } else if (workoutTypeSpinner.getText().toString().equals(""))
                         workoutTypeSpinner.setError("Don't forget me!");
@@ -590,6 +583,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
 
             // remove the item from recycler view
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts").child(String.valueOf(workoutList.get(deletedIndex).getId()));
+            ref.keepSynced(true);
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -605,7 +599,6 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             });
 
             adapter.removeItem(viewHolder.getAdapterPosition());
-
 
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar
@@ -623,5 +616,4 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             snackbar.show();
         }
     }
-
 }

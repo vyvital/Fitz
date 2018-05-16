@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
     boolean today = false;
     boolean color;
     private WorkingOutActivity workingOutActivity;
-
 
     public ChildAdapter(Context context, List<Sets> sets) {
         this.context = context;
@@ -68,7 +66,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
                         viewHolder.linearLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.lightGrey));
                     }
 
-                    if (workingOutActivity.count==workingOutActivity.total)
+                    if (workingOutActivity.count == workingOutActivity.total)
                         Toast.makeText(context, "DONE", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -128,6 +126,4 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
             linearLayout = itemView.findViewById(R.id.RLayoutSet);
         }
     }
-
-
 }

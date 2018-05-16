@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context="vyvital.fitz.BuilderActivity">
 
-
     <vyvital.fitz.data.EmptyRecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
@@ -59,14 +58,14 @@
         android:layout_margin="16dp"
         android:layout_marginBottom="455dp"
         android:layout_marginEnd="304dp"
-        android:elevation="6dp"
         android:clickable="true"
-        app:rippleColor="@color/colorPrimaryRipple"
+        android:elevation="6dp"
+        android:focusable="true"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/ic_add_black_24px"
-        android:focusable="true" />
+        app:rippleColor="@color/colorPrimaryRipple"
+        app:srcCompat="@drawable/ic_add_black_24px" />
 
 </android.support.constraint.ConstraintLayout>

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/RLayoutEx"
@@ -70,12 +70,13 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/RLayoutEx"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layoutAnimation="@anim/layout_animation"
-        android:layout_height="wrap_content">
+        android:visibility="gone">
 
     </android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>

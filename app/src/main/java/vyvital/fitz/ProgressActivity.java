@@ -1,8 +1,6 @@
 package vyvital.fitz;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +23,6 @@ import com.robinhood.spark.SparkAdapter;
 import com.robinhood.spark.SparkView;
 import com.robinhood.spark.animation.LineSparkAnimator;
 
-import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,7 +39,6 @@ public class ProgressActivity extends BaseActivity {
     private View line;
     private int paddingRight;
     Dialog weightDialog;
-    private FirebaseDatabase mDatabase;
     private DatabaseReference mRef = null;
     private List<Weight> weightList;
     public BodyWeightAdapter adapterW;
@@ -52,6 +48,8 @@ public class ProgressActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        ab.setTitle(getResources().getString(R.string.progress));
         sparkView = findViewById(R.id.sparkView);
         sparkView.setAdapter(adapter);
         week = findViewById(R.id.week);
@@ -60,9 +58,10 @@ public class ProgressActivity extends BaseActivity {
         year = findViewById(R.id.year);
         line = findViewById(R.id.line);
         recyclerView = findViewById(R.id.weightRV);
-        mDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         scrubInfoTextView = findViewById(R.id.scrub_info_textview);
         mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid());
+        mRef.keepSynced(true);
         weightList = new LinkedList<>();
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         llm.setReverseLayout(true);
@@ -88,7 +87,6 @@ public class ProgressActivity extends BaseActivity {
                 Log.d("NOPE", "Failed to read value.", error.toException());
             }
         });
-
 
         week.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,8 +115,6 @@ public class ProgressActivity extends BaseActivity {
                 adapter.init(tempList);
                 // paddingRight = 350 - Math.round(350 * weightList.size());
                 // sparkView.setPadding(sparkView.getPaddingLeft(), sparkView.getPaddingTop(), dpToPx(paddingRight), sparkView.getPaddingBottom());
-
-
             }
         });
         month.setOnClickListener(new View.OnClickListener() {
@@ -222,7 +218,6 @@ public class ProgressActivity extends BaseActivity {
         weightDialog = new Dialog(this);
     }
 
-
     private void graphInit() {
         sparkView.setSparkAnimator(new LineSparkAnimator());
         tempList = new LinkedList<>();
@@ -243,27 +238,23 @@ public class ProgressActivity extends BaseActivity {
     public static class WeightAdapter extends SparkAdapter {
         private final float[] yData;
 
-
         public WeightAdapter(List<Weight> weights) {
             yData = new float[weights.size()];
             init(weights);
 
         }
 
-
         public void init(List<Weight> weights) {
             for (int i = 0; i < weights.size(); i++) {
                 yData[i] = weights.get(i).getWeight();
             }
             notifyDataSetChanged();
-
         }
 
         @Override
         public int getCount() {
             return yData.length;
         }
-
 
         @Override
         public Object getItem(int index) {
@@ -278,9 +269,6 @@ public class ProgressActivity extends BaseActivity {
 
     public int dpToPx(int dp) {
         DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
-        int px = Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return px;
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
-
-
 }

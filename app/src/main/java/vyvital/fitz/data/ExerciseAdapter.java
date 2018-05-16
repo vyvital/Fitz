@@ -6,13 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -24,7 +21,6 @@ import vyvital.fitz.R;
 import vyvital.fitz.data.models.Exercise;
 import vyvital.fitz.data.models.Exercises;
 import vyvital.fitz.data.models.Sets;
-
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyViewHolder> {
     private List<Exercise> exercises;
@@ -69,16 +65,41 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
         holder.name.setText(exercise.getName());
         holder.mechanics.setText(exercise.getMechanics());
 
-        if (exercise.getId() == 305 || exercise.getId() == 306 || exercise.getId() == 307 || exercise.getId() == 308 || exercise.getId() == 309 || exercise.getId() == 310 || exercise.getId() == 313)
-            this.photo = R.drawable.mham;
-        else if (exercise.getId() == 711 || exercise.getId() == 712 || exercise.getId() == 713)
-            this.photo = R.drawable.mobliq;
-        else if (exercise.getId() == 701 || exercise.getId() == 702 || exercise.getId() == 703)
-            this.photo = R.drawable.mabs;
-        else if (exercise.getId() == 301 || exercise.getId() == 302 || exercise.getId() == 303 || exercise.getId() == 304 || exercise.getId() == 311 || exercise.getId() == 312 || exercise.getId() == 314 || exercise.getId() == 315)
-            this.photo = R.drawable.mquad;
-        else if (exercise.getId() == 316 || exercise.getId() == 317)
-            this.photo = R.drawable.mcalf;
+        switch (exercise.getId()) {
+            case 305:
+            case 306:
+            case 307:
+            case 308:
+            case 309:
+            case 310:
+            case 313:
+                this.photo = R.drawable.mham;
+                break;
+            case 711:
+            case 712:
+            case 713:
+                this.photo = R.drawable.mobliq;
+                break;
+            case 701:
+            case 702:
+            case 703:
+                this.photo = R.drawable.mabs;
+                break;
+            case 301:
+            case 302:
+            case 303:
+            case 304:
+            case 311:
+            case 312:
+            case 314:
+            case 315:
+                this.photo = R.drawable.mquad;
+                break;
+            case 316:
+            case 317:
+                this.photo = R.drawable.mcalf;
+                break;
+        }
         Glide.with(mContext).load(photo).into(holder.img);
         List<String> equip = new ArrayList<>();
         for (int i = 0; i < exercise.getEquip().size(); i++) {
@@ -94,10 +115,10 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
                 Exercises ex1 = new Exercises();
                 ex1.setName(exercise.getName());
                 ex1.setEquip(holder.spiner.getSelectedItem().toString());
-                ex1.setId(exercise.getId()+"");
+                ex1.setId(exercise.getId() + "");
                 ex1.setMechanics(exercise.getMechanics());
                 List<Sets> setsTemp = new ArrayList<>();
-                setsTemp.add(new Sets(0,0));
+                setsTemp.add(new Sets(0, 0));
                 ex1.setSets(setsTemp);
                 muscleActivity.workout.getDays().get(0).getExercises().add(ex1);
                 Snackbar snackbar = Snackbar

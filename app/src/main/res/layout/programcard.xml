@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +8,6 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:orientation="vertical">
-
 
     <RelativeLayout
         android:id="@+id/backgroundView"
@@ -43,7 +40,6 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:id="@+id/foregroundView"
         android:layout_width="match_parent"
@@ -51,9 +47,9 @@
         android:background="@drawable/corner_bgc"
         android:elevation="6dp"
         android:paddingBottom="8dp"
+        android:paddingEnd="1dp"
         android:paddingStart="12dp"
         android:paddingTop="10dp">
-
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/workout_photo"
@@ -66,7 +62,6 @@
             android:src="@drawable/profile"
             app:civ_border_color="@color/colorAccent"
             app:civ_border_width="2dp" />
-
 
         <TextView
             android:id="@+id/workout_name"
@@ -118,9 +113,9 @@
             android:id="@+id/edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/ic_edit_black_24dp" />
 
@@ -128,11 +123,10 @@
             android:id="@+id/rib"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ribbon"
-            android:layout_marginBottom="5dp"
             android:layout_alignParentEnd="true"
-            android:visibility="invisible"/>
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ribbon"
+            android:visibility="invisible" />
     </RelativeLayout>
-
 
 </FrameLayout>

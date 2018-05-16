@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group
-        android:id="@+id/menu_top"
-        >
-    <item android:id="@+id/home" android:title="@string/home" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_home_black_24dp"/>
-    <item android:id="@+id/workout" android:title="@string/program_builder" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_fitness_center_black_24px"/>
-    <item android:id="@+id/nutrition" android:title="@string/nutrition" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_food_apple"/>
-    <item android:id="@+id/progress" android:title="@string/progress" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_show_chart_black_24dp"/>
+    <group android:id="@+id/menu_top">
+        <item
+            android:id="@+id/home"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/workout"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_fitness_center_black_24px"
+            android:title="@string/program_builder" />
+        <item
+            android:id="@+id/nutrition"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_food_apple"
+            android:title="@string/nutrition" />
+        <item
+            android:id="@+id/progress"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_show_chart_black_24dp"
+            android:title="@string/progress" />
     </group>
-    <group
-        android:id="@+id/menu_bottom"
-        >
-    <item android:id="@+id/FAQ" android:title="@string/faq" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_question_mark"/>
-    <item android:id="@+id/info" android:title="@string/about" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_info_outline_black_24dp"/>
-    <item android:id="@+id/logout" android:title="@string/sign_out" android:fontFamily="@font/qanelas" android:icon="@drawable/ic_login_variant" />
+    <group android:id="@+id/menu_bottom">
+        <item
+            android:id="@+id/FAQ"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_question_mark"
+            android:title="@string/faq" />
+        <item
+            android:id="@+id/info"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/about" />
+        <item
+            android:id="@+id/logout"
+            android:fontFamily="@font/qanelas"
+            android:icon="@drawable/ic_login_variant"
+            android:title="@string/sign_out" />
     </group>
 </menu>

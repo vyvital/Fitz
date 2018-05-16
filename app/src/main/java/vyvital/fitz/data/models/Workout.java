@@ -1,6 +1,5 @@
 package vyvital.fitz.data.models;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -20,7 +19,7 @@ public class Workout implements Parcelable {
     public Workout() {
     }
 
-    public Workout(List<Days> d,String name, String type, String level, int size, int id, boolean def) {
+    public Workout(List<Days> d, String name, String type, String level, int size, int id, boolean def) {
         this.days = d;
         this.name = name;
         this.type = type;
@@ -120,7 +119,7 @@ public class Workout implements Parcelable {
         dest.writeString(name);
         dest.writeInt(size);
         dest.writeString(type);
-        dest.writeByte((byte)(def ? 1 : 0));
+        dest.writeByte((byte) (def ? 1 : 0));
         dest.writeTypedList(days);
     }
 }

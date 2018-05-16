@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,7 +22,6 @@
         app:civ_border_color="#808080"
         app:civ_border_width="2dp" />
 
-
     <TextView
         android:id="@+id/exercise_name"
         android:layout_width="wrap_content"
@@ -33,9 +31,9 @@
         android:layout_toEndOf="@+id/muscle_photo"
         android:fontFamily="sans-serif"
         android:singleLine="true"
+        android:maxLength="25"
         android:textSize="24sp"
         tools:text="Exercise Name" />
-
 
     <TextView
         android:id="@+id/mechanic_name"

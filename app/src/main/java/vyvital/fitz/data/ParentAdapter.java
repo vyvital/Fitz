@@ -66,7 +66,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         viewHolder.sets.setAdapter(dataAdapter);
         viewHolder.sets.setSelection(ex.getSets().size());
         if (today)
-            adapter = new ChildAdapter(context, ex.getSets(),true);
+            adapter = new ChildAdapter(context, ex.getSets(), true);
         else
             adapter = new ChildAdapter(context, ex.getSets());
         viewHolder.rv.setAdapter(adapter);
@@ -152,7 +152,6 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         }
         if (today)
             viewHolder.sets.setEnabled(false);
-
     }
 
     @Override
@@ -216,5 +215,4 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
             itemView.setBackgroundColor(0);
         }
     }
-
 }

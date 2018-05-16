@@ -3,7 +3,7 @@ package vyvital.fitz.data.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Equipment implements Parcelable{
+public class Equipment implements Parcelable {
 
     private String name;
 
@@ -30,7 +30,9 @@ public class Equipment implements Parcelable{
         }
     };
 
-    public String getName(){return name;}
+    public String getName() {
+        return name;
+    }
 
     @Override
     public int describeContents() {
@@ -39,6 +41,6 @@ public class Equipment implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-    dest.writeString(name);
+        dest.writeString(name);
     }
 }

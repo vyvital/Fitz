@@ -37,7 +37,6 @@ public class Days implements Parcelable {
     };
 
 
-
     public void setExercises(List<Exercises> exercises) {
         this.exercises = exercises;
     }

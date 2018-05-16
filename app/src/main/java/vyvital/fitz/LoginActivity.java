@@ -39,9 +39,7 @@ import java.util.List;
 
 import vyvital.fitz.data.models.Workout;
 
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
 
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "EmailPassword";
@@ -53,8 +51,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText mEmailField;
     private EditText mPasswordField;
     private String currentDate;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference myRef = null;
     private List<Workout> workoutList;
     // [START declare_auth]
     private GoogleSignInClient mGoogleSignInClient;
@@ -67,13 +63,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Views
-
         mEmailField = findViewById(R.id.field_email);
         mPasswordField = findViewById(R.id.field_password);
 
-
-        // Buttons
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
@@ -86,20 +78,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        mDatabaseRef.keepSynced(true);
         mRef = FirebaseDatabase.getInstance().getReference();
+        mRef.keepSynced(true);
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         currentDate = sdf.format(new Date());
 
-        mDatabase = FirebaseDatabase.getInstance();
-        myRef = mDatabase.getReference("Default");
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = mDatabase.getReference("Default");
+        myRef.keepSynced(true);
         workoutList = new ArrayList<>();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     workoutList.add(childDataSnapshot.getValue(Workout.class));
-                    //workoutList.add(workout);
-
                 }
             }
 
@@ -118,7 +111,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mProgressDialog.setMessage(getString(R.string.loading));
             mProgressDialog.setIndeterminate(true);
         }
-
         mProgressDialog.show();
     }
 
@@ -161,7 +153,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             // Sign in success, update UI with the signed-in user's information
                             final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(mAuth.getCurrentUser().getUid());
-
+                            mChildDatabase.keepSynced(true);
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -199,12 +191,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG2, "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
                             final String em = user.getEmail();
                             final DatabaseReference mChildDatabase = mDatabaseRef.child("Users").child(mAuth.getCurrentUser().getUid());
+                            mChildDatabase.keepSynced(true);
                             mRef.child("Users").orderByChild("userEmail").equalTo(em).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -289,13 +281,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-
                         hideProgressDialog();
                     }
                 });
         // [END sign_in_with_email]
     }
-
 
     private boolean validateForm() {
         boolean valid = true;
@@ -326,19 +316,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
             finish();
         }
-
     }
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.email_create_account_button) {
-            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.email_sign_in_button) {
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.sign_in_button) {
-            signIn();
+        switch (i) {
+            case R.id.email_create_account_button:
+                createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                break;
+            case R.id.email_sign_in_button:
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                break;
+            case R.id.sign_in_button:
+                signIn();
+                break;
         }
     }
-
 }
