@@ -48,23 +48,21 @@
         android:id="@+id/calsNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="@font/qanelasbold"
         android:gravity="center"
         android:text="@string/_1234"
         android:textColor="@color/colorPrimary"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/cals" />
+        app:layout_constraintTop_toBottomOf="@id/cals" />
 
     <TextView
         android:id="@+id/workoutName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         android:fontFamily="@font/qanelasbold"
         android:gravity="center"
-        android:text=""
+        tools:text="Workout name"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@id/lay"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +88,7 @@
             android:layout_height="32dp"
             android:fontFamily="@font/qanelasbold"
             android:gravity="center"
-            android:text=""
+            tools:text="Workout A"
             android:textSize="26sp" />
 
         <ImageView
