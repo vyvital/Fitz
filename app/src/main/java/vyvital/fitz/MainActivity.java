@@ -14,9 +14,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -31,13 +30,13 @@ import com.natasa.progressviews.utils.ProgressStartPoint;
 
 import java.util.List;
 
+import io.fabric.sdk.android.Fabric;
 import vyvital.fitz.data.models.Days;
 import vyvital.fitz.data.models.Workout;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView workoutName, dayName, name, cals;
     private static final String ID = "ca-app-pub-3661768022202951~9314415379";
-    private static final String INTERSTITIAL = "ca-app-pub-3661768022202951~9314415379";
     ImageView next;
     int day;
     private Workout workoutNow;
@@ -181,9 +180,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             }
-            case R.id.start:
-                Toast.makeText(this, "Start Button Pressed", Toast.LENGTH_LONG).show();
-                break;
         }
     }
 

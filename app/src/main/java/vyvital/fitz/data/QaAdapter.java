@@ -140,7 +140,7 @@ public class QaAdapter extends RecyclerView.Adapter<QaAdapter.MyViewHolder> {
                 if (netInfo != null && netInfo.isConnected()) {
                     new BaseActivity.CheckTask().execute("https://play.google.com/store/apps/details?id=com.myfitnesspal.android");
                 } else
-                    Toast.makeText(activity, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, R.string.toast_check_connection, Toast.LENGTH_SHORT).show();
             }
         });
     }

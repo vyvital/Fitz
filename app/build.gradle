@@ -16,6 +16,7 @@ repositories {
 apply plugin: 'io.fabric'
 
 android {
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "vyvital.myfit"
@@ -37,16 +38,14 @@ android {
 ext.firebaseLibVersion = '15.0.0'
 ext.supportLibVersion = '27.1.1'
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     testImplementation 'junit:junit:4.12'
-    implementation "com.google.android.gms:play-services-auth:15.0.1"
-    implementation "com.google.firebase:firebase-messaging:15.0.2"
-    implementation "com.google.firebase:firebase-database:15.0.1"
-    implementation "com.google.firebase:firebase-core:15.0.2"
-    implementation "com.google.firebase:firebase-auth:15.1.0"
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.firebase:firebase-database:15.0.1'
+    implementation 'com.google.firebase:firebase-auth:15.1.0'
     implementation 'com.google.firebase:firebase-ads:15.0.1'
     implementation "com.android.support:recyclerview-v7:$supportLibVersion"
     implementation "com.android.support:appcompat-v7:$supportLibVersion"

@@ -24,7 +24,8 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/ic_fitness_center_orange_24px" />
+            app:srcCompat="@drawable/ic_fitness_center_orange_24px"
+            android:contentDescription="@string/empty_image" />
 
         <TextView
             android:id="@+id/empty_title_text"

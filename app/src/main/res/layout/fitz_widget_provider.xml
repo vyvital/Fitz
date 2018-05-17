@@ -11,7 +11,8 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:src="@drawable/widgetback" />
+        android:src="@drawable/widgetback"
+        android:contentDescription="@string/widget_background" />
 
     <TextView
         android:id="@+id/user_cal"

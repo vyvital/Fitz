@@ -81,7 +81,6 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         for (int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
         }
-
         View header = navigation_view.getHeaderView(0);
         TextView name = header.findViewById(R.id.userN);
         TextView email = header.findViewById(R.id.userE);
@@ -199,7 +198,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                         if (netInfo != null && netInfo.isConnected()) {
                             lunch(LINKEDIN);
                         } else
-                            Toast.makeText(BaseActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BaseActivity.this, R.string.toast_check_connection, Toast.LENGTH_SHORT).show();
                     }
                 });
                 git.setOnClickListener(new View.OnClickListener() {
@@ -267,7 +266,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         @Override
         protected void onPostExecute(String result) {
             if (result == null)
-                Toast.makeText(getAppContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getAppContext(), R.string.toast_check_connection, Toast.LENGTH_SHORT).show();
             else
                 lunch(result);
         }
@@ -282,7 +281,7 @@ public class BaseActivity extends AppCompatActivity implements MenuItem.OnMenuIt
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
-                        Toast.makeText(BaseActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BaseActivity.this, R.string.toast_logged_out, Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                 });

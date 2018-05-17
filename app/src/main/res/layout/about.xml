@@ -11,7 +11,8 @@
         android:src="@drawable/me"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/developer_image" />
 
     <ImageView
         android:id="@+id/icoico"
@@ -22,7 +23,8 @@
         android:src="@drawable/icoico"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/mypic"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/app_icon" />
 
     <TextView
         android:id="@+id/name"
@@ -58,7 +60,8 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_octicons_mark_github"
         app:layout_constraintStart_toEndOf="@id/mypic"
-        app:layout_constraintTop_toBottomOf="@id/version" />
+        app:layout_constraintTop_toBottomOf="@id/version"
+        android:contentDescription="@string/github_icon" />
 
     <ImageView
         android:id="@+id/linkedinIcon"
@@ -68,7 +71,8 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_if_linkedin_circle_color_107178"
         app:layout_constraintStart_toEndOf="@id/mypic"
-        app:layout_constraintTop_toBottomOf="@id/githubIcon" />
+        app:layout_constraintTop_toBottomOf="@id/githubIcon"
+        android:contentDescription="@string/linkedin_icon" />
 
     <TextView
         android:id="@+id/github"

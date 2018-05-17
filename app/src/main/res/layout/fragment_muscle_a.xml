@@ -17,7 +17,8 @@
         android:layout_marginTop="-2dp"
         android:background="@drawable/abs"
         android:transitionName="@string/abs_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/abs_trans" />
 
     <ImageButton
         android:id="@+id/legs"
@@ -31,7 +32,8 @@
         android:transitionName="@string/legs_trans"
         tools:ignore="UnusedAttribute"
         tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="60dp" />
+        tools:layout_editor_absoluteY="60dp"
+        android:contentDescription="@string/legs_trans"/>
 
     <ImageButton
         android:id="@+id/chest"
@@ -42,7 +44,8 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/chest"
         android:transitionName="@string/chest_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/chest_trans"/>
 
     <ImageButton
         android:id="@+id/tricep"
@@ -53,7 +56,8 @@
         android:layout_marginTop="110dp"
         android:background="@drawable/tricep"
         android:transitionName="@string/triceps_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/triceps_trans"/>
 
     <ImageButton
         android:id="@+id/bicep"
@@ -66,7 +70,8 @@
         android:layout_toStartOf="@+id/shoulder"
         android:background="@drawable/bicep"
         android:transitionName="@string/biceps_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/biceps_trans"/>
 
     <ImageButton
         android:id="@+id/shoulder"
@@ -78,7 +83,8 @@
         android:layout_marginTop="190dp"
         android:background="@drawable/shoulder"
         android:transitionName="@string/shoulder_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/shoulder_trans"/>
 
     <ImageButton
         android:id="@+id/back"
@@ -89,7 +95,8 @@
         android:layout_marginBottom="-2dp"
         android:background="@drawable/back"
         android:transitionName="@string/back_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/back_trans"/>
 
     <ImageButton
         android:id="@+id/cardio"
@@ -100,7 +107,8 @@
         android:layout_marginBottom="-77dp"
         android:background="@drawable/cardio"
         android:transitionName="@string/cardio_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/cardio_trans"/>
 
     <ImageButton
         android:id="@+id/crossfit"
@@ -111,6 +119,7 @@
         android:layout_marginBottom="29dp"
         android:background="@drawable/crossfit"
         android:transitionName="@string/crossfit_trans"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="UnusedAttribute"
+        android:contentDescription="@string/crossfit_trans"/>
 
 </RelativeLayout>

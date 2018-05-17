@@ -65,7 +65,7 @@ public class FragANutri extends Fragment {
                 if (ageT.getText().toString().trim().length() == 0 || ageT.getText().toString().equals("0") ||
                         weightT.getText().toString().trim().length() == 0 || weightT.getText().toString().equals("0") ||
                         heightT.getText().toString().trim().length() == 0 || heightT.getText().toString().equals("0") || (weightT.getText().toString().length() > 0 && weightT.getText().toString().substring(0, 1).equals(".")))
-                    Toast.makeText(getActivity(), "Please Make Sure Your Input is Correct", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.toast_make_sure, Toast.LENGTH_SHORT).show();
                 else {
                     dialog.show();
                     if (gender.getDirection().name().equals("LEFT")) {

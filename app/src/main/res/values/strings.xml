@@ -96,4 +96,23 @@
     <string name="kg">Kg</string>
     <string name="_234234">234234</string>
     <string name="temp_name">Temp name</string>
+    <string name="reps">reps -</string>
+    <string name="toast_check_connection">Please check your internet connection</string>
+    <string name="toast_logged_out">Logged out successfully</string>
+    <string name="toast_make_sure">Please Make Sure Your Input is Correct</string>
+    <string name="toast_save">Your changes were successfully saved!</string>
+    <string name="next_day">next day</string>
+    <string name="start_workout_button">start workout button</string>
+    <string name="empty_image">empty image</string>
+    <string name="adding_exercise_to_workout_image">adding exercise to workout image</string>
+    <string name="background_image">background image</string>
+    <string name="app_icon">App icon</string>
+    <string name="delete_icon">delete icon</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="default_workout_sign">default workout sign</string>
+    <string name="body_part_image">body part image</string>
+    <string name="developer_image">Developer image</string>
+    <string name="github_icon">github icon</string>
+    <string name="linkedin_icon">linkedin icon</string>
+    <string name="widget_background">widget background</string>
 </resources>

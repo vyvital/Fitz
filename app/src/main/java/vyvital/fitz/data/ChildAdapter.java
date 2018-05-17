@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -67,9 +66,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHol
                             workingOutActivity.count--;
                         viewHolder.linearLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.lightGrey));
                     }
-
                     if (workingOutActivity.count == workingOutActivity.total)
-                        Toast.makeText(context, "DONE", Toast.LENGTH_SHORT).show();
+                        workingOutActivity.Celebrate();
                 }
             });
         } else {

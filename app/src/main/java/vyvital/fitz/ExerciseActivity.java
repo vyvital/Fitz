@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -92,7 +93,6 @@ public class ExerciseActivity extends BaseActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Toast.makeText(ExerciseActivity.this, position+"", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ExerciseActivity.this, MuscleActivity.class);
                     intent.putExtra("currentWorkout", ex);
                     intent.putExtra("currentDay", position);
@@ -146,5 +146,6 @@ public class ExerciseActivity extends BaseActivity {
         DatabaseReference mRef = mDatabase.getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts");
         mRef.keepSynced(true);
         mRef.child(String.valueOf(ex.getId())).setValue(ex);
+        Toast.makeText(this, R.string.toast_save, Toast.LENGTH_SHORT).show();
     }
 }
