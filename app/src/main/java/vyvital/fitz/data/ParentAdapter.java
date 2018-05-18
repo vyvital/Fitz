@@ -156,6 +156,8 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
 
     @Override
     public int getItemCount() {
+        if (exercisesList == null)
+            return 0;
         return exercisesList.size();
     }
 

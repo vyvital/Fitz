@@ -120,9 +120,15 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.MyView
                 List<Sets> setsTemp = new ArrayList<>();
                 setsTemp.add(new Sets(0, 0));
                 ex1.setSets(setsTemp);
-                muscleActivity.workout.getDays().get(0).getExercises().add(ex1);
+                if (muscleActivity.workout.getDays().get(muscleActivity.dayNum).getExercises() != null)
+                    muscleActivity.workout.getDays().get(muscleActivity.dayNum).getExercises().add(ex1);
+                else {
+                    List<Exercises> tempList = new ArrayList<>();
+                    muscleActivity.workout.getDays().get(muscleActivity.dayNum).setExercises(tempList);
+                    muscleActivity.workout.getDays().get(muscleActivity.dayNum).getExercises().add(ex1);
+                }
                 Snackbar snackbar = Snackbar
-                        .make(v, exercise.getName() + " " + String.valueOf(holder.spiner.getSelectedItem()) + " was added!", Snackbar.LENGTH_LONG);
+                        .make(v, exercise.getName() + " " + String.valueOf(holder.spiner.getSelectedItem()) + mContext.getResources().getString(R.string.was_added), Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         });

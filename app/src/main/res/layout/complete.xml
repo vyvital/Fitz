@@ -67,6 +67,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabfake"
+        android:contentDescription="@string/success_image_not_a_button"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_above="@id/con"

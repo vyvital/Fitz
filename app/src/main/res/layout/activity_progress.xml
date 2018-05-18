@@ -11,18 +11,22 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="3dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/weightRV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42000002"
         tools:context="vyvital.fitz.ProgressActivity">
 
         <com.robinhood.spark.SparkView
             android:id="@+id/sparkView"
             android:layout_width="350dp"
-            android:layout_height="250dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_weight="6"
             android:padding="8dp"
             app:spark_lineColor="@color/colorPrimary"
             app:spark_lineWidth="4dp"
@@ -32,8 +36,8 @@
             android:id="@+id/scrub_info_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:gravity="center"
             android:text="@string/scrub_empty"
             android:textAppearance="?android:textAppearanceLarge"
@@ -43,7 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <TextView
@@ -87,7 +90,7 @@
             android:id="@+id/line"
             android:layout_width="30dp"
             android:layout_height="1dp"
-            android:layout_gravity="center"
+            android:layout_gravity="center|top"
             android:layout_marginEnd="44dp"
             android:background="@color/colorPrimary" />
 
@@ -97,7 +100,9 @@
         android:id="@+id/weightRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout">
@@ -111,6 +116,7 @@
         android:layout_margin="16dp"
         android:layout_marginBottom="455dp"
         android:layout_marginEnd="304dp"
+        android:contentDescription="@string/add_weight_fab_button"
         android:elevation="6dp"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"

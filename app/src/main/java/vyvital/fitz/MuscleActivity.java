@@ -12,7 +12,7 @@ public class MuscleActivity extends BaseActivity {
 
     Days day;
     public Workout workout;
-    int dayNum;
+    public int dayNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

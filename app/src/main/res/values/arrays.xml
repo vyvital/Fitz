@@ -42,4 +42,30 @@
         <item>"Please email our team at\nFitzHelp247@gmail.com\nWe love receiving feedback and new ideas!"
         </item>
     </array>
+
+    <array name="days">
+        <item>1 Day</item>
+        <item>2 Days</item>
+        <item>3 Days</item>
+        <item>4 Days</item>
+        <item>5 Days</item>
+        <item>6 Days</item>
+        <item>7 Days</item>
+    </array>
+
+    <array name="level">
+        <item>Novice</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+        <item>Elite</item>
+    </array>
+
+    <array name="type">
+        <item>Strength</item>
+        <item>Hypertrophy</item>
+        <item>Maintenance</item>
+        <item>Endurance</item>
+    </array>
+
+
 </resources>

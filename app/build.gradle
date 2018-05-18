@@ -16,7 +16,14 @@ repositories {
 apply plugin: 'io.fabric'
 
 android {
-
+    signingConfigs {
+        config {
+            keyAlias 'mykey'
+            keyPassword 'PO0F3S1A'
+            storeFile file('keystore/android.jks')
+            storePassword 'BC23P7T1'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "vyvital.myfit"
@@ -32,6 +39,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }

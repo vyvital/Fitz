@@ -17,12 +17,12 @@ public class NutriActivity extends BaseActivity {
         setContentView(R.layout.activity_nutri);
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setTitle(getResources().getString(R.string.nutrition));
-        if (getData() == 0) {
+        if (getData() == 0 && savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.content, FragANutri.newInstance())
+                    .replace(R.id.content, FragANutri.newInstance())
                     .commit();
-        } else {
+        } else if (getData() != 0) {
             Bundle bundle = new Bundle();
             bundle.putDouble("WEIGHT", getData2());
             bundle.putInt("TDEE", getData());

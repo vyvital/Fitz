@@ -3,6 +3,7 @@ package vyvital.fitz.fragments;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,9 +22,17 @@ import vyvital.fitz.R;
 
 public class FragANutri extends Fragment {
     public static final String TAG = FragANutri.class.getSimpleName();
+    public static final String KEY_GENDER = "GENDER";
+    public static final String KEY_SYSTEM = "SYSTEM";
+    public static final String KEY_ACTIVITY = "ACTIVITY";
+    public static final String KEY_INTENSITY = "INTENSITY";
+    public static final String KEY_SEEK = "SEEK";
     int tdee = 15;
     int bmr = 0;
     double weightz;
+    StickySwitch gender, measure;
+    ToggleSwitch act, act2;
+    BubbleSeekBar seek;
 
     public FragANutri() {
         // Required empty public constructor
@@ -43,14 +52,28 @@ public class FragANutri extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        gender = view.findViewById(R.id.sticky_switch_gender);
+        measure = view.findViewById(R.id.sticky_switch_measure);
+        act = view.findViewById(R.id.activity_switch);
+        act2 = view.findViewById(R.id.activity_switch2);
+        seek = view.findViewById(R.id.seekDays);
+        if (savedInstanceState != null) {
+            if (savedInstanceState.getString(KEY_GENDER).equals("LEFT"))
+                gender.setDirection(StickySwitch.Direction.LEFT);
+            else
+                gender.setDirection(StickySwitch.Direction.RIGHT);
+            if (savedInstanceState.getString(KEY_SYSTEM).equals("LEFT"))
+                measure.setDirection(StickySwitch.Direction.LEFT);
+            else
+                measure.setDirection(StickySwitch.Direction.RIGHT);
+            act.setCheckedTogglePosition(savedInstanceState.getInt(KEY_ACTIVITY));
+            act2.setCheckedTogglePosition(savedInstanceState.getInt(KEY_INTENSITY));
+            seek.setProgress(savedInstanceState.getInt(KEY_SEEK));
+        }
         final TextView ageT = view.findViewById(R.id.edit_age);
         final TextView heightT = view.findViewById(R.id.edit_height);
         final TextView weightT = view.findViewById(R.id.edit_weight);
-        final StickySwitch gender = view.findViewById(R.id.sticky_switch_gender);
-        final StickySwitch measure = view.findViewById(R.id.sticky_switch_measure);
-        final ToggleSwitch act = view.findViewById(R.id.activity_switch);
-        final ToggleSwitch act2 = view.findViewById(R.id.activity_switch2);
-        final BubbleSeekBar seek = view.findViewById(R.id.seekDays);
         final Button calc = view.findViewById(R.id.calculate);
         final Button reset = view.findViewById(R.id.reset);
         calc.setOnClickListener(new View.OnClickListener() {
@@ -171,5 +194,15 @@ public class FragANutri extends Fragment {
         } else {
             return (int) ((10 * weight / 2.2) + (6.25 * height * 2.54) - (5 * age) - 161);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_GENDER, gender.getDirection().name());
+        outState.putString(KEY_SYSTEM, measure.getDirection().name());
+        outState.putInt(KEY_ACTIVITY, act.getCheckedTogglePosition());
+        outState.putInt(KEY_INTENSITY, act2.getCheckedTogglePosition());
+        outState.putInt(KEY_SEEK, seek.getProgress());
     }
 }

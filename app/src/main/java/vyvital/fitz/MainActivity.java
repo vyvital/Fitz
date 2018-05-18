@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -37,6 +39,7 @@ import vyvital.fitz.data.models.Workout;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView workoutName, dayName, name, cals;
     private static final String ID = "ca-app-pub-3661768022202951~9314415379";
+    private static final String TESTAD = "ca-app-pub-3940256099942544/1033173712";
     ImageView next;
     int day;
     private Workout workoutNow;
@@ -57,7 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Fabric.with(this, new Crashlytics());
         MobileAds.initialize(this, ID);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(TESTAD);
         day = 0;
         final Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         android.support.v7.app.ActionBar ab = getSupportActionBar();
@@ -68,15 +71,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         next = findViewById(R.id.next);
         workoutName = findViewById(R.id.workoutName);
         dayName = findViewById(R.id.dayName);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
         findViewById(R.id.polygonWorkout).setOnClickListener(this);
         findViewById(R.id.polygonFood).setOnClickListener(this);
         findViewById(R.id.polygonProgress).setOnClickListener(this);
         name = findViewById(R.id.name);
-        name.setText(mAuth.getCurrentUser().getDisplayName());
+        if (mAuth.getCurrentUser().getProviderId().equals("google.com"))
+            name.setText(mAuth.getCurrentUser().getDisplayName());
+        else
+            name.setText(mAuth.getCurrentUser().getEmail().substring(0, mAuth.getCurrentUser().getEmail().indexOf("@")));
         mHandler = new Handler();
         initSegmentProgressBar();
         final long[] mVibratePattern = new long[]{0, 100000, 0, 100000};
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
         btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -140,17 +146,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } else {
             Log.d("TAG", "The interstitial wasn't loaded yet.");
         }
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-                Intent intent2 = new Intent(MainActivity.this, WorkingOutActivity.class);
-                intent2.putExtra("day", workoutNow.getDays().get(day));
-                startActivity(intent2);
+        ConnectivityManager connMan = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connMan != null;
+        NetworkInfo netInfo = connMan.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected() && mInterstitialAd.isLoaded()) {
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    Intent intent2 = new Intent(MainActivity.this, WorkingOutActivity.class);
+                    intent2.putExtra("day", workoutNow.getDays().get(day));
+                    startActivity(intent2);
 
-            }
-        });
+                }
+            });
+        } else {
+            Intent intent2 = new Intent(MainActivity.this, WorkingOutActivity.class);
+            intent2.putExtra("day", workoutNow.getDays().get(day));
+            startActivity(intent2);
+        }
+
     }
 
     private void initSegmentProgressBar() {
@@ -227,8 +243,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             cals.setText(getResources().getString(R.string.please_calc));
         else cals.setText(getData3() + "");
         if (getDefault() == 101) {
-            workoutName.setText("Pick a workout");
-            mEditor.putString("WORK", "Pick a workout");
+            workoutName.setText(R.string.pick_workout);
+            mEditor.putString("WORK", getResources().getString(R.string.pick_workout));
         } else if (dzdz != null) {
             workoutName.setText(workoutNow.getName());
             dayName.setText(workoutNow.getDays().get(day).getName());
@@ -236,4 +252,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         mEditor.apply();
     }
+
+
 }

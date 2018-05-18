@@ -3,6 +3,7 @@ package vyvital.fitz;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -40,9 +41,12 @@ import vyvital.fitz.data.models.Workout;
 
 public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper.RecyclerItemTouchHelperListener {
 
-    String[] type_data = {"Strength", "Hypertrophy", "Maintenance", "Endurance"};
-    String[] lvl_data = {"Novice", "Intermediate", "Advanced", "Elite"};
-    String[] day_data = {"1 Day", "2 Days", "3 Days", "4 Days", "5 Days", "6 days", "7 Days"};
+    String[] type_data;
+    String[] lvl_data;
+    String[] day_data;
+    //    {"Strength", "Hypertrophy", "Maintenance", "Endurance"};
+//    {"Novice", "Intermediate", "Advanced", "Elite"};
+//    {"1 Day", "2 Days", "3 Days", "4 Days", "5 Days", "6 days", "7 Days"};
     Dialog workoutDialog;
     Dialog workoutDialogDays;
     Context context;
@@ -55,6 +59,10 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Resources res = getResources();
+        day_data = res.getStringArray(R.array.days);
+        lvl_data = res.getStringArray(R.array.level);
+        type_data = res.getStringArray(R.array.type);
         setContentView(R.layout.activity_builder);
         rv = findViewById(R.id.rv);
         View emptyView = findViewById(R.id.empty_view);
@@ -68,7 +76,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         workoutList = new ArrayList<>();
 
         android.support.v7.app.ActionBar ab = getSupportActionBar();
-        ab.setTitle("Program Manager");
+        ab.setTitle(getResources().getString(R.string.program_builder));
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setItemAnimator(new DefaultItemAnimator());
@@ -95,8 +103,10 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
         SharedPreferences sharedPreferences = this.getSharedPreferences("Tdee", Context.MODE_PRIVATE);
         SharedPreferences.Editor mEditor = sharedPreferences.edit();
         for (Workout p : workoutList) {
-            if (p.isDef())
+            if (p.isDef()) {
                 mEditor.putInt("DEF", p.getId());
+                mEditor.putString("WORK", p.getName());
+            }
         }
         mEditor.apply();
     }
@@ -510,7 +520,9 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                         w.setDef(true);
                 }
                 saveDefault();
-                mRef.setValue(workoutList);
+                for (Workout tt : workoutList)
+                    mRef.child((String.valueOf(tt.getId()))).setValue(tt);
+                //mRef.setValue(workoutList);
                 adapter.notifyDataSetChanged();
                 workoutDialog.dismiss();
             }
@@ -523,13 +535,13 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                     w.setName(name.getEditText().getText().toString());
                     if (name.getEditText().getText().toString().equals("")) {
                         name.getEditText().setText(R.string.temp_name);
-                        w.setName("Temp name");
+                        w.setName(getResources().getString(R.string.temp_name));
                     } else if (workoutTypeSpinner.getText().toString().equals(""))
-                        workoutTypeSpinner.setError("Don't forget me!");
+                        workoutTypeSpinner.setError(getResources().getString(R.string.dont_forget_me));
                     else if (workoutLevelSpinner.getText().toString().equals(""))
-                        workoutLevelSpinner.setError("Don't forget me!");
+                        workoutLevelSpinner.setError(getResources().getString(R.string.dont_forget_me));
                     else if (workoutDateSpinner.getText().toString().equals(""))
-                        workoutDateSpinner.setError("Don't forget me!");
+                        workoutDateSpinner.setError(getResources().getString(R.string.dont_forget_me));
                     else {
                         w.setType(workoutTypeSpinner.getText().toString());
                         w.setId(randomFind());
@@ -542,13 +554,13 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
                     zzz.setName(name.getEditText().getText().toString());
                     if (name.getEditText().getText().toString().equals("")) {
                         name.getEditText().setText(R.string.temp_name);
-                        zzz.setName("Temp name");
+                        zzz.setName(getResources().getString(R.string.temp_name));
                     } else if (workoutTypeSpinner.getText().toString().equals(""))
-                        workoutTypeSpinner.setError("Don't forget me!");
+                        workoutTypeSpinner.setError(getResources().getString(R.string.dont_forget_me));
                     else if (workoutLevelSpinner.getText().toString().equals(""))
-                        workoutLevelSpinner.setError("Don't forget me!");
+                        workoutLevelSpinner.setError(getResources().getString(R.string.dont_forget_me));
                     else if (workoutDateSpinner.getText().toString().equals(""))
-                        workoutDateSpinner.setError("Don't forget me!");
+                        workoutDateSpinner.setError(getResources().getString(R.string.dont_forget_me));
                     else {
                         zzz.setType(workoutTypeSpinner.getText().toString());
                         zzz.setSize(Integer.parseInt(workoutDateSpinner.getText().toString().substring(0, 1)));
@@ -580,7 +592,14 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
             // backup of removed item for undo purpose
             final Workout deletedItem = workoutList.get(viewHolder.getAdapterPosition());
             final int deletedIndex = viewHolder.getAdapterPosition();
-
+            if (deletedItem.isDef())
+                if (workoutList != null)
+                    for (Workout z : workoutList)
+                        if (z != null) {
+                            z.setDef(true);
+                            mRef.child(String.valueOf(z.getId())).child("def").setValue(true);
+                            break;
+                        }
             // remove the item from recycler view
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid()).child("workouts").child(String.valueOf(workoutList.get(deletedIndex).getId()));
             ref.keepSynced(true);
@@ -602,7 +621,7 @@ public class BuilderActivity extends BaseActivity implements RecyclerTouchHelper
 
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar
-                    .make(constraintLayout, name + " removed from workouts!", Snackbar.LENGTH_LONG);
+                    .make(constraintLayout, name + getResources().getString(R.string.removed_from_workouts), Snackbar.LENGTH_LONG);
             snackbar.setAction("UNDO", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

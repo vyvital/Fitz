@@ -115,4 +115,12 @@
     <string name="github_icon">github icon</string>
     <string name="linkedin_icon">linkedin icon</string>
     <string name="widget_background">widget background</string>
+    <string name="add_exercise_button">Add exercise button</string>
+    <string name="add_weight_fab_button">Add weight Fab button</string>
+    <string name="add_workout_fab_button">Add workout FAB button</string>
+    <string name="success_image_not_a_button">Success image - not a button</string>
+    <string name="pick_workout">Pick a workout</string>
+    <string name="dont_forget_me">Don\'t forget me!</string>
+    <string name="removed_from_workouts">&#160;removed from workouts!</string>
+    <string name="was_added">&#160;was added!</string>
 </resources>
