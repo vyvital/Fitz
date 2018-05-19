@@ -294,6 +294,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (TextUtils.isEmpty(email)) {
             mEmailField.setError("Required.");
             valid = false;
+        } else if (!email.contains("@") || !email.contains(".")){
+            mEmailField.setError("Please input correct email address");
+            valid = false;
         } else {
             mEmailField.setError(null);
         }

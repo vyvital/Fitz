@@ -25,6 +25,9 @@ import com.github.jinatonic.confetti.ConfettoGenerator;
 import com.github.jinatonic.confetti.Utils;
 import com.github.jinatonic.confetti.confetto.Confetto;
 import com.github.jinatonic.confetti.confetto.ShimmeringConfetto;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +50,7 @@ public class WorkingOutActivity extends AppCompatActivity implements ConfettoGen
     private long stopped = 0;
     boolean started = false;
     boolean paused = false;
+    private AdView mAdView;
     Chronometer chrono;
     public String[] quotes;
     RecyclerView workoutRV;
@@ -57,6 +61,9 @@ public class WorkingOutActivity extends AppCompatActivity implements ConfettoGen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_working_out);
+        mAdView = findViewById(R.id.banner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         android.support.v7.app.ActionBar ab = getSupportActionBar();
         ab.setTitle(getResources().getString(R.string.Fitz));
         BitmapDrawable backgrd = new BitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.bar));
