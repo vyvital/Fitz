@@ -3,6 +3,9 @@
 <h4 align="center">An android application focused on achieving fitness and health goals in a more convenient way.</h4>
 
 ## [Download Fitz APK here](https://github.com/vyvital/Fitz/releases)
+<a href="https://play.google.com/store/apps/details?id=vyvital.myfit" >
+  <img alt="Android app on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width=250 />
+</a>
 
 
 ## Description
